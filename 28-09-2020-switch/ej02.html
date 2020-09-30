@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Ej02</title>
+		<script>
+			function miFunction(){
+				var edad,categoria,resultado;
+				var tipo;
+				edad=parseInt(document.getElementById("edad").value);
+
+				switch(edad){
+					case 18:
+					case 17:
+					case 16:
+						categoria="Juvenil" ;
+						break;
+					case 15:
+					case 14:
+						categoria="Cadete" ;
+						break;
+					case 13:
+					case 12:
+						categoria="Infantil" ;
+						break;
+					case 11:
+					case 10:
+						categoria="Alevin" ;
+						break;
+					case 9:
+					case 8:
+						categoria="Benjamin" ;
+						break;
+					case 7:
+					case 6:
+					case 5:
+						categoria="Pre-Benjamin" ;
+						break;
+					default:
+						categoria="Fuera de categoria";
+						break;
+				}
+
+				resultado = "El participante de "+edad+" años pertenece a la categoria "+categoria;				
+
+				
+				
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+	</head>
+	<body>
+		Introducir años <input type="text" id="edad"/>
+		<br>
+		<input type="button" id="botton" value="Ver categoria de edad" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv"></div>
+
+		<div style="margin-top: 20; padding-top: 20px;">
+		Introducir una edad para averiguar las categorias de los participantes<br />
+		18-16 juvenil<br />
+		15-14 cadete<br />
+		13-12 infantil<br />
+		11-10 alevin<br />
+		9-8 benjamin<br />
+		7-5 prebenjamin<br />
+		cualquier otra edad Fuera de categoria.<br />
+		<br />
+		El participante de "años" pertenece a la categoria "categoria".<br />
+		años: la edad introducida por el usuario<br />
+		categoria a la que pertenece por la edad<br />
+	</div>
+	</body>
+</html>
+

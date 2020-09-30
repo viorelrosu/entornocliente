@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Ej02</title>
+		<script>
+			function miFunction(){
+				var miMarca,resultado,taller;
+				var existe = true;
+				miMarca=document.getElementById("miMarca").value;
+
+				switch(miMarca){
+					case "Ford":
+						taller="Talleres Velasco" ;
+						break;
+					case "Citroen":
+						taller="Talleres Doctor Esquerdo";
+						break;
+					case "Audi":
+					case "Seat":
+						taller="Talleres Acacia";
+						break;
+					default:
+						taller="No existen talleres concertados para este fabricante.";
+						existe=false;
+						break;
+				}
+
+				if(existe) {
+					resultado = "La marca: " + miMarca + " tiene concertado con el taller " + taller;
+				} else {
+					resultado = taller;
+				}
+				
+
+				
+				
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+	</head>
+	<body>
+		Introduce un fabricante de coches <input type="text" id="miMarca"/>
+		<br>
+		<input type="button" id="botton" value="Buscar taller" onclick="miFunction()"/>
+		<div id="miDiv"></div>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Ej02</title>
+		<script>
+			function miFuncion(){
+				var numero,indivisible,resultado;
+				indivisible=true;
+				numero=parseInt(document.getElementById("numero").value);
+				resultado="El número " + numero + " es divisible por:  " ;
+				if(numero%2==0){
+					resultado+="2  "
+					indivisible=false;
+				}
+				if(numero%3==0){
+					resultado+="3  "
+					indivisible=false;
+				}
+				if(numero%5==0){
+					resultado+="5  "
+					indivisible=false;
+				}
+				if(numero%7==0){
+					resultado+="7  "
+					indivisible=false;
+				}
+				if(indivisible){
+					resultado="El número "+numero+" no es divisible por ningún número menor que diez."
+				}
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+	</head>
+	<body>
+		Introduce un número entero <input type="text" id="numero"/>
+		<br>
+		<input type="button" id="miBoton" value="Comprobar" onclick="miFuncion()"/>
+		<div id="miDiv">
+		</div>
+	</body>
+</html>

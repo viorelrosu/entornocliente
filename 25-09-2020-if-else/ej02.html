@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Ej03</title>
+		<script>
+			function miFuncion(){
+				alert("Click en el botón");
+				var edadAna, edadLuis, resultado;
+				edadAna=parseInt(document.getElementById("edadAna").value);
+				edadLuis=parseInt(document.getElementById("edadLuis").value);
+				if(edadAna<edadLuis){
+					resultado="Ana es menor que Luis."+" Ana tiene "+edadAna+" años, y Luis tiene "+edadLuis+" años.";
+				}else if(edadAna>edadLuis){
+					resultado="Ana es mayor que Luis."+" Ana tiene "+edadAna+" años, y Luis tiene "+edadLuis+" años.";
+				}else{
+					resultado="Ana y Luis tienen la misma edad, ambos tienen "+edadAna+" años.";
+				}
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+			/*
+			var Ana=prompt("Introduce la edad de Ana");
+			var Luis=prompt("Introduce la edad de Luis");
+			if(Ana<Luis){
+				document.open();
+				document.write("Ana es menor que Luis."+" Ana tiene "+Ana+" años, y Luis tiene "+Luis+" años.");
+				document.close();
+			}else if(Ana>Luis){
+				document.open();
+				document.write("Ana es mayor que Luis."+" Ana tiene "+Ana+" años, y Luis tiene "+Luis+" años.");
+				document.close();
+			}else{
+				document.open();
+				document.write("Ana y Luis tienen la misma edad, ambos tienen "+Ana+" años.");
+				document.close();
+			}
+			*/
+		</script>
+	</head>
+	<body>
+		Edad de Ana <input type="text" id="edadAna"/>
+		<br>
+		Edad de Luis <input type="text" id="edadLuis"/>
+		<br>
+		<input type="button" id="miBoton" value="Aceptar" onclick="miFuncion()"/>
+		<div id="miDiv">
+			
+		</div>
+	</body>
+</html>
