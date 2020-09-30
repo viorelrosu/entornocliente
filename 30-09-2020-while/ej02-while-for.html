@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ej02 While and For</title>
+	<script>
+			function miFunction(){
+				var data;
+				var resultado = " "
+				//data=parseInt(document.getElementById("data").value);
+
+				
+				for (var i=1; i <= 6; i++) {
+					resultado += "<h"+i+">Este es un encabezado html H"+i+"</h"+i+">";
+				}
+
+				for (var i=6; i >= 1; i--) {
+					resultado += "<h"+i+">Este es un encabezado html H"+i+"</h"+i+">";
+				}
+
+				var j=1;
+				while(j<=6){
+					resultado += "<h"+j+">Este es un encabezado html H"+j+"</h"+j+">";
+					j++;
+				}
+				
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+</head>
+<body>
+	Introducir Ph <input type="text" id="data"/>
+		<br>
+		<input type="button" id="botton" value="Introduce Ph" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+			Mostrar 6 encabezados de html: h1,h2,h3,h4,h5,h6
+		-->
+</body>
+</html>

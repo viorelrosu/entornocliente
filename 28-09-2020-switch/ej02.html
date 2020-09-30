@@ -41,10 +41,9 @@
 						break;
 				}
 
-				resultado = "El participante de "+edad+" años pertenece a la categoria "+categoria;				
-
-				
-				
+				resultado = "El participante de <b>"+edad+"</b> años ";
+				resultado += "pertenece a la categoria: <b>"+categoria+"</b>";
+				console.log(resultado);
 				document.getElementById("miDiv").innerHTML=resultado;
 			}
 		</script>
@@ -53,8 +52,9 @@
 		Introducir años <input type="text" id="edad"/>
 		<br>
 		<input type="button" id="botton" value="Ver categoria de edad" onclick="miFunction()" style="margin-top: 20px;"/>
-		<div id="miDiv"></div>
+		<div id="miDiv" style="padding-top: 20px;"></div>
 
+		<!--
 		<div style="margin-top: 20; padding-top: 20px;">
 		Introducir una edad para averiguar las categorias de los participantes<br />
 		18-16 juvenil<br />
@@ -68,7 +68,8 @@
 		El participante de "años" pertenece a la categoria "categoria".<br />
 		años: la edad introducida por el usuario<br />
 		categoria a la que pertenece por la edad<br />
-	</div>
+		</div>
+		-->
 	</body>
 </html>
 

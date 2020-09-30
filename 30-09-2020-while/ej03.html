@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Ej03 - Número primo</title>
+		<script>
+			function miFunction(){
+				var data;
+				var primo = true;
+				var i=2;
+				
+				data=parseInt(document.getElementById("data").value);
+
+				var resultado = "El <b>"+data+"</b>";
+
+				do{
+					if(data%i==0){
+						primo=false;
+					}
+					i++;
+				}while(i<data);
+
+				/*
+				for(divisor=data-1;divisor>1;divisor++) {
+					if(data%divisor == 0) {
+						primo=false;
+					}
+				}*/
+
+				/*
+				var divisor = data;
+				do{
+					divisor--;
+					if(data%divisor == 0) {
+						primo=false;
+					}
+				}while((divisor>1) && primo);
+				*/
+
+				if(primo) {
+					resultado += " es primo.";
+				} else {
+					resultado += " no es primo.";
+				}
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+	</head>
+	<body>
+		Introducir número <input type="text" id="data"/>
+		<br>
+		<input type="button" id="botton" value="Introduce número" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+		<!--
+		Se  pide al usuario que introduzca un numero
+		Comprobar si este es primo. 
+
+		Un numero es primo cuando: el numero se divide por 1 y por si mismo
+		-->
+	</body>
+</html>

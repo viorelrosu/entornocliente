@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Ej01 - Switch no recomendado</title>
+		<script>
+			function miFunction(){
+				var ph;
+				var resultado = "El Ph es: "
+				ph=parseInt(document.getElementById("ph").value);
+
+				/* estructura switch no recomendable*/
+				if(ph>=1 && ph<=14) {
+					switch(true){
+						case (ph<7):
+							resultado += 'Acido';
+							break;
+						case (ph>7):
+							resultado +="Basico" ;
+							break;
+						default:
+							resultado +="Neutro";
+							break;
+					}
+				} else {
+					resultado = "Los valores del ph deben estar comprendidos entre 1 y 14.";
+				}
+				
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+	</head>
+	<body>
+		Introducir Ph <input type="text" id="ph"/>
+		<br>
+		<input type="button" id="botton" value="Introduce Ph" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+	</body>
+</html>
+
