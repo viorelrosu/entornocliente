@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ej03 PUM7</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+				// nr1=parseInt(document.getElementById("nr1").value);
+				// nr2=parseInt(document.getElementById("nr2").value);
+
+				for(i=1; i<=100; i++) {
+					if(i%7==0) {
+						resultado += "PUM </br>";
+					} else {
+						if(i==100) {
+							resultado += i+". ";
+						} else {
+							resultado += i+", ";
+						}
+					}
+				}
+				console.log(resultado);
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+</head>
+<body>
+		<input type="button" id="botton" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+			Crear una aplicacion que genere el juego del PUM hasta 100. 
+			que escriba los numeros separados por comma y cada vez que se encuentra
+			el numero de 7 o multiplo de 7 escriba PUM y cambie de renglon.
+		-->
+
+</body>
+</html>
+

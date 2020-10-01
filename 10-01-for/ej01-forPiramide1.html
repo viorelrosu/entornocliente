@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ej01 For</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+				// nr1=parseInt(document.getElementById("nr1").value);
+				// nr2=parseInt(document.getElementById("nr2").value);
+
+				for(i=1; i<=10; i++) {
+					for(j=1; j<=i; j++) {
+						resultado += i;
+					}
+					resultado += "</br>";
+				}
+				console.log(resultado);
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+		</script>
+</head>
+<body>
+		<input type="button" id="botton" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+			Crear una aplicacion que genere una piramide de numeros entre 1 y 10
+			1
+			22
+			333
+			4444
+			55555
+			......
+
+		-->
+
+</body>
+</html>
+

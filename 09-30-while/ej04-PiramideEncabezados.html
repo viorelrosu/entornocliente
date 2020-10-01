@@ -9,16 +9,28 @@
 				nr1=parseInt(document.getElementById("nr1").value);
 				nr2=parseInt(document.getElementById("nr2").value);
 
-				if(nr2>nr1){
-					for (var i=nr1; i <= nr2; i++) {
-					resultado += "<h"+i+">Este es un encabezado html H"+i+"</h"+i+">";
+				/*
+					intercambiar valores entre variables
+					var aux = nr2;
+					nr2 = nr1;
+					nr1 = aux;
+				*/
+
+				
+
+				if((nr1 <= 6 && nr1 >= 1) && (nr2 <=6 && nr2 >= 1)){
+					if(nr2>nr1){
+						for (var i=nr1; i <= nr2; i++) {
+						resultado += "<h"+i+">Este es un encabezado html H"+i+"</h"+i+">";
+						}
+					} else {
+						for (var i=nr2; i <= nr1; i++) {
+						resultado += "<h"+i+">Este es un encabezado html H"+i+"</h"+i+">";
+						}
 					}
 				} else {
-					for (var i=nr2; i <= nr1; i++) {
-					resultado += "<h"+i+">Este es un encabezado html H"+i+"</h"+i+">";
-					}
+					resultado = "No existe etiqueta html con h con estos parametros";
 				}
-				
 
 				document.getElementById("miDiv").innerHTML=resultado;
 			}
@@ -27,7 +39,7 @@
 <body>
 	Introducir nr 1 <input type="text" id="nr1"/>Introducir nr2 <input type="text" id="nr2"/>
 		<br>
-		<input type="button" id="botton" value="Introduce Ph" onclick="miFunction()" style="margin-top: 20px;"/>
+		<input type="button" id="botton" value="Enviar" onclick="miFunction()" style="margin-top: 20px;"/>
 		<div id="miDiv" style="padding-top: 20px;"></div>
 
 		<!--
