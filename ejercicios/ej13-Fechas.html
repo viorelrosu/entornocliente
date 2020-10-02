@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ej13 - Fechas</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+
+				var fecha = new Date();
+				var diaMes = fecha.getDate();
+				var diaSemana = fecha.getDay();
+				var mes = fecha.getMonth()+1;
+				var anio = fecha.getFullYear();
+				var horas = fecha.getHours();
+				var minutos  = fecha.getMinutes();
+				var secundos = fecha.getSeconds();
+
+				resultado = "San Fernando de Henares a "+fecha.getDate()+" de "+fecha.getMonth()+" del "+fecha.getFullYear()+" a las "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds()+"<br>";
+
+				var nombreDia = "";
+				switch(fecha.getDay()){
+					case 0:
+						nombreDia = "Domingo";
+						break;
+					case 1:
+						nombreDia = "Lunes";
+						break;
+					case 2:
+						nombreDia = "Martes";
+						break;
+					case 3:
+						nombreDia = "Miercoles";
+						break;
+					case 4:
+						nombreDia = "Jueves";
+						break;
+					case 5:
+						nombreDia = "Viernes";
+						break;
+					case 6:
+						nombreDia = "Sabado";
+						break;
+					default: 
+						nombreDia = "Domingo";
+						break;
+				}
+
+				var nombreMes = "";
+				switch(mes){
+					case 1:
+						nombreMes = "Enero";
+						break;
+					case 2:
+						nombreMes = "Febrero";
+						break;
+					case 3:
+						nombreMes = "Marzo";
+						break;
+					case 4:
+						nombreMes = "Abril";
+						break;
+					case 5:
+						nombreMes = "Mayo";
+						break;
+					case 6:
+						nombreMes = "Junio";
+						break;
+					case 7:
+						nombreMes = "Julio";
+						break;
+					case 8:
+						nombreMes = "Agosto";
+						break;
+					case 9:
+						nombreMes = "Septiembre";
+						break;
+					case 10:
+						nombreMes = "Octubre";
+						break;
+					case 11:
+						nombreMes = "Noviembre";
+						break;
+					case 12:
+						nombreMes = "Diciembre";
+						break;
+					default: 
+						nombreMes = "Enero";
+						break;
+				}
+
+				resultado += "San Fernando de Henares a "+nombreDia+", "+fecha.getDate()+" de "+nombreMes+" del "+fecha.getFullYear()+" a las "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds()+"<br>";
+				
+				//console.log(resultado);
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+	</script>
+</head>
+<body>
+		<input type="button" id="botton" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+			dada la fecha del sistema mostrar:
+			San Fernando de Heanres a (Dia del nombreMes) de (Mes) del Año a las (Hora):(Min):(Sec)
+			San Fernando de Henares del Viernes a 2 de octubre del 2020 a las (Hora):(Min):(Sec)
+		-->
+
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ej12 - Multiplos de 4 y 9</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+
+				for(i=1; i<=300; i++){
+					
+					if(i%4==0){
+						resultado += "<font size=\"+4\" color=\"green\">"+i+"</font>";
+					} else if(i%9==0){
+						resultado += "<font size=\"-2\" color=\"red\">"+i+"</font>";
+					} else {
+						resultado += i;
+					}
+					if(i%10==0){
+						resultado += "<br>"
+					};
+				}
+				
+				//console.log(resultado);
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+	</script>
+</head>
+<body>
+		<input type="button" id="botton" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+			Crear una aplicacion que genere un listado entre 1 y 300 y cambie de linea cada 10 numeros.
+			
+			los múltiplos de 4 los debe mostrar con tamaño +4 (de la letra asignada la fuente) y de color verde.
+
+			Los múltiplos de 9 los debe mostrar con tamaño -2 (de la letra asignada la fuente) y de color rojo.
+
+			etiqueta font de html. <font size="+4" color="red"></font>
+		-->
+
+</body>
+</html>
+

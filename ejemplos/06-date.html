@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Hola mundo</title>
+		<script>
+		var miFecha = new Date();
+		var resultado = "";
+
+		miFecha = new Date();
+		
+		fechaNavidad95 = new Date("December 25, 1995 13:30:00");
+		fechaNavidad95 = new Date("December 25, 1995");
+		fechaNavidad95 = new Date(1995,11,25);
+		fechaNavidad95 = new Date(1995,11,25,9,30,0);
+
+		//metodos
+		/*
+		getDate();
+		getDay();
+		getFullYear();
+		getHours();
+		getMinutes();
+		getMonth();
+		getSeconds();
+		getTime() - Devuelve los milisegundos transcurridos desde la época UNIX. 0101197 00:00:00
+		parse(fecha) - 	Devuelve la cantidad de milisegundos transcurridos desde el 1 de enero de
+						1970 00:00:00 hasta la fecha pasada en el argumento fecha. 
+
+
+		setDate(diaMes); Establece el día del mes (1-31). 
+		setFullYear(año) Establece el año con 4 dígitos. 
+		setHours(hora) - Establece la hora (0-23).
+		setMilliseconds(miliseg)  - Establece los milisegundos (0-999). 
+		setMinutes(minuto) - Establece los minutos (0-59). 
+		setMonth(mes) - Establece el mes (0-11). 
+		setSeconds(segundo) - Establece los segundos (0-59). 
+		setTime(milisegundos) - Establece la fecha como el número de milisegundos transcurrido desde la
+								época UNIX.
+
+		toDateString() - Convierte la fecha del objeto DATE en una cadena de caracteres. 
+		toLocaleDateString() - Devuelve una cadena de la fecha (día de la semana, dia, mes y año) en el
+							   formato de idioma local que tenga configurado el cliente. 
+		toLocaleString() - Devuelve una cadena de la fecha completa en el formato de idioma local que
+						   tenga configurado el cliente.
+		
+		toLocaleTimeString() - Devuelve una cadena de la hora (hora, minuto, segundo) en el formato de
+							   idioma local que tenga configurado el cliente.
+
+		toTimeString() - Convierte la parte de tiempo de un objeto Date en una cadena. 
+		*/
+
+		console.log(fechaNavidad95.getTime());
+		//parse(fechaNavidad95);
+		console.log(fechaNavidad95);
+
+		fechaNavidad95.setDate(fechaNavidad95.getDate()+58);
+		fechaNavidad95.setDate(14);
+
+		console.log(fechaNavidad95.toDateString());
+
+
+		prompt("Mete argo chiquillo");
+		</script>
+	</head>
+	<body>
+		<h1 onclick="alert('No toques lo que no debes.')">Esta es la primera prueba de JavaScript</h1>
+	</body>
+</html>
