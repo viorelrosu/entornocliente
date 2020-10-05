@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ej15 - Reloj con Interval</title>
+	<script>
+			parar='';
+			function miFunction(){
+				var resultado = "";
+
+				var fecha = new Date();
+				var diaMes = fecha.getDate();
+				var diaSemana = fecha.getDay();
+				var mes = fecha.getMonth()+1;
+				var anio = fecha.getFullYear();
+				var horas = fecha.getHours();
+				var minutos  = fecha.getMinutes();
+				var secundos = fecha.getSeconds();
+
+				resultado = "<h1>"+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds()+"</h1>";
+				//resultado += "<h2>San Fernando de Henares a "+fecha.getDate()+" de "+fecha.getMonth()+" del "+fecha.getFullYear()+"</h2>";
+				//console.log(resultado);
+				document.getElementById("miDiv").innerHTML=resultado;
+				// setTimeout(miFunction, 2000);
+			}
+
+			function startInterval(){
+				parar=setInterval(miFunction, 1000);
+				document.getElementById("iniciar").disabled=true;
+				document.getElementById("parar").disabled=false;
+			}
+
+			function stopInterval(){
+				clearInterval(parar);
+				parar=0;
+				document.getElementById("iniciar").disabled=false;
+				document.getElementById("parar").disabled=true;
+			}
+
+	</script>
+</head>
+<body>
+		<input type="button" id="iniciar" value="Iniciar" onclick="startInterval()" style="margin-top: 20px;"/>
+		<input type="button" id="parar" value="Parar" onclick="stopInterval()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+			crear una aplicación que muestre un reloj con 2 botones: iniciar, parar
+		-->
+
+</body>
+</html>
+
