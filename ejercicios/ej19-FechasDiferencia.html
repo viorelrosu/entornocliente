@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej19 - Fechas Diferencias</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+				var segundosDia = 1000*60*60*24;
+				var segundosAnio = 1000*60*60*24*365;
+
+				var now = new Date();
+				var dato1 = document.getElementById("fecha1").value;
+				var dato2 = document.getElementById("fecha2").value;
+				resultado += dato1 + "<br>";
+				resultado += dato2 + "<br>";
+				var dato1 = dato1.split("/");
+				var dato2 = dato2.split("/");
+
+				var fecha1 = new Date(dato1[2], dato1[1]-1, dato1[0]);
+				var fecha2 = new Date(dato2[2], dato2[1]-1, dato2[0]);
+				var diffMiliSec = fecha1.getTime()-fecha2.getTime();
+				var miliSegEnUnAnyo = 1000*31536000;
+				var anios = Math.round(diffMiliSec/miliSegEnUnAnyo);
+				var resto = diffMiliSec % miliSegEnUnAnyo;
+
+				var miliSegEnUnMes = 1000*2592000;
+				var meses = Math.round(resto/miliSegEnUnMes);
+				var resto = resto % miliSegEnUnMes;
+
+				var miliSegEnUnDia = 1000*86400;
+				var dias = Math.round(resto/miliSegEnUnDia);
+
+				resultado += "años: " + anios + "<br>";
+				resultado += "meses: " + meses + "<br>";
+				resultado += "dias: " + dias + "<br>";
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+
+	</script>
+</head>
+<body>
+		<h1>Diferencia de fechas</h1>
+		<p>
+			<input type="text" id="fecha1" name="fecha1" value="" placeholder="Introduce primera fecha"/>
+		</p>
+		<p>
+			<input type="text" id="fecha2" name="fecha2" value="" placeholder="Introduce segunda fecha" />
+		</p>
+		<p>
+			<input type="button" id="iniciar" value="Calcular diferencia" onclick="miFunction()" style="margin-top: 20px;"/>
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+2. Pedir al usuario que introduzca dos fechas en dos cajas de texto. Al hacer click en un botón
+comprobar que lo que ha introducido el usuario cumpla lo siguiente:
+a. Calcular la diferencia de las fechas en años, meses y días. Ejemplo
+fecha1 = 15/5/1992
+fecha2 = 9/4/2013
+años=21
+mese=1
+días=6
+		-->
+
+</body>
+</html>
+
