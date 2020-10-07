@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ej17 - Fechas Operaciones</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+				var segundosDia = 1000*60*60*24;
+				var segundosAnio = 1000*60*60*24*365;
+				var mes = 5;
+				var anio = 2019;
+				var fechaHoy = new Date();
+				//para hacer dos fecha iguales
+				//se crea un objeto con las misma fecha que fechaHoy
+				var fecha85 = new Date(fechaHoy);
+				fecha85.setDate(fecha85.getDate()+85);
+
+				//var fecha85 = new Date(fechaHoy.getFullYear(), fechaHoy.getMonth(), fechaHoy.getDate()+85);
+				//var fecha187 = new Date(fechaHoy.getFullYear(), fechaHoy.getMonth(), fechaHoy.getDate()-187);
+
+				var fecha187 = new Date(fechaHoy);
+				fecha187.setDate(fecha187.getDate()-187);
+
+				resultado = "Fecha de hoy mostrado con toLocaleString()<br>";
+				resultado += "fechaHoy: "+fechaHoy +"<br>";
+				resultado += "fechaHoy: "+fechaHoy.toLocaleString() +"<br>";
+				resultado += "<br><br>Fecha de hoy mostrado con toLocaleDateString()<br>";
+				resultado += "fechaHoy: "+fechaHoy.toLocaleDateString() +"<br>";
+				resultado += "<br><br>Fecha de hoy mostrado con toDateString()<br>";
+				resultado += "fechaHoy: "+fechaHoy.toDateString() +"<br>";
+				resultado += "<br><br>Fecha de hoy sumando 85 dias<br>";
+				resultado += "fecha85: "+fecha85 +"<br>";
+				resultado += "<br><br>Fecha de hoy restando 187 dias<br>";
+				resultado += "fecha187: "+fecha187 +"<br>";
+
+				fecha85.setFullYear(fecha187.getFullYear()+2);
+
+				resultado += "<br><br>Fecha de hoy mas 85 dias sumando dos años<br>";
+				resultado += "fecha85+2años: "+ fecha85 +"<br>";
+
+				resultado += "<br><br>Fecha de hoy mas 85 dias restando 24 horas<br>";
+				fecha187.setHours(fecha187.getHours()-24);
+
+				resultado += "fecha187-24horas: "+ fecha187 +"<br>";
+
+				var fechaResto = new Date(fecha85-fecha187);
+				//fechaResto.setTime(fecha85.getTime()-fecha187.getTime());
+
+				resultado += "<br><br>Fecha de hoy mas 85 restando fecha de hoy menos 187<br>";
+				resultado += "fechaResto: "+fechaResto +"<br>";
+
+				resultado += "<br>" + Date.parse(fechaResto);
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+
+	</script>
+</head>
+<body>
+		<input type="button" id="iniciar" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+a. Crear la variable "fechaHoy" con fecha de hoy y mostrarla.
+b. Crear la variable "fecha85" que sume 85 días a la variable "fechaHoy" y mostrarla.
+c. Crear la variable "fecha187" que reste 187 días variable "fechaHoy" y mostrarla.
+d. Sumar 2 años a la variable "fecha85" y mostrarla.
+e. Restar 24 horas a la variable "fecha187" y mostrarla.
+f. Crear la variable "fechaResto" que sea la resta de fecha85 - fecha187 y observa lo que obtienes y
+mostrarla.
+Imprimir todos los resultados en el documento anteponiendo lo que hacemos. 
+		-->
+
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej18 - Calcular Fecha Nacimiento</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+				var segundosDia = 1000*60*60*24;
+				var segundosAnio = 1000*60*60*24*365;
+
+				var now = new Date();
+				var dia = parseInt(document.getElementById("dia").value);
+				var mes = parseInt(document.getElementById("mes").value);
+				var anio = parseInt(document.getElementById("anio").value);
+
+				var fechaNac = new Date(anio, mes, dia);
+
+				if(now.getFullYear() < fechaNac.getFullYear()){
+					resultado = "La fecha introducido no es correcta. "
+				} else {
+					var edad = now.getFullYear() - fechaNac.getFullYear();
+					if((mes <= now.getMonth()+1) && (dia <= now.getDate())) {
+						resultado = "Tienes " + edad + " años";
+					} else {
+						resultado = "Tienes " + (edad-1) + " años";
+					}
+					document.getElementById("edad").value=edad;
+				}
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+
+	</script>
+</head>
+<body>
+		<h1>Fecha de nacimiento</h1>
+		<p>
+			<label>Día de nacimiento</label><br />
+			<input type="text" id="dia" name="dia" value="" placeholder="Introduce día"/>
+		</p>
+		<p>
+			<label>Mes de nacimiento</label><br />
+			<input type="text" id="mes" name="mes" value="" placeholder="Introduce mes" />
+		</p>
+		<p>
+			<label>Año de nacimiento</label><br />
+			<input type="text" id="anio" name="anio" value="" placeholder="Introduce año"/>
+		</p>
+		<p>
+			<input type="button" id="iniciar" value="Calcular edad" onclick="miFunction()" style="margin-top: 20px;"/>
+		</p>
+		<p>
+			<label>Edad</label><br />
+			<input type="text" id="edad" name="edad" readonly value="" />
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+1. Pedir al usuario que introduzca su fecha de nacimiento en 3 cajas de texto. Al hacer click
+en un botón hay que comprobar que lo que ha introducido el usuario cumpla lo siguiente:
+a. La fecha introducida debe ser anterior a la actual.
+b. Calcular la edad entre la fecha introducida y la fecha del sistema.
+Mostrar el resultado en otra caja de texto de solo lectura.
+		-->
+
+</body>
+</html>
+
