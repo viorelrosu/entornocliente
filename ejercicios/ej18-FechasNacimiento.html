@@ -6,29 +6,38 @@
 	<script>
 			function miFunction(){
 				var resultado = "";
-				var segundosDia = 1000*60*60*24;
-				var segundosAnio = 1000*60*60*24*365;
+				//var segundosDia = 1000*60*60*24;
+				//var segundosAnio = 1000*60*60*24*365;
 
 				var now = new Date();
+				var mesActual = now.getMonth()+1;
+				var diaActual = now.getDate();
+				var anioActual = now.getFullYear();
+
 				var dia = parseInt(document.getElementById("dia").value);
 				var mes = parseInt(document.getElementById("mes").value);
 				var anio = parseInt(document.getElementById("anio").value);
 
-				var fechaNac = new Date(anio, mes, dia);
+				var fechaNac = new Date(anio, mes-1, dia);
 
-				if(now.getFullYear() < fechaNac.getFullYear()){
-					resultado = "La fecha introducido no es correcta. "
+				var edad = anioActual - anio;
+				if(edad<=0){
+					resultado = "El año de nacimiento no puede ser igual o posterior al año actual";
 				} else {
-					var edad = now.getFullYear() - fechaNac.getFullYear();
-					if((mes <= now.getMonth()+1) && (dia <= now.getDate())) {
-						resultado = "Tienes " + edad + " años";
-					} else {
-						resultado = "Tienes " + (edad-1) + " años";
+					if(mes <= mesActual){
+						edad--;
 					}
-					document.getElementById("edad").value=edad;
+					if(mes == mesActual) {
+						if(dia <= diaActual){
+							edad--;
+						}
+					}
 				}
 
+				resultado = "Tienes " + (edad) + " años";
+
 				document.getElementById("miDiv").innerHTML=resultado;
+				document.getElementById("edad").value=edad;
 			}
 
 	</script>

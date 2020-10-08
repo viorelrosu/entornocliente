@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej20 - Numeros aleatorios</title>
+	<script>
+			function miFunction(){
+				var resultado = "";
+				var min = parseInt(document.getElementById("min").value);
+				var max = parseInt(document.getElementById("max").value);
+				var rand;
+				for(var i=1; i<=5; i++) {
+					rand = Math.floor(Math.random() * (max - min + 1)) + min;
+					resultado += rand+"<br>";
+				}
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+
+	</script>
+</head>
+<body>
+		<h1>Números aleatorios</h1>
+		<p>
+			<input type="text" id="min" name="min" value="" placeholder="Introduce min"/>
+		</p>
+		<p>
+			<input type="text" id="max" name="max" value="" placeholder="Introduce max" />
+		</p>
+		<p>
+			<input type="button" id="iniciar" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+Introducir un min y un max y generar 5 numeros aleatorios entre el  min y max
+		-->
+
+</body>
+</html>
+

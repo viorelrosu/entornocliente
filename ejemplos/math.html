@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Math</title>
+		<script>
+		Math.PI;
+		Math.abs(valor); //Devuelve el valor absoluto de valor, es decir, su valor sin signo
+		Math.acos(valor); //Devuelve el arcocoseno en radianes (entre 0 y π) de valor. Obviamente valor debe estar comprendido entre -1 y 1. 
+
+        Math.ceil(23.26); //24 - Función techo. Devuelve el entero inmediatamente mayor o igual que valor.
+        Math.ceil(23.78); //24
+        Math.ceil(23);	//23
+
+        Math.floor(23.26); //23 - Función suelo. Devuelve el entero inmediatamente menor o igual que valor. 
+        Math.floor(23.78); //23
+
+        Math.round(23.36); //23 - Devuelve el resultado de redondear valor a su entero más próximo. El umbral 0.5 se redondea al entero inmediatamente mayor. 
+        Math.round(23.58); //24
+        Math.round(23); //23
+
+        Math.cos(valor); // Devuelve el coseno de valor, que se considera expresado en radianes. 
+        Math.sin(valor); // Devuelve el seno de valor, que se considera expresado en radianes.
+        Math.tan(valor); // Devuelve la tangente de valor, que se considera expresado en radianes. 
+        Math.sqrt(valor); // Devuelve la raíz cuadrada de valor.  
+
+        Math.max(val1, …, valN); // Devuelve el mayor de los valores que recibe como argumentos. 
+        Math.min(val1, …, valN); // Devuelve el menor de los valores que recibe como argumentos. 
+
+        Math.random(); // Devuelve un número pseudo-aleatorio comprendido entre 0 (incluido) y 1 (no incluido). 
+
+ 		
+ 		var grados = 120;
+ 		var radianes = (grados * Math.PI) / 180;
+ 		//coseno de 120 grados, hay que pasar el valor en radianes
+ 		Math.cos(radianes);
+
+ 		var min = 2;
+ 		var max = 20;
+ 		//para sacar numero random entre 2 y 20
+ 		Math.floor(Math.random() * (max - min + 1)) + min;
+
+ 		
+
+
+
+		
+		
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
