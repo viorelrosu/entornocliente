@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej21 - Numeros aleatorios por cantidad</title>
+	<style type="text/css" />
+		body {
+			background-color: #fafafa;
+			color: #333;
+			font-size: 20px;
+			font-family: "Helvetica-Neue", Arial, sans-serif;
+		}
+		input {
+			padding:10px; 
+			border: 1px solid #ccc;
+		}
+		label {
+			display:block;
+			padding: 0 0 5px 5px;
+		}
+		div#miDiv {
+			padding: 10p;
+			font-weight: bold;
+			font-size: 30px;
+		}
+		div#miDiv span {
+			font-size: 20px;
+			font-weight: normal;
+		}
+	</style>
+	<script>
+			function miFunction(){
+				var resultado = "";
+				var min = parseInt(document.getElementById("min").value);
+				var max = parseInt(document.getElementById("max").value);
+				var cant = parseInt(document.getElementById("cantidad").value);
+				var numeros = [];
+
+				if(min > max) {
+					var aux = max;
+					max = min;
+					min = aux;
+				}
+
+				if(cant > max-min+1) {
+					resultado += "Elige una cantidad menor de numeros a generar."
+				} else {
+					do{
+						var existe = false;
+						var rand = Math.floor(Math.random() * (max - min + 1)) + min;
+
+						for(i=0; i<numeros.length; i++) {
+
+							if(numeros[i] == rand){
+								existe = true;
+							}
+						}
+
+						if(!existe || numeros.length == 0) {
+							numeros[numeros.length] = rand;
+						}
+
+					} while(numeros.length < cant);
+				}
+
+
+				if(numeros.length > 0){
+					resultado += "<span>Los números generados son:</span><br>";
+					resultado += escribirNumeros(numeros);
+
+					ordenarAsc(numeros);
+
+					resultado += "<span>Los números ordenados ascendente son:</span><br>";
+					resultado += escribirNumeros(numeros);
+
+					ordenarDesc(numeros);
+
+					resultado += "<span>Los números ordenados ascendente son:</span><br>";
+					resultado += escribirNumeros(numeros);
+				}
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+
+			function ordenarAsc(arr){
+				for(let i = arr.length; i>=0; i--) {
+					for(let j = i; j>=0; j--){
+						if(arr[i] < arr[j]) {
+							let temp = arr[i];
+							arr[i] = arr[j];
+							arr[j] = temp;
+						}
+					}
+				}
+
+				return arr;
+			}
+
+			function ordenarDesc(arr){
+				for(let i=0; i<arr.length; i++) {
+					for(let j = 0; j<=i; j++){
+						if(arr[i] > arr[j]) {
+							let temp = arr[i];
+							arr[i] = arr[j];
+							arr[j] = temp;
+						}
+					}
+				}
+
+				return arr;
+			}
+
+			function escribirNumeros(numeros) {
+				let res = '';
+				for(let i=0; i<numeros.length; i++) {
+					if(i==numeros.length-1) {
+						res += numeros[i];
+					} else {
+						res += numeros[i] + ", ";
+					}
+				}
+				return res+"<br><br>";
+			}
+
+	</script>
+</head>
+<body>
+		<h1>Números aleatorios</h1>
+		<p>
+			<label>Número mínimo</label>
+			<input type="text" id="min" name="min" value="" placeholder="Introduce min"/>
+		</p>
+		<p>
+			<label>Número máximo</label>
+			<input type="text" id="max" name="max" value="" placeholder="Introduce max" />
+		</p>
+		<p>
+			<label>Cantidad de números a generar</label>
+			<input type="text" id="cantidad" name="cantidad" value="" placeholder="Introduce cantidad" />
+		</p>
+		<p>
+			<input type="button" id="iniciar" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+		Introducir un min, un max y una cantidad y generar cantidad numeros aleatorios entre el min y max
+		Comprobar que el numero min sea menor y si no cambiar las variables
+		Generar numeros sin repetir
+		-->
+
+</body>
+</html>
+
