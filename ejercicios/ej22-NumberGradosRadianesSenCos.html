@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej22 - Grados Radianes Sen y Cos</title>
+	
+	<script>
+			function miFunction(){
+				var resultado = "<table border=\"1\" cellpadding=\"4\" >";
+				resultado += "<tr>";
+				resultado += "<td>Grados</td>";
+				resultado += "<td>Radianes</td>";
+				resultado += "<td>Sen</td>";
+				resultado += "<td>Cos</td>";
+				resultado += "</tr>";
+
+				var radianes = 0;
+
+				for(var i=0; i<=360; i+=10) {
+						radianes = (i * Math.PI) / 180;
+						resultado += "<tr>";
+						resultado += "<td>"+i+"</td>";	
+						resultado += "<td>"+radianes.toFixed(3)+"</td>";
+						resultado += "<td>"+Math.sin(radianes).toFixed(3)+"</td>";
+						resultado += "<td>"+Math.cos(radianes).toFixed(3)+"</td>";
+						resultado += "</tr>";
+				}
+
+				resultado += "</table>"; 
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+	</script>
+</head>
+<body>
+		<p>
+			<input type="button" id="iniciar" value="Generar" onclick="miFunction()" style="margin-top: 20px;"/>
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+		Introducir un min, un max y una cantidad y generar cantidad numeros aleatorios entre el min y max
+		Comprobar que el numero min sea menor y si no cambiar las variables
+		Generar numeros sin repetir
+		-->
+
+</body>
+</html>
+

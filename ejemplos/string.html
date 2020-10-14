@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Number</title>
+		<script>
+		
+            var cadena1 = new String ("Un String");
+			longitud = cadena1.length;
+			cadena2 = "Una cadena de caracteres";
+			longitud = cadena2.length;
+			// también se puede poner
+			longitud="Una cadena de caracteres".length
+
+ 			var cadena = "Brave new world";
+
+			cadena.charAt(posición); //Devuelve el caracter correspondiente a la posición indicada
+			cadena.charAt(0); //B 
+			cadena.charAt(3); //v
+			cadena.charAt(cadena.length-1); //d
+
+			cadena.charCodeAt(caracter); //Devuelve el el valor Unicode correspondiente al carácter situado en la posición indicada (las cadenas comienzan con índice cero).
+			"ABC".charCodeAt(0) // returns 65
+			"AaSdas".charCodeAt(2) // returns 83
+
+			cadena1.concat(cadena1,...,cadenan); //Concatena dos o más cadenas y devuelve como resultado esa unión.
+			cadena1="Oh ";
+			cadena2="qué maravillosa "
+			cadena3="mañana'."
+			cadena4=cadena1.concat(cadena2,cadena3) //devuelve "Oh qué maravillosa mañana'."
+		
+
+			endsWith(cadenaDeBusqueda[, posicion]); 
+			/*
+			Este método determina cuando una cadena termina en otra cadena. 
+			cadenaDeBusqueda Los caracteres a buscar hasta el final de la cadena.
+			posicion: Opcional. Indicada la longitud de la cadena; por defecto, su valor no puede ser superior al de la cadena en la que desea buscar.
+			Valor retornado: true si la cadena de texto contiene la cadena buscada;
+			en caso contrario, false.
+			*/
+			var str = 'To be, or not to be, that is the question.';
+			str.endsWith('question.'); // true
+			str.endsWith('to be'); // false
+			str.endsWith('to be', 19); // true
+		
+			cadena.includes(cadenaDeBusqueda [, posicion]); 
+			/*
+			Este método permite determinar si una cadena de
+			texto se encuentra incluida dentro de la otra.
+			cadenaDeBusqueda Una cadena a buscar en el texto
+			posicion.
+			Valor retornado
+			true si la cadena de texto contiene la cadena buscada;
+			en caso contrario, false.
+			El método includes() es "case sensitive" (tiene en
+			cuenta mayúsculas y minúsculas)
+			*/
+
+			var str = 'To be, or not to be, that is the question.';
+			str.includes('To be'); // true
+			str.includes('question'); // true
+			str.includes('nonexistent'); // false
+			str.includes('To be', 1); // false
+			str.includes('TO BE'); // false
+
+			cadena.indexOf(valor[,inicio]);
+			/*
+			Devuelve el índice de la primera aparición del valor 3
+			especificado dentro de la cadena desde la posición
+			inicio, si se omite inicio empieza a buscar desde el
+			primer carácter empezando desde la izquierda de la
+			cadena. Si no se encuentra devuelve -1:
+			*/
+
+			cadena = "uno dos tres cuatro";
+			posicionDeDos = cadena.indexOf ("dos"); // posicionDeDos = 4
+			permitido = cadena.indexOf("z");
+			if(permitido == -1) {
+				"el caracter no esta incluido"
+			};
+
+			cadena.lastIndexOf(valor[,inicio]);
+			/*
+			Devuelve el índice de la primera aparición del valor
+			especificado dentro de la cadena desde la posición fin,
+			si se omite inicio empieza a buscar desde el primer
+			carácter empezando desde la derecha de la cadena. Si
+			no se encuentra devuelve -1:
+			*/
+			cadena = "uno dos tres cuatro dos";
+			posicionDeDos = cadena.lastIndexOf ("dos"); // posicionDeDos = 20
+
+			var anyString="Brave new world"
+			// Displays 8
+			document.write("<P>The index of the first w from the beginning is " +
+			anyString.indexOf("w"));
+			// Displays 10
+			document.write("<P>The index of the first w from the end is " +
+ 			anyString.lastIndexOf("w"));
+			// Displays 6
+			document.write("<P>The index of 'new' from the beginning is " +
+ 			anyString.indexOf("new"));
+			// Displays 6
+			document.write("<P>The index of 'new' from the end is " +
+ 			anyString.lastIndexOf("new");
+
+
+ 			cadena.match(patrón);
+
+ 			cadena.replace(patrón, nuevaCadena);
+
+var str = "Apples are round, and apples are juicy.";
+var newstr = str.replace("Apples", "oranges");
+//El Segundo ejemplo devuelve "oranges are round, and apples are juicy."
+
+slice(inicio, ultimo);
+/*
+Extrae un trozo de una cadena desde inicio y último sin
+incluirlo, ambos de índice cero, o el final de la cadena
+si se omite este segundo:
+*/
+cadena = "dos trozos";
+trozo = cadena.slice (4,9); // trozo='trozo'
+/*
+Si el segundo carácter es negativo, indica la posición
+comenzando por la parte derecha de la cadena
+original:
+*/
+trozo = cadena.slice (4,-1); // trozo='trozo'
+//El siguiente ejemplo usa slice() para crear una nueva cadena.
+var cadena1 = "La mañana se nos echa encima.";
+var cadena2 = cadena1.slice(3, -2);
+//Esto escribe:
+//mañana se nos echa encim
+
+
+split(separador[,limite]);
+/*
+Divide una cadena en trozos y los devuelve en un
+array. Se pasa como parámetro la cadena utilizada
+como separador:
+*/
+cadena = "uno dos tres cuatro dos";
+trozos = cadena.split (" "); // el separador es el espacio
+document.write (trozos[0]); // trozos[0] = 'uno'
+//Se puede especificar un segundo parámetro que indica el número máximo de trozos:
+trozos = cadena.split (" ",2);
+// se crea un array de 2 elementos 
+// trozos[0] = "uno";
+// trozos[1] = "dos tres cuatro dos";
+
+startsWith(cadenaDeBusqueda[, posicion]);
+/*
+
+posicion])
+*
+Este método indica si una cadena comienza con los
+caracteres de otra cadena,
+devolviendo true o false según exista o no.
+cadenaDeBusqueda Los caracteres que buscamos al
+inicio de la cadena.
+posicion Opcional. La posición de la cadena en la
+cual debe comenzar la búsqueda
+de cadenaDeBusqueda; el valor predeterminado es 0.
+*/
+var str = 'Ser, o no ser. ¡Esa es la cuestión!';
+str.startsWith('Ser'); // true
+str.startsWith('no ser'); // false
+str.startsWith('Esa es la', 16); // true
+
+substr(inicio[,cantidad]);
+/*
+Devuelve una subcadena a partir de los parámetros
+'inicio' y 'longitud':
+*/
+cadena = "uno dos tres cuatro dos";
+subcadena = cadena.substr (4, 3); // subcadena = 'dos'
+
+/*
+Si no se especifica la longitud, se considera hasta el
+final de la cadena. Si 'inicio' es un valor negativo se
+cuenta la posición inicial a partir del final de la cadena.
+*/
+
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
