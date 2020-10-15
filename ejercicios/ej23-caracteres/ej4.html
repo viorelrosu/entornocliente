@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+	<body>
+
+		<p>
+			4. Mostrar en el navegador:<br />
+			a. Valor de A: [código del carácter]<br />
+			b. Valor de C: [código del carácter]<br />
+			c. Valor de Ñ: [código del carácter]<br />
+			d. Valor de 90: [carácter correspondiente a este código]<br />
+			e. Valores 72, 79, 76, 65: [cadena de caracteres correspondientes a este código.<br />
+		</p>
+
+		<div id="miDiv1" style="padding-top: 20px;"></div>
+
+		<script>
+			var content = '';
+			content += 'a. Valor de A: ' + 'A'.charCodeAt(0) + '<br />';
+			content += 'b. Valor de C: ' + 'C'.charCodeAt(0) + '<br />';
+			content += 'c. Valor de Ñ: ' + 'Ñ'.charCodeAt(0) + '<br />';
+			content += 'd. Valor de 90: ' + String.fromCharCode(90) + '<br />';
+			content += 'e. Valor de 72, 79, 76, 65: ' + String.fromCharCode(72, 79, 76, 65) + '<br />';;
+
+			document.getElementById('miDiv1').innerHTML = content;
+		</script>
+
+	</body>
+</html>

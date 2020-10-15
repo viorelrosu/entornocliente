@@ -1,0 +1,48 @@
+<html>
+<head>
+	<script>
+		 function myFunction() {
+		 	var cadena = document.getElementById('cadena').value;
+		 	var resultado = '';
+		 	var isPalindromo = false;
+
+		 	var subcadenaA = cadena.toLowerCase().replace(/\s/g,'').replace(/á/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i').replace(/ó/g, 'o').replace(/ú/g, 'u');
+		 	console.log(subcadenaA);
+
+		 	var subcadenaB = '';
+
+		 	for(var i=subcadenaA.length-1; i>=0; i--) {
+		 		subcadenaB += subcadenaA.charAt(i);
+		 	}
+
+		 	console.log(subcadenaB);
+
+		 	if(subcadenaA === subcadenaB) {
+		 		isPalindromo = true;
+		 	}
+
+		 	if(isPalindromo) {
+		 		resultado += '<h1>' + cadena + ': es palíndromo. </h1>' ;
+		 	} else {
+		 		resultado += '<h1>' + cadena + ': no es un palíndromo. </h1>' ;
+		 	}
+
+		 	document.getElementById('miDiv').innerHTML = resultado;
+		}
+	</script>
+</head>
+	<body>
+		<p>
+			10. Crear un interfaz que dado una frase se comprueba si es palíndromo.<br />
+			ej: A mamá Roma le aviva el amor a papá y a papá Roma le aviva el amor a mamá
+		</p>
+		<p>
+			<input type="text" name="cadena" id="cadena" value="" placeholder="Introduce una Cadena" style="width: 200px;"/>
+		</p>
+		<p>
+			<input type="submit" onclick="myFunction()" value="Enviar" />
+		</p>
+
+		<div id="miDiv" style="padding-top: 20px;"></div>
+	</body>
+</html>

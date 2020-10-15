@@ -1,0 +1,62 @@
+<html>
+<head>
+</head>
+	<body>
+
+		<p>
+			5. Dada la siguiente frase “frase=´busco palabras con menos de cinco letras´”.
+		</p>
+
+		<div id="miDiv1" style="padding-top: 20px;"></div>
+
+		<script>
+			var frase='busco palabras con menos de cinco letras';
+			var fraseArray = frase.split(' ');
+			var menosCincoLetras = 0;
+			for(i=0; i<=fraseArray.length-1; i++) {
+				if(fraseArray[i].length < 5) {
+					menosCincoLetras++;
+				}
+			}
+			var content = '';
+
+			var isExisteCo = (frase.indexOf('co') != -1);
+
+			var cadenaPepe = frase.replace('co','Pepe');
+
+			var cadenaConA = frase.replace(/a/g,'o');
+
+			var cadenaLetrasSeparadas = '';
+			for(i=0; i<= frase.length-1; i++) {
+				cadenaLetrasSeparadas += frase.charAt(i)+', ';
+			}
+
+			var cadenaDiezPalabras = '';
+			var isAfterDiez = false;
+
+			for(i=0; i<=fraseArray.length-1; i++) {
+				if(i < 10 ) {
+					cadenaDiezPalabras += fraseArray[i] + ' ';
+				} else {
+					if(!isAfterDiez) {
+						cadenaDiezPalabras += ' - ';
+						isAfterDiez = true;
+					}
+
+					cadenaDiezPalabras += fraseArray[i];
+				}
+			}
+
+			content += 'a. Mostrar el número de palabras con menos (estricto) de cinco letras: ' + menosCincoLetras + '<br />';
+			content += 'b. Mostrar si existe en la frase alguna combinación de letras “co”: ' + (isExisteCo ? 'Si, existe la subcadena "co"' : 'No, no existe la subcadena "co"') + '<br />';
+			content += 'c. Reemplazar y mostrar la primera “co” por “Pepe”: ' +  cadenaPepe + '<br />';
+			content += 'd. Reemplazar y mostrar todas las “a” por “o”: ' + cadenaConA + '<br />';
+			content += 'e. Mostrar todas las letras separadas “b,u,s,c,o, , p, …… ,a,s”: ' + cadenaLetrasSeparadas + '<br />';
+			content += 'f. Mostrar las diez primeras palabras separadas: ' + cadenaDiezPalabras + '<br />';
+
+			console.log(content);
+			document.getElementById('miDiv1').innerHTML = content;
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+	<body>
+
+		<p>
+			9. Dada la cadena = "0123456789".<br />
+a. Partirla por la mitad de los caracteres y mostrarla en dos líneas.<br />
+01234<br />
+56789<br />
+
+		</p>
+
+		<div id="miDiv1" style="padding-top: 20px;"></div>
+
+		<script>
+			var frase='0123456789';
+			var middle = Math.floor(frase.length/2);
+			var subcadenaA = frase.slice(0,middle);
+			var subcadenaB = frase.slice(middle);
+
+			var content = '';
+			content += 'Primera mitad: ' + subcadenaA + '<br />';
+			content += 'Segunda mitad: ' + subcadenaB + '<br />';
+
+			document.getElementById('miDiv1').innerHTML = content;
+		</script>
+
+	</body>
+</html>

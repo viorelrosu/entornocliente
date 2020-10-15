@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+	<body>
+
+		<p>
+			8. Dada la cadena = "En un lugar de la mancha de cuyo nombre no quiero acordarme".
+mostrar la cadena completa y la cadena sin las letras "a". 
+
+		</p>
+
+		<div id="miDiv1" style="padding-top: 20px;"></div>
+
+		<script>
+			var frase='En un lugar de la mancha de cuyo nombre no quiero acordarme';
+			var subcadenaA = frase.replace(/a/g, '');
+
+			var content = '';
+			content += 'Cadena completa: ' + frase + '<br />';
+			content += 'Cadena sin las letras "a": ' + subcadenaA + '<br />';
+
+			document.getElementById('miDiv1').innerHTML = content;
+		</script>
+
+	</body>
+</html>

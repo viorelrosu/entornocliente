@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+	<body>
+
+		<p>
+			7. Dada la cadena = "Hola Amigos".
+
+		</p>
+
+		<div id="miDiv1" style="padding-top: 20px;"></div>
+
+		<script>
+			var frase='Hola Amigos';
+			var subcadenaA = '';
+			for(i=0; i<=frase.length-1; i++) {
+				if(i==frase.length-1) {
+					subcadenaA += frase.charAt(i);
+				} else {
+					subcadenaA += frase.charAt(i) + '-';
+				}
+			}
+			var content = '';
+			content += 'a. Mostrarla separada por guiones: ' + subcadenaA + '<br />';
+
+			document.getElementById('miDiv1').innerHTML = content;
+		</script>
+
+	</body>
+</html>

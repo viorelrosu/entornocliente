@@ -1,0 +1,39 @@
+<html>
+<head>
+	<script>
+		 function myFunction() {
+		 	var nombre = document.getElementById('nombre').value;
+		 	var apellido1 = document.getElementById('apellido1').value;
+		 	var apellido2 = document.getElementById('apellido2').value;
+
+		 	var resultado = '<h1>';
+		 	resultado += nombre.slice(0,2).toUpperCase() + nombre.slice(2).toLowerCase() + " ";
+		 	resultado += apellido1.slice(0,2).toUpperCase() + apellido1.slice(2).toLowerCase() + " ";
+		 	resultado += apellido2.slice(0,2).toUpperCase() + apellido2.slice(2).toLowerCase();
+		 	resultado += '</h1>';
+		 	document.getElementById('miDiv').innerHTML = resultado;
+		}
+	</script>
+</head>
+	<body>
+		<p>
+			1. Crear un interfaz que convierta las primeras letras de un nombre y dos apellidos
+introducidos por teclado en mayúsculas, y el resto en minúsculas. El usuario puede
+introducirlo en el formato que quiera.
+		</p>
+		<p>
+			<input type="text" name="nombre" id="nombre" value="" placeholder="Introduce Nombre" />
+		</p>
+		<p>
+			<input type="text" name="apellido1" id="apellido1" value="" placeholder="Introduce Primer Apellido" />
+		</p>
+		<p>
+			<input type="text" name="apellido2" id="apellido2" value="" placeholder="Introduce Segundo Apellido" />
+		</p>
+		<p>
+			<input type="submit" onclick="myFunction()" value="Enviar" />
+		</p>
+
+		<div id="miDiv" style="padding-top: 20px;"></div>
+	</body>
+</html>

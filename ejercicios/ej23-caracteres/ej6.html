@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+	<body>
+
+		<p>
+			6. Dada la cadena = "uno dos tres cuatro dos";
+		</p>
+
+		<div id="miDiv1" style="padding-top: 20px;"></div>
+
+		<script>
+			var frase='uno dos tres cuatro dos';
+			var subcadenaA = frase.substr(4,3);
+			var subcadenaB = frase.substring(4,7);
+			var content = '';
+			content += 'a. Mostrar la subcadena desde la posición 4, tres caracteres// subcadena = dos: ' + subcadenaA + '<br />';
+			content += 'b. Mostrar la subcadena desde la posición 4 hasta la posición 7 // subcadena =dos : ' + subcadenaB + '<br />';
+
+			document.getElementById('miDiv1').innerHTML = content;
+		</script>
+
+	</body>
+</html>

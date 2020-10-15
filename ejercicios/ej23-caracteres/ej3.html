@@ -1,0 +1,42 @@
+<html>
+<head>
+	<script>
+		 function myFunction() {
+		 	var ciudad = document.getElementById('ciudad').value;
+		 	var isValid = false;
+		 	var resultado = '<h1>';
+
+		 	if((ciudad.toLowerCase() == 'madrid') || (ciudad.toLowerCase() == 'barcelona') || (ciudad.toLowerCase() == 'sevilla') || (ciudad.toLowerCase() == 'bilbao') ) {
+		 		isValid = true;
+		 	}
+		 	if(isValid) {
+				resultado += 'El nombre de la ciudad es ['+ciudad+']';
+		 	} else {
+		 		resultado += 'Elige una de estas ciudades: Madrid, Barcelona, Sevilla y Bilbao';
+		 	}
+
+		 	resultado += '</h1>';
+		 	document.getElementById('miDiv').innerHTML = resultado;
+		}
+	</script>
+</head>
+	<body>
+		<p>
+			3. Pedir al usuario que introduzca el nombre de una ciudad entre Madrid, Barcelona, Sevilla
+y Bilbao. puede ser introducida en cualquier formato (Madrid, Madrid, MADRID, y todos
+son válidos). Comprobar que la cadena introducida corresponde con una de estas
+ciudades y mostrar<br />
+a. Si la ciudad es correcta. La ciudad introducida es [nombreDeLaCiudad].<br />
+b. Si la ciudad no es correcta. La ciudad introducida no es correcta.
+		</p>
+		<p>
+			<label>Elige una ciudad e introduce: Madrid, Barcelona, Sevilla y Bilbao</label><br />
+			<input type="text" name="ciudad" id="ciudad" value="" placeholder="Introduce Ciudad" />
+		</p>
+		<p>
+			<input type="submit" onclick="myFunction()" value="Enviar" />
+		</p>
+
+		<div id="miDiv" style="padding-top: 20px;"></div>
+	</body>
+</html>

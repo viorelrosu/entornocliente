@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Number</title>
 		<script>
-		
+
             var cadena1 = new String ("Un String");
 			longitud = cadena1.length;
 			cadena2 = "Una cadena de caracteres";
@@ -15,7 +15,7 @@
  			var cadena = "Brave new world";
 
 			cadena.charAt(posición); //Devuelve el caracter correspondiente a la posición indicada
-			cadena.charAt(0); //B 
+			cadena.charAt(0); //B
 			cadena.charAt(3); //v
 			cadena.charAt(cadena.length-1); //d
 
@@ -28,11 +28,11 @@
 			cadena2="qué maravillosa "
 			cadena3="mañana'."
 			cadena4=cadena1.concat(cadena2,cadena3) //devuelve "Oh qué maravillosa mañana'."
-		
 
-			endsWith(cadenaDeBusqueda[, posicion]); 
+
+			endsWith(cadenaDeBusqueda[, posicion]);
 			/*
-			Este método determina cuando una cadena termina en otra cadena. 
+			Este método determina cuando una cadena termina en otra cadena.
 			cadenaDeBusqueda Los caracteres a buscar hasta el final de la cadena.
 			posicion: Opcional. Indicada la longitud de la cadena; por defecto, su valor no puede ser superior al de la cadena en la que desea buscar.
 			Valor retornado: true si la cadena de texto contiene la cadena buscada;
@@ -42,8 +42,8 @@
 			str.endsWith('question.'); // true
 			str.endsWith('to be'); // false
 			str.endsWith('to be', 19); // true
-		
-			cadena.includes(cadenaDeBusqueda [, posicion]); 
+
+			cadena.includes(cadenaDeBusqueda [, posicion]);
 			/*
 			Este método permite determinar si una cadena de
 			texto se encuentra incluida dentro de la otra.
@@ -145,7 +145,7 @@ trozos = cadena.split (" "); // el separador es el espacio
 document.write (trozos[0]); // trozos[0] = 'uno'
 //Se puede especificar un segundo parámetro que indica el número máximo de trozos:
 trozos = cadena.split (" ",2);
-// se crea un array de 2 elementos 
+// se crea un array de 2 elementos
 // trozos[0] = "uno";
 // trozos[1] = "dos tres cuatro dos";
 
@@ -181,6 +181,56 @@ Si no se especifica la longitud, se considera hasta el
 final de la cadena. Si 'inicio' es un valor negativo se
 cuenta la posición inicial a partir del final de la cadena.
 */
+
+
+var cadena = "abcdefghij";
+"(1,2): " + cadena.substr(1,2); // '(1, 2): bc'
+"(-3,2): " + cadena.substr(-3,2); // '(-3,2): hi'
+"(-3): " + cadena.substr(-3); // '(-3): hij'
+"(1): " + cadena.substr(1); // '(1):bcdefghij'
+"(-20, 2): " + cadena.substr(-20,2); // '(-20, 2): ab'
+"(20, 2): " + cadena.substr(20,2); // '(20,2): '
+
+substring(indiceA[,indiceB]) 
+/*
+Devuelve una subcadena que está comprendida entre
+dos índices de la cadena actual, sin incluir el carácter
+del indiceB, ambos de índice cero:
+*/
+
+cadena = "uno dos tres cuatro dos";
+subcadena = cadena.substring (4, 7); // subcadena = 'dos'
+
+/*
+Si no se especifica indiceB, se considera hasta el final
+de la cadena.
+Si indiceA es mayor que indiceB,
+entonces el efecto de substring es como
+si los dos argumentos se intercambiasen;
+por ejemplo, cadena.substring(1, 0)
+== cadena.substring(0, 1).
+*/
+
+// asume una función print ya definida
+var cualquierCadena = "Mozilla";
+// Muestra "Moz"
+print(cualquierCadena.substring(0,3));
+print(cualquierCadena.substring(3,0));
+// Muestra "lla"
+print(cualquierCadena.substring(4,7));
+print(cualquierCadena.substring(7,4));
+// Muestra "Mozilla"
+print(cualquierCadena.substring(0,7));
+print(cualquierCadena.substring(0,10));
+
+
+toLowerCase() //Devuelve una cadena con los caracteres convertidos a minúsculas.
+toUpperCase() //Devuelve una cadena con los caracteres convertidos a mayúsculas.
+trim()		//Eliminan los espacios al principio y al final de la cadena, al principio solamente o al final solamente, respectivamente.
+trimLeft();
+trimRight();
+
+
 
 
 		</script>
