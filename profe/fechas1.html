@@ -1,0 +1,24 @@
+<html>
+	<head>		
+		
+	</head>
+	<body>   
+      <input type="button" value="Iniciar" id="inicia" onclick="parar=setInterval(evalua,1000)"/>
+	  <input type="button" value="Parar" id="para" onclick="paraReloj()"/>
+      <div id="miDiv"></div>  
+      <script>
+		 resultado="";
+		 var fecha1 = new Date();
+		 var dia = 14;
+		 var mes = 5;
+		 var anio = 2019;
+		 var fecha2 = new Date("May 14, 2019");
+		 var fecha3 = new Date("May 14, 2019 20:14:23");
+		 var fecha4 = new Date(2019, 4, 14);
+		 var fecha5 = new Date(2019, 4, 14, 20, 14, 23);
+		 var fecha6 = new Date(anio, mes - 1, dia);
+         resultado= fecha1 + "<br>" + fecha2 +"<br>" + fecha3 + "<br>" + fecha4 + "<br>" + fecha5 + "<br>" +fecha6;
+		 document.getElementById("miDiv").innerHTML=resultado; 
+		</script>	  
+	</body>	
+</html>

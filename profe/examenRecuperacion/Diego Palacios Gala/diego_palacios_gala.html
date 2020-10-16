@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Examen</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<label>Nombre:</label>
+	<input type="text" name="nombre" id="nombre"><span id="span1"></span>
+	<br><br>
+	<label>Apellidos:</label>
+	<input type="text" name="apellidos" id="apellidos"><span id="span2"></span>
+	<br><br>
+	<label>Sueldo Bruto:</label>
+	<input type="text" name="sueldobruto" id="sueldobruto"><span id="span3"></span>
+	<br><br>
+	<label>DNI:</label>
+	<input type="text" name="dni" id="dni"><span id="span4"></span>
+	<br><br>
+	<input type="button" name="boton" id="boton" value="Validar" onclick="validar();">
+	<input type="button" name="boton1" id="boton1" value="Listar" onclick="listar();">
+	<input type="button" name="boton2" id="boton2" value="LIMPIAR" onclick="limpiar();">
+
+	<script type="text/javascript">
+		
+		class Persona{
+			constructor(nombre,apellidos,sueldobruto,dni){
+
+				this._nombre=nombre;
+				this._apellidos=apellidos;
+				this._sueldobruto=sueldobruto;
+				this._dni;
+			}
+
+			get nombre(){
+				return this._nombre;
+			}
+
+			set nombre(nombre){
+				this._nombre=nombre;
+			}
+
+			get apellidos(){
+				return this._apellidos;
+			}
+
+			set apellidos(apellidos){
+				this._apellidos=apellidos;
+			}
+
+			get sueldobruto(){
+				return this._sueldobruto;
+			}
+
+			set sueldobruto(sueldobruto){
+				this._sueldobruto=sueldobruto;
+
+			}
+
+			get dni(){
+				return this._dni;
+			}
+
+			set dni(dni){
+				this._dni=dni;
+			}
+            //¡REVISAR RETENCIONES NO FUNCIONA BIEN!
+			/*retenciones(){
+				var retenciones=0;
+
+				if(this._sueldo>800 && this._sueldo >899){
+					retenciones=2;
+                }else if(this._sueldo>900 && this._sueldo<999){
+                	retenciones=2.5;
+                }else if(this._sueldo>100 && this._sueldo<1099){
+                	retenciones=4;
+                }else if(this._sueldo>1100 && this._sueldo<1199){
+                	retenciones=5.6;
+                }else if(¨this._sueldo>1200 && this._sueldo<1500){
+                	retenciones=10;
+                }
+			}*/
+
+			/*sueldoneto(){
+
+				var sueldoNe=this._sueldo-retenciones;
+
+			}*/
+		}
+
+		var persona= new Array();
+		persona[0]=new Persona("Juan Julian","Pérez López","850","12345678Z");
+		persona[1]=new Persona("Victor Manuel","Rivas Santos","1156","14785236P");
+		persona[2]=new Persona("Jesus","González Penalver","1009","74125896R");
+
+		 function comprobarPatron(patron, variable) {
+            var coincide=true;
+                for(var i=0; i<variable.length; i++)
+                    if(patron.indexOf(variable.charAt(i))==-1){
+                        coincide=false;
+                    }
+            return true;
+        }
+
+
+		function validar(){
+			var validar=true;
+
+			var nombre=document.getElementById('nombre').value.toLowerCase().trim();
+			var patronNom="abcdefghijklnmopqrstuvwxyzáéíóú ñç-";
+
+			if(!comprobarPatron(patronNom,nombre)||nombre.length<2 || nombre.length>20){
+				validar=false;
+
+                document.getElementById('span1').innerHTML="El valor introducido no cumple los requisitos del campo";
+				document.getElementById('miDiv').innerHTML="Datos erroneos";
+			}
+
+			var apellidos=document.getElementById('apellidos').value.toLowerCase().trim();
+			var patronApell="abcdefghijklnmopqrstuvwxyzáéíóú ñç-";
+
+			if(!comprobarPatron(patronApell,apellidos)||apellidos.length<2 || apellidos.length>30){
+				validar=false;
+
+				document.getElementById('span2').innerHTML="El valor introducido no cumple los requisitos del campo";
+				document.getElementById('miDiv').innerHTML="Datos erroneos";
+            }
+
+            var sueldobruto=document.getElementById('sueldobruto').value.toLowerCase().trim();
+            var patronSueldo="0123456789";
+
+            if(!comprobarPatron(patronSueldo,sueldobruto)|| sueldobruto<800 || sueldobruto>1500 || isNaN(sueldobruto)){
+            	validar=false;
+
+            	document.getElementById('span3').innerHTML="El valor introducido no cumple los requisitos del campo";
+				document.getElementById('miDiv').innerHTML="Datos erroneos";
+            }
+
+            var dni=document.getElementById('dni').value.toLowerCase().trim();
+            var patronDni="0123456789trwagmyfpdxbnjzsqvhlcke";
+
+            if(!comprobarPatron(patronDni,dni)){
+                validar=false;
+
+            	document.getElementById('span4').innerHTML="El valor introducido no cumple los requisitos del campo";
+				document.getElementById('miDiv').innerHTML="Datos erroneos";
+
+            }
+		
+          return validar;
+		}
+
+	 function crearPersona(){
+
+       if(validar()){
+          var nombre=document.getElementById('nombre').value.toLowerCase().trim(); 
+          var apellidos=document.getElementById('apellidos').value.trim();  
+          var sueldobruto=document.getElementById('sueldobruto').value; 
+          var dni=document.getElementById('dni').value;
+
+          persona.push(new Persona("nombre","apellidos","parseInt(sueldo)","dni"));
+          
+        }else{
+              alert("Algo fue mal,no se añadio al Array");
+       }
+}
+
+     function listar(){
+       miVentana=window.open("",'Lista de Personas','width=700,heigt=300');
+       miVentana.document.write("<center><table  border=1>");
+       miVentana.document.write("<tr><th>Nombre</th><th>Apellidos</th><th>Sueldo Bruto</th><th>DNI</th><th>Retenciones</th><th>Sueldo Neto</th></tr>");
+
+       for(var i=0;i<=persona.length-1;i++){
+              miVentana.document.write("<tr>");
+              miVentana.document.write("<td>" + persona[i].nombre + "</td><td>" + persona[i].apellidos + "</td><td>" + persona[i].sueldobruto + "</td><td>" + persona[i].dni + "</td>"/*"<td>" + persona[i].retenciones()+ "%" + "</td><td>" + persona[i].sueldoneto()+"</td>"*/);
+              miVentana.document.write("</tr>");
+              miVentana.document.write("</table></center>");
+       }
+
+       miVentana.document.write("<input type='button' value='Cerrar' onclick='window.close();'/>");
+     }
+function limpiar(){
+
+              document.getElementById('nombre').value="";
+              document.getElementById('apellidos').value="";
+              document.getElementById('sueldobruto').value="";
+              document.getElementById('dni').value="";
+              document.getElementById('span1').innerHTML="";
+              document.getElementById('span2').innerHTML="";
+              document.getElementById('span3').innerHTML="";
+              document.getElementById('span4').innerHTML="";
+              document.getElementById('miDiv').innerHTML="";
+
+
+}
+
+
+	</script>
+
+	<div id="miDiv"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

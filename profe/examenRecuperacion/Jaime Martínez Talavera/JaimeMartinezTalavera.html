@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>JaimeMartinezTalavera</title>
+</head>
+<body>
+	<form>
+		<label>Nombre: </label><input type="text" name="nombrename" id="nombreid"></br>
+		<label>Apellidos: </label><input type="text" name="apellidosname" id="apellidosid"></br>
+		<label>Sueldo bruto: </label><input type="text" name="suldobrutoname" id="sueldobrutoid"></br>
+		<label>DNI: </label><input type="text" name="dniname" id="dniid"></br>
+		<input type="button" name="calula" value="Calcula" onclick="valida()"></input>
+		<input type="button" name="calula" value="Calcula" onclick="muestra_personas()"></input>
+		<input type="button" name="calula" value="Calcula" onclick="muestra_personas_tabla()"></input>
+		<div id="miDiv"></div>
+	</form>
+
+	<script type="text/javascript">
+
+		var nombre=document.getElementById(nombreid).value;
+		var apellidos=document.getElementById(apellidosid).value;
+		var sueldobruto=document.getElementById(sueldobrutoid).value;
+		var dni=document.getElementById(dniid).value;
+
+		var personas=[];		
+
+		class persona(nombre,apellidos,sueldobruto,dni){
+			function constructor(nombre,apellidos,sueldobruto,dni){
+				this._nombre=nombre;
+				this._apellidos=apellidos;
+				this._sueldobruto=sueldobruto;
+				this._dni=dni;
+				this._retencion=function(sueldobruto){
+					if (sueldobruto>=800&sueldobruto<=899){
+						//2%de retencion
+						retencion=2%;
+						return retencion;
+					}if (sueldobruto>=900&sueldobruto<=999){
+						//2.5%de retencion
+						retencion=2.5%;
+						return retencion;
+					}if (sueldobruto>=1000&sueldobruto<=1099){
+						//4%de retencion
+						retencion=4%;
+						return retencion;
+					}if (sueldobruto>=1100&sueldobruto<=1199){
+						//5.6%de retencion
+						retencion=5.6%;
+						return retencion;
+					}if (sueldobruto>=1200&sueldobruto<=1500){
+						//10%de retencion
+						retencion=10%;
+						return retencion;
+				}
+
+				
+				this._sueldoneto=function(sueldobruto){
+					sueldoneto=(sueldobruto*this._retencion(sueldobruto))/100;
+					return sueldoneto;
+				}
+
+					function get nombre(){
+						return nombre=this._nombre;
+					}
+
+					function set nombre(nombre){
+						this._nombre=nombre;
+					}
+
+					function get apellidos(){
+						return apellidos=this._apellidos;
+					}
+
+					function set apellidos(apellidos){
+						this._apellidos=apellidos;
+					}
+
+					function get sueldobruto(){
+						return sueldobruto=this._sueldobruto;
+					}
+
+					function set sueldobruto(sueldobruto){
+						this._sueldobruto=sueldobruto;
+					}
+
+					function get dni(){
+						return dni=this._dni;
+					}
+
+					function set dni(dni){
+						this._dni=dni;
+					}
+				}
+			}
+		}
+
+		function valida(){
+			if (nombre!=null){
+				if (apellidos!=null){
+					if (sueldobruto!=null){
+						if (dni!=null){
+							personas[personas.length]=new persona(nombre,apellidos,sueldobruto,dni);
+						}else{
+						document.write("El dni está mal escrito");
+						}
+					}else{
+					document.write("El sueldobruto está mal escrito");
+					}
+				}else{
+				document.write("El apellido está mal escrito");
+				}
+			}else{
+				document.write("El nombre está mal escrito");
+			}
+		}
+
+		function muestra_personas(){
+			for(var i=0;i<=personas.length;i++){
+				document.write(personas[i].nombre+" "+personas[i].apellidos+" "+personas[i].sueldobruto+" "+personas[i].retencion+" "+personas[i].sueldoneto+" "+personas[i].dni+"</br>");
+			}
+		}
+
+		function muestra_personas_tabla(){
+			for(var i=0;i<=personas.length;i++){
+				document.write(personas[i].nombre+" "+personas[i].apellidos+" "+personas[i].sueldobruto+" "+personas[i].retencion+" "+personas[i].sueldoneto+" "+personas[i].dni+"</br>");
+			}
+		}
+	</script>
+</body>
+</html>

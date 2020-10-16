@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type = "text/javascript" src="Persona.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    Nombre: <input type="text" name="nombre" id="nombre"><span id = "span1"></span><br>
+    Apellido: <input type="text" name="apellidos" id="apellidos"><span id = "span2"></span><br>
+    Sueldo Bruto: <input type="text" name="sueldo" id="sueldo"><span id = "span3"></span><br>
+    DNI: <input type="text" name="dni" id="dni"><span id = "span4"></span><br>
+
+    <input type="button" value="VALIDAR" onclick="validarDatos();">
+    <input type="button" value="LISTAR" onclick="listarDatos();">
+    <div id ="miDiv"></div>
+
+</body>
+<script>
+    var nombre;
+    var apellidos;
+    var sueldoBruto;
+    var retenciones;
+    var sueldoNeto;
+    var dni;
+    var personas;
+    var persona = new Array();
+
+    function comprobarPatron(patron, variable) {
+        var coincide = true;
+        for(i=0; i<variable.lenght; i ++) {
+            if (patron.indexOf(variable.charAt(i))==-1) {
+                coincide = false;
+            }
+        }
+        return coincide;
+    }
+
+    function valida() {
+        var valida = true;
+        var patronNom ="abcdefghijklmnñopkrstuvwxyzç-áéíóú ";
+        var patronApellidos = "abcdefghijklmnñopkrstuvwxyzç-áéíóú ";
+        var patronSB = "0123456789";
+        var patronDNi = "0123456789trwagmyfpdxbnjzsqvhlcke";
+
+        var nombre = document.getElementById("nombre").value.toLowerCase().trim();
+        var apellidos = document.getElementById("apellidos").value.toLowerCase().trim();
+        var sueldoBruto = document.getElementById("sueldo").value.toLowerCase().trim();
+        var dni = document.getElementById("dni").value.toLowerCase().trim();
+
+        
+        if (!comprobarPatron(patronNom, nombre) || nombre.lenght<2 || nombre.lenght>20) {
+            valida =false;
+            document.getElementById("span1").innerHTML="No válido".fontcolor("red");
+            document.getElementById("miDiv").innerHTML="Todo debe ser OK".fontcolor("red");
+        }
+        
+        if (!comprobarPatron(patronApellidos, apellidos) || nombre.lenght<2 || nombre.lenght>30) {
+            valida = false;
+            document.getElementById("span2").innerHTML="No válido".fontcolor("red");
+            document.getElementById("miDiv").innerHTML="Todo debe ser OK".fontcolor("red");        
+        }
+
+        if (!comprobarPatron(patronSB, sueldoBruto) || sueldoBruto.lenght<800 || nombre.lenght>1500) {
+            valida = false;
+            document.getElementById("span2").innerHTML="No válido".fontcolor("red");
+            document.getElementById("miDiv").innerHTML="Todo debe ser OK".fontcolor("red");        
+        }
+
+        if (!comprobarPatron(patronDNi, dni) || nombre.lenght<2 || nombre.lenght>30) {
+            valida = false;
+            document.getElementById("span2").innerHTML="No válido".fontcolor("red");
+            document.getElementById("miDiv").innerHTML="Todo debe ser OK".fontcolor("red");        
+        }
+        return valida;
+
+    }
+    
+    function validarDatos() {
+        if (valida()) {
+            if (confirm("¿Desea introducir los datos?")) {
+               nombre = document.getElementById("nombre").value.trim();
+               apellidos = document.getElementById("apellidos").value.trim();
+               sueldoBruto = document.getElementById("sueldo").value.trim();
+               dni = document.getElementById("dni").value.trim();
+
+                var personas = new Persona(nombre, apellidos, sueldoBruto, dni);
+                persona.push(personas);
+                //persona.sueldoNeto=personas;
+            }
+        }
+    }
+
+    function listarDatos() {
+        var nuevaVentana = window.open("","","width=700, height=300");
+        nuevaVentana.document.write(Persona.listarDatos(personas));
+        nuevaVentana.document.write("Nombre del navegador" + window.navigator.appName);
+        nuevaVentana.document.write("<br>");
+        nuevaVentana.document.write("La altura disponible para el uso de ventanas" + window.outerHeight);
+        nuevaVentana.document.write("<br>");
+        nuevaVentana.document.write("La anchura disponible para el uso de ventanas" + window.outerWidth);
+        nuevaVentana.document.write("<br>");
+        nuevaVentana.document.close();
+    }
+
+
+
+
+
+
+
+</script>
+</html>

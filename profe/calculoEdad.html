@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculo de la edad</title>
+ 
+<script>
+function escribe() {
+  fechaHoy = new Date();
+  annoActual = fechaHoy.getFullYear();
+  mesActual = fechaHoy.getMonth()+1;
+  diaActual = fechaHoy.getDate();
+  Dianac = document.getElementById("dianac").value
+  Mesnac = document.getElementById("mesnac").value
+  Anonac = document.getElementById("anonac").value
+  var Edad = annoActual-Anonac;
+		 if (Edad <=0){
+		   Edad="El a&ntilde;o de nacimiento no puede ser posterios al a&ntilde;o actual";
+		 }else{
+		 console.log(Dianac + " - " + Mesnac + " - " + Anonac)
+		 console.log(diaActual + " - " + mesActual + " - " + annoActual)
+         if(mesActual<Mesnac){
+             Edad--;
+                }
+                if(mesActual==Mesnac){
+                  if(Dianac>diaActual){
+                     Edad--;
+                       }
+ 
+                   }
+ 			   }
+   document.getElementById("fin").innerHTML = "Edad: "+Edad;
+ /*  document.getElementById("caja").innerHTML= "if(mesActual\<Mesnac)<br>\{Edad--;}<br>if(mesActual==Mesnac){<br>";
+   document.getElementById("caja").innerHTML+= "if(Dianac>diaActual){<br>Edad--;}<br>}<br>}"
+   */}
+ 
+</script>
+</head>
+<body>
+<h1> Calcular edad</h1>
+
+ 
+</div>
+<form name="elegir" action="#" >
+<h2>Fecha de nacimiento:</h2>
+<p> Dia : <input name="dianac" id="dianac" type="text"/> </p>
+<p>Mes: <input name="mesnac" id="mesnac" type="text" /></p>
+<p>A&ntilde;o <input name="anonac" id="anonac" type="text" /></p>
+<!--<h2></h2>
+<p> Fecha de hoy : <input name="fechaing" type="date" id="fechaing"/> </p>
+-->
+<p><input name="ver" id="ver" type="button" value="ver" onclick="escribe()"/>
+<div id="fin"/>
+<div id="caja"></div>
+</form>
+ 
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+	<head>		
+		<script>
+         function evalua(){
+			  var resultado="";
+			  for (i=1;i<=6;i++){
+			     resultado += "<H" + i +">Encabezado de nivel "+ i + "</H"+i+">";
+    		  }
+			  for (i=6;i>=1;i--){
+			     resultado += "<H" + i +">Encabezado de nivel "+ i + "</H"+i+">";
+    		  }
+			   document.getElementById("miDiv").innerHTML=resultado;
+		 }		 
+		</script>
+	</head>
+	<body>   
+      <input type="button" value="Aceptar" onclick="evalua()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

@@ -1,0 +1,39 @@
+<html>
+	<head>		
+		<script>
+         function evalua(){
+			  var resultado="";
+			  var divisor;
+			  var contador=0
+			  var centinela= true;
+			  numero=parseInt(document.getElementById("miNumero").value);
+			 /* for (divisor=numero - 1;divisor >1;divisor--){
+                   if (numero % divisor ==0){
+                       resultado= "El numero " + numero + " NO es primo";
+                       contador++
+                    }
+               }
+			   if (contador==0){
+			        resultado= "El numero " + numero + " es primo";
+			   }*/
+			   divisor=numero;
+			   do {
+			       divisor--;
+                   if (numero % divisor ==0){
+                       resultado= "El numero " + numero + " NO es primo";
+                       centinela=false;
+                    }					
+               }while ((divisor >1) && centinela) */
+               if (divisor == 1){
+				resultado= "El numero " + numero + " es primo";
+			   }			   
+			  document.getElementById("miDiv").innerHTML=resultado;
+		 }		 
+		</script>
+	</head>
+	<body> 
+      Introduzca el número a evaluar: <input type="text" id="miNumero"/><br>	
+      <input type="button" value="Aceptar" onclick="evalua()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

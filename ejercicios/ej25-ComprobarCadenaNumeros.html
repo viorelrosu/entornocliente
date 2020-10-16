@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej25 - Comprobar numeros</title>
+	
+	<script>
+			function miFuncion(){
+				var cadena = document.getElementById("cadena").value;
+				var cadLetras = '';
+				var isLetra = false;
+				var numeros = '0123456789';
+				var cadNumeros = '';
+				var resultado = '';
+				
+				for(i=0; i<=cadena.length-1; i++) {
+					if( numeros.indexOf(cadena.charAt(i)) != -1)  {
+						cadNumeros += cadena.charAt(i);
+					} else {
+						cadLetras += cadena.charAt(i);
+						isLetra = true;
+					}
+				}
+
+				if(isLetra) {
+					resultado = "Tu cadena tiene letras: " + cadLetras;
+				} else {
+					resultado = "Tu cadena es correcta: " + cadNumeros;
+				}
+
+				document.getElementById("miDiv").innerHTML=resultado;
+			}
+	</script>
+</head>
+<body>
+		<p>
+			<label>Introduce cadena</label><br />
+			<input type="text" name="cadena" id="cadena" value="" /> <br/>
+		</p>
+		<p>
+			<input type="button" id="izq" value="Comprobar cadena" onclick="miFuncion()" style="margin-top: 20px;"/>	
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+		Usuario introduce caracteres exclusivamente numericos.
+		El resto de caracteres no están permitidos. 
+		1478 correcto
+		145rth incorrecto
+		-->
+
+</body>
+</html>
+

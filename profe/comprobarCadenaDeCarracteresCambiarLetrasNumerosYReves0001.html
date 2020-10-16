@@ -1,0 +1,50 @@
+<SCRIPT>
+/*
+Hemos creado primero una variable global con los números posibles, del 0 al 9, que queremos 
+buscar. Se  recorren todos los caracteres del string. Para cada uno se comprueba si está 
+o no dentro de la variable numeros, creada con anterioridad. Se hará el recorrido del string, 
+carácter a carácter hasta el final. Para saber si un string contiene un carácter que sea letra, 
+tanto mayúsculas como minúsculas. Hemos creado un string con todas las letras del alfabeto 
+incluido el espacio en blanco. Podemos hacer un recorrido buscando en cada uno de los caracteres
+del string una de las letras del alfabeto. 
+*/
+function resolver(){
+	var numeros="0123456789";
+	var letras="abcdefghijklmnñopqrstuvwxyz ";
+	var misNumeros = "";
+	var misLetras = ""
+	var esNumero = false;
+	var esLetra = false;
+	texto=document.getElementById("miFrase").value;
+	texto = texto.toLowerCase();	
+	   for(i=0; i<texto.length; i++){
+		  /* si es un número lo guardamos en la variable misNumeros */
+		  if (numeros.indexOf(texto.charAt(i))!=-1){
+			 misNumeros=misNumeros.concat(texto.charAt(i)); 
+			 esNumero=true;
+		  }
+		  else{
+		     /* si NO es un número lo guardamos en la variable misLetras */
+		     misLetras+=texto.charAt(i); 
+		     esLetra=true
+		  }	  
+	   } 
+	   // Si hay letras en la variable hayLetras se imprime con los caracteres correspondiente.
+	   if (esLetra==true){
+			 var hayLetras="La cadean de caracteres contiene letras: " + misLetras
+			 }
+			 else{
+			 var hayLetras="";
+			 }
+		document.getElementById("miDiv").innerHTML=texto + "<br>" + misNumeros + "<br>" + hayLetras;	 
+}		 
+</SCRIPT>
+</HEAD>
+<BODY>
+    Introduzca una frase:<input type="text" id="miFrase"></br>
+	<input type="button" value="Limpiar"/>
+    <input type="button" onclick="resolver()" value="Resolver"/>
+    <DIV id="miDiv"></DIV>
+
+</BODY>
+</HTML>

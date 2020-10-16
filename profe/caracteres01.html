@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+
+</HEAD>
+<BODY>
+<DIV ID="miDiv"></DIV>
+</BODY>
+<SCRIPT>
+var str = 'To be, or not to be, that is the question.';
+str.endsWith('question.'); // true
+var salida='To be, or not to be, that is the question.<br><br>'
+salida += "str.endsWith('question.') " + str.endsWith('question.') +"<br>";
+str.endsWith('to be'); // false
+salida += "str.endsWith('to be') " + str.endsWith('to be') +"<br>";
+str.endsWith('to be', 19); // true
+salida += "str.endsWith('to be', 19) " + str.endsWith('to be', 19) +" Opcional. Indicada la longitud de la cadena<br>";
+var str = 'To be, or not to be, that is the question.';
+salida +='<br>To be, or not to be, that is the question.<br><br>'
+str.includes('To be'); // true
+salida += "str.includes('To be') " + str.includes('To be') +"<br>";
+str.includes('question'); // true
+salida += "str.includes('question') " + str.includes('question') +"<br>";
+str.includes('nonexistent'); // false
+salida += "str.includes('nonexistent') " + str.includes('nonexistent') +"<br>";
+str.includes('To be', 1); // false
+salida += "str.includes('To be', 1) " + str.includes('To be', 1) +"<br>";
+str.includes('TO BE'); // false
+salida += "str.includes('TO BE') " + str.includes('TO BE') +" El método includes() es \"case sensitive\" (tiene en cuenta mayúsculas y minúsculas)<br>";
+var str = 'Ser, o no ser. ¡Esa es la cuestión!';
+salida += '<br>Ser, o no ser. ¡Esa es la cuestión!<br><br>'
+str.startsWith('Ser'); // true
+salida += "str.startsWith('Ser') " + str.startsWith('Ser') +"<br>";
+str.startsWith('no ser'); // false
+salida += "str.startsWith('no ser') " + str.startsWith('no ser') +"<br>";
+str.startsWith('Esa es la', 16); // true
+salida += "str.startsWith('Esa es la', 16) " + str.startsWith('Esa es la', 16) +" Opcional. La posición de la cadena en la cual debe comenzar la búsqueda de cadenaDeBusqueda; el valor predeterminado es 0<br>";
+
+salida+=""
+document.getElementById("miDiv").innerHTML=salida;
+</SCRIPT>
+</HTML>
+
+
+

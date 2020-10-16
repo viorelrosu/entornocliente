@@ -1,0 +1,88 @@
+<html>
+	<head>		
+		<script>
+         function evalua(){
+			  var miFecha = new Date();
+			  var resultado = "";
+			  var diaMes = miFecha.getDate();
+			  var mes = miFecha.getMonth() +1;
+			  var anio = miFecha.getFullYear();
+			  var hora = miFecha.getHours();
+			  var minutos = miFecha.getMinutes();
+			  var segundos = miFecha.getSeconds();
+			  resultado="San Fernando de Henares a " + diaMes;
+			  resultado+= " de " + mes + " del " + anio ;
+			  resultado+= " a las " + hora + ":" + minutos + ":" + segundos;			 
+              document.getElementById("miDiv").innerHTML=resultado;
+		 }	
+         function evalua2(){
+			  var miFecha = new Date();
+			  var resultado = "";
+			  var diaMes = miFecha.getDate();
+			  var mes = miFecha.getMonth() +1;
+			  var anio = miFecha.getFullYear();
+			  var hora = miFecha.getHours();
+			  var minutos = miFecha.getMinutes();
+			  var segundos = miFecha.getSeconds();
+			  var diaSemana = miFecha.getDay();
+			  switch (diaSemana){
+			       case 0:
+				      dsem="Domingo";
+					  break;
+				   case 1:
+				      dsem="Lunes";
+					  break;
+                   case 2:
+				      dsem="Martes";
+					  break;
+                   case 3:
+				      dsem="Miercoles";
+					  break;
+                   case 4:
+				      dsem="Jueves";
+					  break;
+                   case 5:
+				      dsem="Viernes";
+					  break;
+                   case 6:
+				      dsem="Sabado";
+					  break; 					  
+			  
+			  }
+			   switch (mes){
+			       case 1:
+				      meses="Enero";
+					  break;
+				   case 2:
+				      meses="Febrero";
+					  break;
+                   case 3:
+				      meses="Marzo";
+					  break;
+                   case 4:
+				      meses="Abril";
+					  break;
+                   case 5:
+				      meses="Mayo";
+					  break;
+                   case 6:
+				      meses="Junio";
+					  break;
+                   case 10:
+				      meses="Octubre";
+					  break; 					  
+			  
+			  }
+			  resultado="San Fernando de Henares " + dsem + " a " +diaMes;
+			  resultado+= " de " + meses + " del " + anio ;
+			  resultado+= " a las " + hora + ":" + minutos + ":" + segundos;			 
+              document.getElementById("miDiv").innerHTML=resultado;
+		 }			 
+		</script>
+	</head>
+	<body>   
+      <input type="button" value="Aceptar" onclick="evalua()"/>
+	  <input type="button" value="Aceptar" onclick="evalua2()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

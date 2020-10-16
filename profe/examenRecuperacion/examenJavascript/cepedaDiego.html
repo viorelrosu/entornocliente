@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EXAMEN DIEGO :)</title>
+	<script type="text/javascript">
+
+		class Persona {
+			constructor (nombre, apellidos, sueldo, dni) {
+				this._nombre=nombre;
+				this._apellidos=apellidos;
+				this._sueldo=sueldo;
+				this._dni=dni;
+			}
+			set nombre(x) {
+				this._nombre=x;
+			}
+			get nombre() {
+				return this._nombre;
+			}
+			set apellidos(x) {
+				this._apellidos=x;
+			}
+			get apellidos() {
+				return this._apellidos;
+			}
+			set sueldo(x) {
+				this._sueldo=x;
+			}
+			get sueldo() {
+				return this._sueldo;
+			}
+			set dni(x) {
+				this._dni=x;
+			}
+			get dni() {
+				return this._dni;
+			}
+// TODO:
+      calcularRetenciones() {
+        return null;
+
+      }
+      calcularsueldoNeto(){
+        return null;
+      }
+		}
+
+    window.onload= function() {
+      document.getElementById('btnAlta').disabled=true;
+    }
+
+		var persona = new Array();
+		persona[0] = new Persona("Juan Julian", "Pérez López", 850, "12345678Z");
+		persona[1] = new Persona("Victor Manuel", "Rivas Santos", 1156, "14785236P");
+		persona[2] = new Persona("Jesus", "González Penalver", 1009, "74125896R");
+
+    function alta() {
+      var nombre=document.getElementById('nombre').value;
+      var apellidos=document.getElementById('apellidos').value;
+      var sueldo=document.getElementById('sueldo').value;
+      var dni=document.getElementById('dni').value;
+
+      persona.push(new Persona(nombre, apellidos, sueldo, dni));
+      cancelar();
+			document.getElementById('btnAlta').disabled=true;
+
+    }
+
+    var centinela=true;
+    function validarNombre() {
+      var nombre=document.getElementById('nombre').value;
+      var patron=/^[a-zA-ZáéíóúÁÉÍÚÓçÇ -]{2,20}$/;
+      if (patron.test(nombre.trim())) {
+        document.getElementById('sn').innerHTML=" OK";
+      } else {
+        document.getElementById('sn').innerHTML=" MAL. Mínimo 2 y máximo 20 caracteres.";
+        centinela=false;
+      }
+    }
+    function validarApellidos() {
+      var apellidos=document.getElementById('apellidos').value;
+      var patron=/^[a-zA-ZáéíóúÁÉÍÚÓçÇ -]{2,30}$/;
+      if (patron.test(apellidos.trim())) {
+        document.getElementById('sa').innerHTML=" OK";
+      } else {
+        document.getElementById('sa').innerHTML=" MAL. Mínimo 2 y máximo 30 caracteres.";
+        centinela=false;
+      }
+    }
+    function validarSueldo() {
+      var sueldo=document.getElementById('sueldo').value;
+      var patron=/^[800-1500]{1,}$/;
+      if ((sueldo >=800 && sueldo <= 1500) && patron.test(sueldo.trim())) {
+        document.getElementById('ss').innerHTML=" OK";
+      } else {
+        document.getElementById('ss').innerHTML=" MAL. Solo valores entre 800 y 1500.";
+        centinela=false;
+      }
+    }
+
+
+    function validarDni() {
+      var dni=document.getElementById('dni').value;
+      var patron=/^[0-9]{8}[a-zA-Z]{1}$/;
+
+// TODO:
+			var ok=true;
+			var letras = new Array("T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E");
+			var x=parseInt(dni)/23;
+			for (var i=0; i<=letras.length-1;i++) {
+				if (x==parseInt(letras[i])) {
+					ok=true;
+				} else {
+					ok=false;
+				}
+			}
+      if (patron.test(dni.trim())) {
+        document.getElementById('sd').innerHTML=" OK";
+      } else {
+        document.getElementById('sd').innerHTML=" MAL. Debe contener 8 números y una letra";
+        centinela=false;
+      }
+    }
+    function validar(){
+      centinela=true;
+      validarNombre();
+      validarApellidos();
+      validarSueldo();
+      validarDni();
+
+      if (centinela) {
+        document.getElementById('btnAlta').disabled=false;
+      }
+    }
+    function listar() {
+      var miVentana=window.open("", "", "width=700, lenght=300");
+      miVentana.document.write("<table border=1>");
+      miVentana.document.write("<tr><th>Nombre</th><th>Apellidos</th><th>Sueldo Bruto</th><th>Retenciones</th><th>Sueldo Neto</th><th>DNI</th></tr>");
+      for (var i = 0; i<=persona.length-1; i++) {
+// TODO:
+        miVentana.document.write("<tr><td>"+persona[i].nombre+"</td><td>"+persona[i].apellidos+"</td><td>"+persona[i].sueldo+"</td><td>"+"retenciones"+"</td><td>"+"sueldoneto"+"</td><td>"+persona[i].dni+"</td></tr>");
+      }
+      miVentana.document.write("</table><br>");
+      miVentana.document.write("<button onclick='window.close()'>Cerrar</button><br>");
+      miVentana.document.write("Nombre del navegador: "+navigator.appCodeName+"<br>");
+      miVentana.document.write("La altura disponible de la pantalla para el uso de ventanas: "+screen.availWidth+"<br>");
+      miVentana.document.write("La anchura disponible de la pantalla para el uso de ventanas: "+screen.availWidth+"<br>");
+      document.close()
+    }
+	function cancelar() {
+    document.getElementById('nombre').value="";
+    document.getElementById('sn').innerHTML="";
+    document.getElementById('apellidos').value="";
+    document.getElementById('sa').innerHTML="";
+    document.getElementById('sueldo').value="";
+    document.getElementById('ss').innerHTML="";
+    document.getElementById('dni').value="";
+    document.getElementById('sd').innerHTML="";
+    centinela=false;
+	}
+	</script>
+</head>
+<body>
+
+Nombre: <input type="text" id="nombre"><span id="sn"></span><br>
+Apellidos: <input type="text" id="apellidos"><span id="sa"></span><br>
+Sueldo bruto: <input type="text" id="sueldo"><span id="ss"></span><br>
+DNI: <input type="text" id="dni"><span id="sd"></span><br><br>
+<button onclick="validar()">Validar</button>
+<button onclick="cancelar()">Limpiar</button><br>
+<button onclick="alta()" id="btnAlta">Alta</button>
+<button onclick="listar()">Listar</button><br>
+
+</body>
+</html>

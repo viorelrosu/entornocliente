@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+
+</HEAD>
+<BODY>
+<DIV ID="miDiv"></DIV>
+</BODY>
+<SCRIPT>
+var gra,rad;
+var salida="";
+salida="<table border=2><tr><th>Grados</th><th>Radianes</th><th>Seno</th><th>Coseno</th></tr>";
+
+for(var gra=0;gra<=360;gra+=10)
+{
+rad=Math.PI*gra/180;
+salida+="<tr><td>"+gra+"</td><td>"+rad.toFixed(3)+"</td><td>"+Math.sin(rad).toFixed(3)+"</td><td>"+Math.cos(rad).toFixed(3)+"</td></tr>";
+
+}
+salida+="</table>"
+document.getElementById("miDiv").innerHTML=salida;
+</SCRIPT>
+</HTML>

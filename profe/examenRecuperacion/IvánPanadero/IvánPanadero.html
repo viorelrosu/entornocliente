@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      class Persona
+      {
+        constructor(nombre,apellidos,sueldoBruto,dni)
+        {
+          this._nombre=nombre;
+          this._apellidos=apellidos;
+          this._sueldoBruto=sueldoBruto;
+          this._dni=dni;
+        }
+        getNombre()
+        {
+          return this._nombre;
+        }
+        getApellidos()
+        {
+          return this._apellidos;
+        }
+        getSueldoBruto()
+        {
+          return this._sueldoBruto;
+        }
+        getDni()
+        {
+          return this._dni;
+        }
+        setNombre(x)
+        {
+        this._nombre=x;
+        }
+        setApellidos(x)
+        {
+          this._apellidos=x;
+        }
+        setSueldoBruto(x)
+        {
+          this._sueldoBruto=x;
+        }
+        setDni(x)
+        {
+          this._dni=x;
+        }
+        retencion(sueldoBruto)
+        {
+          if(sueldoBruto>=800&&sueldoBruto<=899)
+          {
+            return 2;
+          }
+          if(sueldoBruto>=900&&sueldoBruto<=999)
+          {
+            return 2.5;
+          }
+          if(sueldoBruto>=1000&&sueldoBruto<=1099)
+          {
+            return 4;
+          }
+          if(sueldoBruto>=1100&&sueldoBruto<=1199)
+          {
+            return 5.6;
+          }
+          if(sueldoBruto>=1200&&sueldoBruto<=1500)
+          {
+            return 10;
+          }
+        }
+         SueldoNeto(sueldoBruto,retencion)
+        {
+          var sueldoneto=new Number();
+          sueldoneto=(sueldoBruto*(100-retencion))/100;
+          sueldoneto=sueldoneto.toFixed(2);
+          return sueldoneto;
+        }
+      }
+      var arrayPersonas=[];
+      var juan=new Persona('Juan Julian',"Pérez López","850","12345678Z");
+      var victor=new Persona('Victor Manuel',"Rivas Santos ","1156","14785236P");
+      var jesus=new Persona('Jesus',"González Penalver","1009","74125896R");
+      arrayPersonas.push(juan);
+      arrayPersonas.push(victor);
+      arrayPersonas.push(jesus);
+      function validarNombre()
+      {
+        nombre=document.getElementById('nombre').value;
+        var patt=/^[a-zA-Zñ \-çÑÇáéíóúÁÉÍÓÚ]{2,20}$/;
+        var ok=patt.test(nombre);
+        if(ok==true)
+        {
+          document.getElementById('nom').innerHTML='Correcto';
+          return(true);
+
+        }
+        else
+        {
+          document.getElementById('nom').innerHTML='Error';
+          return(false);
+
+        }
+      }
+      function validarApellidos()
+      {
+        apellidos=document.getElementById('apellidos').value;
+        var patt=/^[a-zA-Zñ \-çÑÇáéíóúÁÉÍÓÚ]{2,30}$/;
+        var ok=patt.test(apellidos);
+        if(ok==true)
+        {
+          document.getElementById('app').innerHTML='Correcto';
+          return(true);
+
+        }
+        else
+        {
+          document.getElementById('app').innerHTML='Error';
+          return(false);
+        }
+      }
+      function validarSueldoBruto()
+      {
+        sueldobruto=parseInt(document.getElementById('sueldobruto').value);
+        var patt=/^[0-9]{3,}$/;
+        var ok=patt.test(sueldobruto);
+        if(ok==true&&sueldobruto>=800&&sueldobruto<=1500)
+        {
+          document.getElementById('sbr').innerHTML='Correcto';
+          return(true);
+
+        }
+        else
+        {
+            document.getElementById('sbr').innerHTML='Error';
+          return(false);
+
+        }
+      }
+      function validarDNI()
+      {
+        arrayLetras=['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E']
+        var dni=new String();
+        dni=document.getElementById('dni').value;
+        partenumerica=dni.substr(0,8);
+        letra=dni.substr(-1);
+        letra=letra.toUpperCase();
+        resto=(partenumerica%23)-1;
+
+        if(letra==arrayLetras[resto])
+        {
+          document.getElementById('dn').innerHTML='Correcto';
+          return true;
+        }
+        else
+        {
+          document.getElementById('dn').innerHTML='Error';
+          return false;
+        }
+
+      }
+    function validacioncompleta(nombre,ap,sb,dni,array)
+    {
+      if(nombre==true&&ap==true&&sb==true&&dni==true)
+      {
+        var persona=new Persona(document.getElementById('nombre').value,document.getElementById('apellidos').value,parseInt(document.getElementById('sueldobruto').value),document.getElementById('dni').value);
+        array.push(persona);
+      }
+    }
+    function nuevaVentana(array)
+    {
+      var ventana=window.open("","","width=700,height=300")
+      ventana.document.open();
+      ventana.document.write("Nombre del navegador:"+navigator.appCodeName+"<br>");
+      ventana.document.write("La altura disponible para el uso de ventanas: "+screen.availHeight+"<br>");
+      ventana.document.write("La anchura disponible para el uso de ventanas: "+screen.availWidth);
+      ventana.document.write("<table border='1'>");
+      ventana.document.write("<tr>");
+      ventana.document.write("<th>Nombre</th>");
+      ventana.document.write("<th>Apellidos</th>");
+      ventana.document.write("<th>Sueldo Bruto</th>");
+      ventana.document.write("<th>Retenciones</th>");
+      ventana.document.write("<th>Sueldo neto</th>");
+      ventana.document.write("<th>DNI</th>");
+      ventana.document.write("</tr>");
+
+      for (persona of array) {
+        ventana.document.write("<tr>");
+        ventana.document.write("<td>"+persona.getNombre()+"</td>");
+        ventana.document.write("<td>"+persona.getApellidos()+"</td>");
+        ventana.document.write("<td>"+persona.getSueldoBruto()+"</td>");
+        ventana.document.write("<td>"+persona.retencion(persona.getSueldoBruto())+"%</td>");
+        ventana.document.write("<td>"+persona.SueldoNeto(persona.getSueldoBruto(),persona.retencion(persona.getSueldoBruto()))+"</td>");
+        ventana.document.write("<td>"+persona.getDni()+"</td>");
+        ventana.document.write("</tr>");
+      }
+      ventana.document.write("</table>");
+      ventana.document.write("<input type='button' name='' value='Cerrar' onclick='window.close()'>");
+    }
+
+    </script>
+  </head>
+  <body>
+Nombre<input type="text" id="nombre" value=""> <span id="nom"></span><br>
+Apellidos<input type="text" id="apellidos" value=""> <span id="app"></span><br>
+SueldoBruto<input type="text" id="sueldobruto" value=""> <span id="sbr"></span><br>
+DNI<input type="text" id="dni" value=""> <span id="dn"></span><br>
+<input type="button" name="" value="Añadir Persona" onclick="validacioncompleta(validarNombre(),validarApellidos(),validarSueldoBruto(),validarDNI(),arrayPersonas)">
+<input type="button" name="" value="Listado" onclick="nuevaVentana(arrayPersonas)">
+  </body>
+</html>

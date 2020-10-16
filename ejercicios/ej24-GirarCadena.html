@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej24 - Girar Cadena</title>
+	
+	<script>
+			var pararIzq=''
+			var pararDer=''
+			var cadena = ''; 
+			var segundos = '';
+			function girarIzq(){
+				var ultimaLetra = cadena.charAt(cadena.length-1);
+				var subcadena = cadena.substr(0,cadena.length-1);
+				cadena = ultimaLetra + subcadena;
+				document.getElementById("miDiv").innerHTML=cadena;
+				start = false;
+			}
+
+			function girarDer(){
+				var primeraLetra = cadena.charAt(0);
+				var subcadena = cadena.substr(1);
+				cadena = subcadena + primeraLetra;
+				document.getElementById("miDiv").innerHTML=cadena;
+				start = false;
+			}
+
+			function startIntervalIzq(){
+				cadena = document.getElementById('cadena').value;
+				segundos = document.getElementById('segundos').value;
+				stopInterval();
+				pararIzq=setInterval(girarIzq, (segundos*1000));
+			}
+
+			function startIntervalDer(){
+				cadena = document.getElementById('cadena').value;
+				segundos = document.getElementById('segundos').value;
+				stopInterval();
+				pararDer=setInterval(girarDer, (segundos*1000));
+			}
+
+			function stopInterval(){
+				clearInterval(pararIzq);
+				clearInterval(pararDer);
+				pararIzq=0;
+				start=true;
+			}
+	</script>
+</head>
+<body>
+		<p>
+			<label>Introduce cadena</label><br />
+			<input type="text" name="cadena" id="cadena" value="" /> <br/>
+		</p>
+		<p>
+			<label>Introduce número de segundos</label><br />
+			<input type="number" name="segundos" id="segundos" value="1" min="1" max="5" /><br />
+		</p>
+			<input type="button" id="izq" value="Girar izquierda" onclick="startIntervalIzq()" style="margin-top: 20px;"/>
+			<input type="button" id="der" value="Girar derecha" onclick="startIntervalDer()" style="margin-top: 20px;"/><br />
+			
+		</p>
+		<p>
+			<input type="button" name="stop" value="Stop" onclick="stopInterval()"/>
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+		Girar cadena a la izquierda : la ultima letra se pone la primera
+		Girar cadena a la derecha : la primera letra se pone la ultima
+		-->
+
+</body>
+</html>
+

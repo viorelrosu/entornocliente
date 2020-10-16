@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+
+</HEAD>
+<BODY>
+<DIV ID="miDiv"></DIV>
+</BODY>
+<SCRIPT>
+var num=3.23
+var num2="3.23";
+var num3="er3.23";
+var num4="3.23op";
+var num5="123e-1";
+var num6='0x11';
+var num7='0b11';
+var num8='0o11';
+var salida="num = 3.23 es numérico "+ !isNaN(num) +"<br>";
+salida+="num2 = \"3.23\" es numérico "+ !isNaN(num2)+ "<br>";
+salida+="num3 = \"er3.23\" es numérico "+ !isNaN(num3)+ "<br>";
+salida+="num4 = \"3.23op\" es numérico "+ !isNaN(num4)+ "<br>";
+salida+="num5 = \"123e-1\" es numérico "+ !isNaN(num5)+ "<br>";
+salida+="num6 = \'0x11\' es numérico "+ !isNaN(num6)+ " \/\/ 17 en hexadecimal.<br>"; // 17 en hexadecimal.
+salida+="num7 = \'0b11\' es numérico "+ !isNaN(num7)+ " \/\/ 3 en binario.<br>"; // 3 en binario. 
+salida+="num8 = \'0o11\' es numérico "+ !isNaN(num8)+ " \/\/ 9 en octal.<br>"; // 9 en octal.
+salida+=""
+document.getElementById("miDiv").innerHTML=salida;
+</SCRIPT>
+</HTML>

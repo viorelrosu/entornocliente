@@ -1,0 +1,46 @@
+<html>
+	<head>		
+		
+	</head>
+	<body>   
+      <div id="miDiv"></div>  
+      <script>
+		 resultado="";
+		 var fechaHoy = new Date();
+		 		 
+		 resultado = "Fecha de hoy mostrado con toLocaleString() <br>"
+		 resultado += fechaHoy.toLocaleString();
+		 
+		 var fecha85 = new Date(fechaHoy);
+		 fecha85.setDate(fecha85.getDate()+85);
+		 resultado += "<br><br>Fecha mas 85 dias mostrado con toLocaleDateString() <br>"
+         resultado +=  fecha85.toLocaleDateString(); 
+
+		 var fecha187 = new Date(fechaHoy);
+		 fecha187.setDate(fecha187.getDate()-187);
+		 resultado += "<br><br>Fecha menos 187 dias mostrado con toDateString() <br>"
+		 resultado += fecha187.toDateString();
+		
+		 fecha85.setFullYear(fecha85.getFullYear()+2);
+		 resultado += "<br><br>Fecha mas 85 dias  sumada dos años mostrado con el nombre de la variable<br>"
+		 resultado += fecha85; 
+		 
+		 fecha187.setHours(fecha187.getHours()-24);
+		 resultado += "<br><br>Fecha menos 187 dias sumando 24 horas con el nombre de la variable<br>"
+		 resultado += fecha187;
+		 
+		 var fechaResto = new Date(fecha85-fecha187);		 
+		 var otraFecha = (fecha85-fecha187)
+		 resultado += "<br><br>Fecha resto de fecha85 menos fecha187 dias<br>"
+		 
+		 resultado += fechaResto.toLocaleDateString();
+		 resultado += "<br><br>" + fechaResto.getTime()
+		 // parse es un método estático de Date, por lo que tenemos que llamarlo 
+		 // invocando previamente a la clase Date. 
+		 resultado += "<br>" + Date.parse(fechaResto);		 
+		 
+         //resultado= fecha1 + "<br>" + fecha2 +"<br>" + fecha3 + "<br>" + fecha4 + "<br>" + fecha5 + "<br>" +fecha6;
+		 document.getElementById("miDiv").innerHTML=resultado; 
+		</script>	  
+	</body>	
+</html>
