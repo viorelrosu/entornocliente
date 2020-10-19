@@ -14,9 +14,21 @@
 				var anio = fecha.getFullYear();
 				var horas = fecha.getHours();
 				var minutos  = fecha.getMinutes();
-				var secundos = fecha.getSeconds();
+				var segundos = fecha.getSeconds();
 
-				resultado = "<h1>"+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds()+"</h1>";
+				if(segundos < 10) {
+					segundos = '0'+segundos;
+				}
+
+				if(minutos < 10) {
+					minutos = '0'+minutos;
+				}
+
+				if(horas < 10) {
+					horas = '0'+horas;
+				}
+
+				resultado = "<h1>"+horas+":"+minutos+":"+segundos+"</h1>";
 				//resultado += "<h2>San Fernando de Henares a "+fecha.getDate()+" de "+fecha.getMonth()+" del "+fecha.getFullYear()+"</h2>";
 				//console.log(resultado);
 				document.getElementById("miDiv").innerHTML=resultado;

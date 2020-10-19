@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Ej25 - Comprobar numeros</title>
-	
+
 	<script>
 			function miFuncion(){
 				var cadena = document.getElementById("cadena").value;
@@ -12,13 +12,22 @@
 				var numeros = '0123456789';
 				var cadNumeros = '';
 				var resultado = '';
-				
+
 				for(i=0; i<=cadena.length-1; i++) {
-					if( numeros.indexOf(cadena.charAt(i)) != -1)  {
+					// if( numeros.indexOf(cadena.charAt(i)) != -1 )  {
+					// 	cadNumeros += cadena.charAt(i);
+					// } else {
+					// 	cadLetras += cadena.charAt(i);
+					// 	isLetra = true;
+					// }
+
+					if( !isNaN(cadena.charAt(i)) )  {
 						cadNumeros += cadena.charAt(i);
+
 					} else {
 						cadLetras += cadena.charAt(i);
 						isLetra = true;
+
 					}
 				}
 
