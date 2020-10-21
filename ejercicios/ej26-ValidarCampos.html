@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ej26 - Validar campos</title>
+	<style>
+		.error {
+			color:red;
+		}
+		.valido {
+			color:blue;
+		}
+	</style>
+	<script>
+			var numeros = '0123456789';
+			var letras = 'abcdefghijklmnñoqprstuvxwáéíóúç ';
+
+			function miFuncion(){
+
+				validarNombre();
+				validarEdad();
+			}
+
+			function validarNombre() {
+				const nombre = document.getElementById("nombre").value;
+				let posError = '';
+				let mensaje = '';
+				let isError = false;
+
+				for(i=0; i<=nombre.length-1; i++) {
+					if( letras.indexOf(nombre.charAt(i)) == -1 )  {
+						//valor prohibidos
+						isError = true;
+						posError += (i+1) + ", ";
+						// cadLetras += cadena.charAt(i);
+						// isLetra = true;
+					}
+				}
+
+				if(!isError) {
+					if(nombre.length >= 25 || nombre.length < 3) {
+						isError = true;
+						mensaje = "La longitud es de: " + nombre.length + ". Tiene que ser min 3 y máx de 25.";
+					}
+				} else {
+					mensaje = "Hay un error en la posición " + posError;
+				}
+
+				if(!isError) {
+					mensaje = "Todos los carácteres son correctos";
+					document.getElementById('valido-nombre').innerHTML = mensaje;
+					document.getElementById('error-nombre').innerHTML = '';
+				} else {
+					document.getElementById('valido-nombre').innerHTML = '';
+					document.getElementById('error-nombre').innerHTML = mensaje;
+				}
+
+			}
+
+			function validarEdad(){
+				const edad = document.getElementById("edad").value;
+				let isError = false;
+				let posError = '';
+				let mensaje = '';
+
+				for(i=0; i<=edad.length-1; i++) {
+					if( isNaN(edad.charAt(i)) )  {
+						isError = true;
+						posError += (i+1) + ", ";
+					}
+				}
+
+				if(!isError) {
+					if(edad >= 110 || edad < 5) {
+						isError = true;
+						mensaje = "La edad tiene quer ser comprendida entre 5 y 110.";
+					}
+				} else {
+					mensaje = "Hay un error en la posición " + posError;
+				}
+
+				if(!isError) {
+					mensaje = "Todos los carácteres son correctos";
+					document.getElementById('valido-edad').innerHTML = mensaje;
+					document.getElementById('error-edad').innerHTML = '';
+				} else {
+					document.getElementById('valido-edad').innerHTML = '';
+					document.getElementById('error-edad').innerHTML = mensaje;
+				}
+			}
+
+			function miReset() {
+				document.getElementById("nombre").value = '';
+				document.getElementById("edad").value = '';
+				document.getElementById('valido-nombre').innerHTML = '';
+				document.getElementById('error-nombre').innerHTML = '';
+				document.getElementById('valido-edad').innerHTML = '';
+				document.getElementById('error-edad').innerHTML = '';
+			}
+	</script>
+</head>
+<body>
+		<p>
+			<label>Introduce Nombre</label><br />
+			<input type="text" name="nombre" id="nombre" value="" />
+			<span id="error-nombre" class="error"></span>
+			<span id="valido-nombre" class="valido"></span>
+		</p>
+		<p>
+			<label>Introduce Edad</label><br />
+			<input type="text" name="edad" id="edad" value="" />
+			<span id="error-edad" class="error"></span>
+			<span id="valido-edad" class="valido"></span>
+		</p>
+		<p>
+			<input type="button" id="validar" value="Validar" onclick="miFuncion()" style="margin-top: 20px;"/>	
+			<input type="button" id="reset" value="Limpiar" onclick="miReset()" style="margin-top: 20px;"/>	
+		</p>
+		<div id="miDiv" style="padding-top: 20px;"></div>
+
+		<!--
+		Introducir en nombre una cadena de texto sin numeros: se permite accentos y ç y espacio. Longitud min de 3 y max de 25.
+		introducir en edad solamente numeros sin letras: longitud min de 5 y max de 110. 
+		-->
+
+</body>
+</html>
+
