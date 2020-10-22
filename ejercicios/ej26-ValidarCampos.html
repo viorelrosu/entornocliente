@@ -22,7 +22,8 @@
 			}
 
 			function validarNombre() {
-				const nombre = document.getElementById("nombre").value;
+				let nombre = document.getElementById("nombre").value;
+				nombre = nombre.toLowerCase();
 				let posError = '';
 				let mensaje = '';
 				let isError = false;
@@ -38,7 +39,7 @@
 				}
 
 				if(!isError) {
-					if(nombre.length >= 25 || nombre.length < 3) {
+					if(nombre.length > 25 || nombre.length < 3) {
 						isError = true;
 						mensaje = "La longitud es de: " + nombre.length + ". Tiene que ser min 3 y máx de 25.";
 					}

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Location</title>
+		<script>
+
+
+		location.hash 
+			//Nombre de un anclaje en la URL. Es decir, la parte de la URL que va después de la etiqueta #.
+			//Por ejemplo, para la dirección : 
+        	//http://www.punto.com/pag1.html#tema2
+
+        anclaje = location.hash; //devuelve -> tema2
+
+
+        location.host 
+        	//Nombre del servidor, su alias, o su dirección IP y su número de puerto. Para el ejemplo anterior:
+
+        lcoation.servidor = location.host; // devuelve http://www.punto.com
+
+        lcoation.hostname; //Nombre del servidor en el que está definido el servicio. 
+
+        location.href; //Cadena que representa la dirección completa. Para cargar una página diferente en la ventana
+			//actual bastaría con ejecutar el siguiente código:
+			location.href = "pagina2.html"; 
+
+		location.pathname; // Corresponde a la cadena que sigue al nombre del servidor. Directorios que acompañan a la URL
+			//de un recurso. Por ejemplo, para la dirección:
+			//http://www.punto.com/dir1/dir2/pag.htm
+
+			directorios = location.pathname;
+			// directorios = /dir1/dir2/pag.htm
+
+		location.port; //Puerto en el que está definido el servicio
+		location.protocol; // Protocolo de comunicación especificado por la URL. Para el ejemplo anterior:
+			protocolo = location.protocol;
+			// protocolo = 'http:
+
+
+		location.search; //Parámetros que acompañan a la URL despues de un signo de interrogación. Por ejemplo, para la
+			//dirección: http://www.punto.com/cgi-bin/prog?param1=1&param2=2
+			parametros = location.search;
+			// parametros = '?param1=1&param2=2' 
+
+		/*=================
+		Métodos del objeto LOCATION
+		===========================*/
+
+		location.reload();  //Recarga la página actual.
+		location.replace();  //Carga la URL especificada y la sustituye por la entrada actual. 
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

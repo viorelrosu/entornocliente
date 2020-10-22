@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Location</title>
+
+</head>
+<body>
+	<form action="" method="post">
+		<input type="button" name="reload" onclick="location.reload()" id="" value="Reload" />
+		<input type="button" name="redirect" onclick="location.href='http://www.google.es';" id="" value="Redirect" />
+		<input type="button" name="replace" onclick="location.replace('http://www.nasa.gov')" id="" value="Replace" />
+	</form>
+	<div id="myDiv"></div>
+	<script>
+		resultado = '<p>';
+		resultado += 'URL completa: ' + location.href + '<br />';
+		resultado += 'Pathname: ' + location.pathname+ '<br />';
+		resultado += 'Protocolo: ' + location.protocol + '<br />';
+		resultado += 'Puerto: ' + location.port + '<br />';
+		resultado += 'Servidor: ' + location.host + '<br />';
+		resultado += 'Host Name: ' + location.hostname + '<br />';
+		resultado += '</p>';
+		document.getElementById('myDiv').innerHTML = resultado;
+	</script>
+</body>
+</html>
