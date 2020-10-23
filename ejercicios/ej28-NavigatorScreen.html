@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Navigator y Screen</title>
+
+</head>
+<body>
+	<div id="myDiv"></div>
+	<script>
+		resultado = '<p>';
+		resultado += 'Código del nombre del navegador:<b> ' + navigator.appCodeName + '</b><br />';
+		resultado += 'Nombre del navegador:<b> ' + navigator.appName+ '</b><br />';
+		resultado += 'Versión del navegador:<b> ' + navigator.appVersion + '</b><br />';
+		resultado += 'Idioma del navegador:<b> ' + navigator.language + '</b><br />';
+		resultado += 'Plataforma sobre la que se ejecuta el navegador:<b> ' + navigator.platform + '</b><br />';
+		resultado += 'Información completa del agente de usuario:<b> ' + navigator.userAgent + '</b><br />';
+		resultado += 'Informa acerca de si están habilitadas las cookies:<b> ' + (navigator.cookieEnabled ? 'SI' : 'NO') + '</b><br />';
+		resultado += 'Informa acerca de si están habilitada la ejecución de programas escritos en Java:<b> ' + (navigator.javaEnabled() ? 'SI' : 'NO') + '</b><br />';
+		resultado += '</p>';
+
+		var nAgt = navigator.userAgent;
+		var browserName  = navigator.appName;
+		var nameOffset,verOffset,ix, fullVersion;
+
+		if ((verOffset=nAgt.indexOf("Chrome"))!=-1) {
+		 browserName = "Chrome";
+		 fullVersion = browserName +'/'+ nAgt.substring(verOffset+7);
+		}
+		// In Firefox, the true version is after "Firefox"
+		else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) {
+		 browserName = "Firefox";
+		 fullVersion = browserName + nAgt.substring(verOffset+7);
+		}
+
+		else if ((verOffset=nAgt.indexOf("Safari"))!=-1) {
+		 browserName = "Safari";
+		 fullVersion = nAgt.substring(verOffset+7);
+		 if ((verOffset=nAgt.indexOf("Version"))!=-1)
+		   fullVersion = "Version/" + nAgt.substring(verOffset+8);
+		}
+
+		resultado += '<p>';
+		resultado += 'El navegador es:<b> ' + browserName + '</b><br />';
+		resultado += 'La versión del navegador es:<b> ' + fullVersion + '</b>';
+		resultado += '</p>';
+
+
+		resultado += '<p>';
+		resultado += '<h3>Objeto Screen</h3>';
+		resultado += 'Altura total:<b> ' + screen.height + '</b><br />';
+		resultado += 'Altura disponible:<b> ' + screen.availHeight + '</b><br />';
+		resultado += 'Anchura total:<b> ' + screen.width + '</b><br />';
+		resultado += 'Anchura disponible:<b> ' + screen.availWidth + '</b><br />';
+		resultado += 'Número de bits usados para representar los colores:<b> ' + screen.colorDepth + '</b><br />';
+		resultado += 'Resolución del color en bits por pixel:<b> ' + screen.pixelDepth + '</b><br />';
+		resultado += '</p>';
+		document.getElementById('myDiv').innerHTML = resultado;
+	</script>
+
+	<!--
+
+Realizar una aplicación que nos permita visualizar la siguiente información.
+Código del nombre del navegador:
+Nombre del navegador:
+Versión del navegador:
+Idioma del navegador:
+Plataforma sobre la que se ejecuta el navegador:
+Información completa del agente de usuario:
+Informa acerca de si están habilitadas las cookies:
+Informa acerca de si están habilitada la ejecución de programas escritos en Java:
+Hay que tener en cuenta que en algunos casos no se muestra el nombre del navegador correctamente.
+Para Chrome y para Firefox devuelve Netscape.
+
+
+Objeto Screen
+Mostrar
+Altura total:
+Altura disponible:
+Anchura total:
+Anchura disponible:
+
+	-->
+</body>
+</html>
