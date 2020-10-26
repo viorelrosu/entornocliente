@@ -1,0 +1,30 @@
+<html>
+	<head>		
+		<script>
+		 parar="";
+         function evalua(){
+			  var miFecha = new Date();
+			  var resultado = "";
+			  var hora = miFecha.getHours();
+			  var minutos = miFecha.getMinutes();
+			  var segundos = miFecha.getSeconds();
+			  resultado+= hora + ":" + minutos + ":" + segundos;			 
+              document.getElementById("miDiv").innerHTML=resultado;
+			  document.getElementById("inicia").disabled=true;
+			  document.getElementById("para").disabled=false;
+		 }	
+		 function paraReloj(){
+		      clearInterval(parar);
+			  document.getElementById("inicia").disabled=false;
+			  document.getElementById("para").disabled=true;
+		 
+		 }
+         
+		</script>
+	</head>
+	<body>   
+      <input type="button" value="Iniciar" id="inicia" onclick="parar=setInterval(evalua,1000)"/>
+	  <input type="button" value="Parar" id="para" onclick="paraReloj()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

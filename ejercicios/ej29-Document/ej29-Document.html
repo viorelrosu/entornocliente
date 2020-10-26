@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+</head>
+<body>
+
+<p>
+<a href="https://google.com" target="_blank">Visitar Google</a>
+</p>
+<p>
+<a href="https://nasa.gov" >Visitar Nasa</a>
+</p>
+<p>
+	<form name="form1" action="document1.html" method="post">
+		<label>Nombre</label><br />
+		<input type="text" name="Nombre" value=""><br />
+		<label>Apellido</label><br />
+		<input type="text" name="Apellido" value=""><br />
+		<label>DNI</label><br />
+		<input type="text" name="DNI" value=""><br />
+		<label>Email</label><br />
+		<input type="text" name="Email" value=""><br />
+		<input type="submit" value="Enviar">
+	</form>
+</p>	
+
+	<form name="form2" action="document2.html" method="get">
+		<label>Dirección</label><br />
+		<input type="text" name="Direccion" value=""><br />
+		<label>Código postal</label><br />
+		<input type="text" name="Código postal" value=""><br />
+		<label>Localidad</label><br />
+		<input type="text" name="Localidad " value=""><br />
+		<label>Provincia</label><br />
+		<input type="text" name="Provincia" value=""><br />
+		<input type="submit" value="Enviar">
+	</form>
+
+	<img src="img/img1.jpeg" width="500" height="333" />
+	<img src="img/img2.jpeg" width="500" height="333" />
+	<img src="img/img3.jpeg" width="500" height="333" />
+	<img src="img/img4.jpeg" width="500" height="333" />
+
+	<div id="myDiv"></div>
+	<script>
+		
+		var forms = document.forms;
+		var links = document.links;
+		var images = document.images;
+		var res = '';
+
+		res += "<h2>Formularios</h2>";
+		for(i=0; i<forms.length; i++){
+			res += "Nombre form: " + document.forms[i].name + "<br />";
+			res += "Método form: " + document.forms[i].method + "<br />";
+			res += "Fichero form: " + document.forms[i].action + "<br />";
+			res += "<br />";
+		}
+
+		res += "<h2>Images</h2>";
+		for(i=0; i<images.length; i++){
+			res += "Ancho y Altura de Img"+i+": " + document.images[i].width + " X " + document.images[i].height + "<br />";
+			res += "<br />";
+		}
+
+		res += "<h2>Enlaces</h2>";
+		for(i=0; i<links.length; i++){
+			res += "Dirección del enlace: " + document.links[i].href  + "<br />";
+			res += "Target: " + document.links[i].target  + "<br />";
+			res += "<br />";
+		}
+
+		document.getElementById('myDiv').innerHTML = res;
+	</script>
+
+	<!--
+
+Crear un documento con dos formularios que contengan por lo menos
+las propiedades name y method. Los formularios deben tener elementos de
+formulario. (cajas de texto, text areas, botones, etc).
+El documento debe tener al menos cuatro imágenes a las que se les
+dará una anchura y una altura, además debe tener de dos a tres enlaces.
+
+De cada formulario queremos mostrar:
+El nombre.
+Método de envío del formulario.
+Fichero donde se enviará el formulario.
+De cada imagen queremos ver
+
+El fichero donde se encuentra la imagen que se muestra.
+Altura X anchura de la imagen.
+
+De cada enlace nos interesa saber:
+La dirección del enlace.
+La propiedad Target.
+
+	-->
+</body>
+</html>

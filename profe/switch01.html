@@ -1,0 +1,53 @@
+<html>
+	<head>		
+		<script>
+         function evalua(){
+			  var miEdad; 
+			  var resultado="";
+              var categoria="";			  
+			  miEdad=parseInt(document.getElementById("miEdad").value);
+			  
+			  switch(miEdad){
+			     case 18:
+				 case 17:
+				 case 16:
+				     categoria="Juvenil";
+					 break;
+                 case 15:
+				 case 14:
+				     categoria="Cadete";
+					 break;
+				 case 13:
+				 case 12:
+				     categoria="Infantil";
+					 break;
+				 case 11:
+				 case 10:
+				     categoria="Alevin";
+					 break;	
+                 case 9:
+				 case 8:
+				     categoria="Benjamin";
+					 break;	
+                 case 7:
+				 case 6:
+				 case 5:
+				     categoria="Pre-Benjamin";
+					 break;						 
+                 default:
+                     categoria="Fuera de categoria"; 
+                     break;   					 
+			  }
+ //resultado= "El participante de " + miEdad + " de edad pertenece a la categoría " + categoria;
+			   resultado = "El participante de " + miEdad;
+			   resultado += " de edad pertenece a la categoría " + categoria;
+			   document.getElementById("miDiv").innerHTML=resultado;
+		 }		 
+		</script>
+	</head>
+	<body>   
+      Introduzca la edad del aprticipante: <input type="text" id="miEdad"/><br>
+      <input type="button" value="Aceptar" onclick="evalua()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

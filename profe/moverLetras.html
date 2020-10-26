@@ -1,0 +1,43 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<form name="form1">
+		Texto:<input type="text" name="txt1" id="txt1"><br/><br/>
+		<input type="button" name="boton1" id="boton1" value="Gira Izquierda" onclick="iniciarIzquierda();">
+		<input type="button" name="boton1" id="boton1" value="Gira Derecha" onclick="iniciarDerecha();"><br/>
+		<div id="miDiv" ></div>
+		</form>		
+		<script>
+			var var1 = "";
+			var var2 = "";
+			var posicion = 0;
+			var texto="";
+			function iniciarDerecha(){
+			    texto = document.getElementById("txt1").value;
+				clearInterval(var1);
+				clearInterval(var2);
+				var2 = window.setInterval(imprimeCaracterDerecha, 1000); 
+			}			
+			function imprimeCaracterDerecha(){	                
+				document.getElementById("miDiv").innerHTML = texto;
+				var c = texto.charAt(0);
+				texto=texto.substring(1) + c; 
+			}		
+			function iniciarIzquierda(){
+			    texto = document.getElementById("txt1").value;
+				clearInterval(var1);
+				clearInterval(var2);
+				var1 = window.setInterval(imprimeCaracterIzquierda, 1000); 
+			}
+			function imprimeCaracterIzquierda(){				
+				document.getElementById("miDiv").innerHTML = texto;
+				var c = texto.charAt(texto.length-1);
+				texto=c+texto.substring(0, texto.length-1); 
+			}
+			
+
+			
+		</script>
+	</body>
+</html>

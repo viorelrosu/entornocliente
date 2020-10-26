@@ -1,0 +1,30 @@
+<html>
+	<head>		
+		<script>
+         function miFuncion(){
+			  var edadAna, edadLuis, resultado; 
+			  edadAna=parseInt(document.getElementById("edadAna").value);
+			  edadLuis=parseInt(document.getElementById("edadLuis").value);
+			  if (edadAna > edadLuis)
+			  {
+				resultado="Ana es mayor que Luis. ";
+			  }
+			  else if (edadAna < edadLuis)
+			  {
+				resultado="Ana es menor que Luis";
+			  }		
+				else{
+				   resultado="Ana tiene la misma edad que Luis";
+				 }
+			   //resultado=resultado+"<br>Ana tiene " + edadAna + " años y Luis tiene " + edadLuis + " años"); 
+		       resultado+="<br>Ana tiene " + edadAna + " años y Luis tiene " + edadLuis + " años"; 
+		       document.getElementById("miDiv").innerHTML=resultado;
+		 }		 
+		</script>
+	</head>
+	<body>   
+      Introduzca un número: <input type="text" id="miNumero"/><br>
+      <input type="button" value="Aceptar" onclick="evalua()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

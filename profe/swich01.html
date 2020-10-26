@@ -1,0 +1,34 @@
+<html>
+	<head>		
+		<script>
+         function evalua(){
+			  var miMarca; 
+			  var resultado=""; 
+			  miMarca=document.getElementById("miMarca").value;
+			  
+			  switch(miMarca){
+			     case "Ford":
+				     taller="Talleres Velasco";
+					 break;
+                 case "Citroen":
+                     taller="Talleres Doctor Esquerdo";
+                     break;	
+                 case "Audi":
+				 case "Seat":
+                     taller="Talleres Las Acacias";
+                     break;	
+                 default:
+                     taller="No existen talleres concertados para este fabricante";  				 
+			  }
+			   //resultado=resultado+"<br>Ana tiene " + edadAna + " años y Luis tiene " + edadLuis + " años"); 
+		       resultado="La marca " + miMarca + " tiene concertado con el taller " + taller; 
+		       document.getElementById("miDiv").innerHTML=resultado;
+		 }		 
+		</script>
+	</head>
+	<body>   
+      Introduzca Marca: <input type="text" id="miMarca"/><br>
+      <input type="button" value="Aceptar" onclick="evalua()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

@@ -1,0 +1,35 @@
+<html>
+	<head>		
+		<script>
+         function evalua(){
+			  var ph; 
+			  var resultado="";
+              ph=parseInt(document.getElementById("miPh").value);
+			  if (ph>=1 && ph<=14){
+			  switch(true){
+			     case (ph<7):
+				     resultado="Acido";
+					 break;
+                 case (ph>7):
+				     resultado="Basico";
+					 break;
+				 default:
+                     resultado="Neutro"; 
+                     break;   					 
+			  }
+			  }
+			  else{
+			    resultado="Los valores del ph deben estar comprendidos entre 1 y 14";
+			  }
+			  
+			   document.getElementById("miDiv").innerHTML=resultado;
+			   
+		 }		 
+		</script>
+	</head>
+	<body>   
+      Introduzca el Ph correspondiente: <input type="text" id="miPh"/><br>
+      <input type="button" value="Aceptar" onclick="evalua()"/>
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

@@ -1,0 +1,20 @@
+<html>
+	<head>		
+		<script>
+		 parar=""; 
+         function evalua(){
+			  alert("Hola TimeOut");
+			 // setTimeout(evalua,2000);
+		 }
+         function evalua2(){
+			  alert("Hola Interval");			  
+		 }		 
+		</script>
+	</head>
+	<body>   
+      <input type="button" value="TimeOut" onclick="setTimeout('evalua();',2000)"/>
+	  <input type="button" value="Interval" onclick="parar=setInterval(evalua2,3000)"/>
+	  <input type="button" value="parar Interval" onclick="clearInterval(parar);"/
+      <div id="miDiv"></div>  	  
+	</body>	
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="es-es">
+	<head>
+		<meta charset="utf-8">
+		<title>Document</title>
+		<script>
+
+/*
+El objeto document se construye a partir de la marca BODY de HTML. Sobre él pueden actuar los eventos:
+onClick, onDblClick, onKeyDown, onKeyPress, onKeyUp, onMouseDown, onMouseUp.
+Resumen de propiedades del objeto document:
+*/
+/*
+Arrays de elementos contenidos en el documento actual
+*/
+plugins //Array de plugins del documento.
+images //!importante - Array que contiene las imágenes cargadas en el documento. Etiqueta <images>.
+applets //Array que contiene los applets del documento. Etiqueta <applet>
+links //!importante - Array que contiene los enlaces del documento. Etiqueta <a href>
+forms //!importante - Array que contiene los formularios definidos en el documento. Etiqueta <form>.
+anchors //Array que contiene los puntos de anclaje (anchors) del documento. Etiqueta <a name>.
+
+/*
+Propiedades del documento (elemento BODY)
+*/
+bgColor //Color de fondo del documento (atributo BGCOLOR de HTML).
+linkColor //Color de los enlaces (atributo LINK de HTML).
+alinkColor //Color de los enlaces activos (atributo ALINK de HTML).
+vlinkColor //Color de los enlaces visitados (atributo VLINK de HTML).
+fgColor //Color por defecto del texto (atributo TEXT de HTML).
+lastModified //Fecha en la que fue modificado el documento por última vez.
+domain //Nombre del servidor web del que procede el documento.
+title //Título del documento (contenido de la marca TITLE de HTML).
+URL //URL completa del documento actual.
+referrer //URL del documento a través del cual se cargó el documento actual.
+
+/*
+Resumen de métodos del objeto document:
+Métodos
+*/
+close() //Cierra el documento activo.
+getSelection() //Devuelve una cadena con el texto seleccionado por el usuario.
+home() //Carga la página de inicio.
+open() //Abre un documento.
+write() //Escribe texto a la corriente de datos del documento.
+writeln() //Igual que write pero finaliza el texto con un retorno de carro
+
+
+for(i=0; i<document.images.length; i++ ) {
+	miVar = document.images[i].src; //devuelve la src de la imagen que le indica el indice
+}
+
+miOtraVar = document.links[0].href;
+document.links[document.links.length].href="asdads"
+
+		</script>
+	</head>
+	<body>
+		<img src="url_imagen" >
+		<img src="url_imagen" >
+		<a href="#">enlace</a>
+	</body>
+</html>

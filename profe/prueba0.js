@@ -1,0 +1,1 @@
+alert("Vamos a empezar con JavaScript");
