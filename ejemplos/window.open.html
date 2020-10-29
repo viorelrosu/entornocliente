@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		/*
+		window.open(url, name, specs, replace);
+
+		url - la url que carga
+		name - el nombre de la ventana
+
+		specs
+		===
+			fullscreen=yes|no|1|0	Whether or not to display the browser in full-screen mode. Default is no. A window in full-screen mode must also be in theater mode. IE only
+			scrollbars=yes|no|1|0	Whether or not to display scroll bars. IE, Firefox & Opera only
+			resizable=yes|no|1|0	Whether or not the window is resizable. IE only
+			height=pixels	The height of the window. Min. value is 100
+			left=pixels	The left position of the window. Negative values not allowed
+			top=pixels	The top position of the window. Negative values not allowed
+			width=pixels	The width of the window. Min. value is 100
+			location=yes|no|1|0	Whether or not to display the address field. Opera only
+			channelmode=yes|no|1|0	Whether or not to display the window in theater mode. Default is no. IE only
+			directories=yes|no|1|0	Obsolete. Whether or not to add directory buttons. Default is yes. IE only
+			menubar=yes|no|1|0	Whether or not to display the menu bar
+			status=yes|no|1|0	Whether or not to add a status bar
+			titlebar=yes|no|1|0	Whether or not to display the title bar. Ignored unless the calling application is an HTML Application or a trusted dialog box
+			toolbar=yes|no|1|0	Whether or not to display the browser toolbar. IE and Firefox only
+
+		replace
+			true - URL replaces the current document in the history list
+			false - URL creates a new entry in the history list
+
+		*/
+
+		function abreVentanaBlanco(){
+			var myWindow = window.open("","","width=300,height=300");
+		}
+
+		function abreVentanaNueva() {
+			miVentana = window.open("https://www.w3schools.com");
+		}
+
+		function abreVentanaConTexto(){
+			var myWindow = window.open("","Ventana nombre","width=200,height=200");
+			myWindow.document.open();
+			myWindow.document.write("<p>Esto es 'Ventana nombre'. Tengo 200px de ancho y 200px de altura.</p>");
+			myWindow.document.close();
+		}
+
+		function reemplazarVentanaActual(){
+			var myWindow = window.open("","_self");
+			myWindow.document.write("<p>Reemplazo a la ventana actual.</p>");
+		}
+
+		function abreNuevaVentanaApariencia(){
+			window.open("https://www.w2schools.com","_blank","toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=200,height=300");
+		}
+
+		function abrirVentanaConNombre(){
+			var myWindow = window.open("","Ventana","width=500,height=500");
+			myWindow.document.open();
+			myWindow.document.write("<p>EL nombre de esta ventana es " + myWindow.name + "</p>");
+			myWindow.document.write("<p>la anchura es de " + myWindow.width + " y la altura es " + myWindow.height);
+			myWindow.document.close();
+		}
+
+		function abrirVariasVentanas(){
+			window.open("http://www.google.com");
+			window.open("http://www.w3schools.com");
+		}
+
+	</script>
+</head>
+<body>
+	<button onclick="abreVentanaBlanco()">Abrir ventana blanco</button><br />
+	<button onclick="abreVentanaNueva()">Abrir ventana nueva</button><br />
+	<button onclick="abreVentanaConTexto();">Abrir ventana con texto</button><br />
+	<button onclick="reemplazarVentanaActual()">Reemplazar Ventana Actual</button><br >/
+	<button onclick="abreNuevaVentanaApariencia()">Abrir ventana nueva apariencia</button><br />
+	<button onclick="abrirVariasVentanas()">Abrir varias ventanas</button><br />
+</body>
+</html>

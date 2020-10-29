@@ -7,15 +7,11 @@
 		 	var isPalindromo = false;
 
 		 	var subcadenaA = cadena.toLowerCase().replace(/\s/g,'').replace(/á/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i').replace(/ó/g, 'o').replace(/ú/g, 'u').replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-		 	console.log(subcadenaA);
-
 		 	var subcadenaB = '';
 
 		 	for(var i=subcadenaA.length-1; i>=0; i--) {
 		 		subcadenaB += subcadenaA.charAt(i);
 		 	}
-
-		 	console.log(subcadenaB);
 
 		 	if(subcadenaA === subcadenaB) {
 		 		isPalindromo = true;

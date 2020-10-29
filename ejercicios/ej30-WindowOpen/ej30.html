@@ -1,0 +1,36 @@
+<html>
+<head>
+<script>
+<!--
+function abreNuevaVentana()
+{
+
+	var nombre = document.getElementById('idNombre').value;
+// abrir una nueva ventana con el nombre pasado como parámetro
+// no se especifica una URL
+miVentana= window.open("","nueva","width=500,height=400,status=yes,toolbar=yes,menubar=yes");
+// Abre la corriente de datos del documento para escribir 
+miVentana.document.open();
+// Crea el documento
+miVentana.document.write("<html><head><title>Crear Ventanas"); 
+miVentana.document.write("</title></head><body>");
+miVentana.document.write("<h1>Creando documentos al vuelo</h1>");
+miVentana.document.write("<h2>El nombre es "+nombre+"</h2>");
+miVentana.document.write("<p>&nbsp;</p>");
+miVentana.document.write("<p>El contenido es din&aacute;mico</p>");
+miVentana.document.write("</body></html>");
+
+// cierra la corriente de datos del documento 
+miVentana.document.close();
+} 
+// -->
+</script>
+</head>
+<body>
+<form>
+	<label>Introduce tu nombre</label><br />
+	<input type="text" name="nombre" id="idNombre" value="" />
+	<input type=button value="Crear Ventana" onClick="abreNuevaVentana()">
+</form>
+</body>
+</html>
