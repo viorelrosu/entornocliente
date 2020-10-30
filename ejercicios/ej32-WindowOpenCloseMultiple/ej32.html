@@ -8,16 +8,15 @@ var distancia = 30;
 function abreNuevaVentana() {
 
 	for (var i = 1; i <= 10; i++) {
-		distancia += 20;
-		myWindow = window.open("","Nueva Ventana " +i ,"width=400,height=400,top="+distancia+",left="+distancia);
+		myWindow = window.open("","Nueva Ventana"+i,"width=400,height=400,top="+(distancia+i*20)+",left="+(distancia+i*20));
 					
 		// Abre la corriente de datos del documento para escribir 
 		myWindow.document.open();
 
 		// Crea el documento
-		myWindow.document.write("<html><head><title>Ventana</title></head><body>"); 
-		myWindow.document.write("<h1>Nuestra ventana</h1>");
-		myWindow.document.write('<p><button onClick="window.close()">Cerrar ventana</button>');
+		myWindow.document.write("<html><head><title>Ventana "+i+"</title></head><body>"); 
+		myWindow.document.write("<h1>Nuestra ventana "+i+"</h1>");
+		myWindow.document.write('<p><button onClick="window.close()">Cerrar ventana '+i+'</button>');
 		myWindow.document.write('<script>setTimeout( ()=>window.close(), 1000 );<\/script>');
 		myWindow.document.write("</body></html>");
 
