@@ -1,0 +1,40 @@
+<html>
+<head>
+<script>
+
+var myWindow;
+var distancia = 30;
+
+function abreNuevaVentana() {
+
+	for (var i = 1; i <= 10; i++) {
+		distancia += 20;
+		myWindow = window.open("","Nueva Ventana " +i ,"width=400,height=400,top="+distancia+",left="+distancia);
+					
+		// Abre la corriente de datos del documento para escribir 
+		myWindow.document.open();
+
+		// Crea el documento
+		myWindow.document.write("<html><head><title>Ventana</title></head><body>"); 
+		myWindow.document.write("<h1>Nuestra ventana</h1>");
+		myWindow.document.write('<p><button onClick="window.close()">Cerrar ventana</button>');
+		myWindow.document.write('<script>setTimeout( ()=>window.close(), 1000 );<\/script>');
+		myWindow.document.write("</body></html>");
+
+		// cierra la corriente de datos del documento 
+		myWindow.document.close();
+
+	}
+			
+} 
+
+function crearVentanas( ){
+	abreNuevaVentana();
+}
+
+</script>
+</head>
+<body style="text-align:center;">
+<button onClick="crearVentanas()" style="font-size: 20px; margin: 30px;">Abrir Ventas Multiples</button>
+</body>
+</html>

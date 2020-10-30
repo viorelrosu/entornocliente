@@ -1,0 +1,53 @@
+<html>
+<head>
+<script>
+
+	var myWindow;
+
+function abreNuevaVentana()
+{
+
+	var medida = parseInt(document.getElementById('idMedida').value);
+	
+	// abrir una nueva ventana con el nombre pasado como parámetro
+	// no se especifica una URL
+	if( (typeof(myWindow) == 'undefined') || (myWindow.closed) ) {
+		myWindow= window.open("","Nueva Ventana","width=500,height=400,top="+medida+",left="+medida);
+			
+		// Abre la corriente de datos del documento para escribir 
+		myWindow.document.open();
+
+		// Crea el documento
+		myWindow.document.write("<html><head><title>Ventana</title></head><body>"); 
+		myWindow.document.write("<h1>Nuestra ventana</h1>");
+		myWindow.document.write("<p>El top y left es de: "+medida+"</p>");
+		myWindow.document.write('<p><button onClick="window.close()">Cerrar ventana</button>');
+		myWindow.document.write("</body></html>");
+
+		// cierra la corriente de datos del documento 
+		myWindow.document.close();
+
+		setTimeout( ()=>myWindow.close(), 5000 );
+	} else {
+		myWindow.focus();
+	}
+} 
+
+function closeVentana(){
+	if(myWindow.closed === false) {
+		myWindow.close();
+	}
+	
+}
+
+</script>
+</head>
+<body>
+<form>
+	<label>Introduce medidas top y left</label><br />
+	<input type="text" name="medida" id="idMedida" value="250" />
+	<input type=button value="Crear Ventana" onClick="abreNuevaVentana()">
+	<input type=button value="Cerrar Ventana" onClick="closeVentana()">
+</form>
+</body>
+</html>
