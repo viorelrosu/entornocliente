@@ -1,0 +1,47 @@
+<html>
+<head>
+
+</head>
+<body style="text-align:center;">
+<h2>Carusel auto</h2>
+<img src="img/img1.jpeg" width="640" height="480" id="imagen" /><br /><br />
+
+<input type="button" id="iniciar" value="Iniciar" onclick="startInterval()" style="margin-top: 20px;"/>
+<input type="button" id="parar" value="Parar" onclick="stopInterval()" style="margin-top: 20px;"/>
+
+<script>
+
+	var index=0;
+	var parar='';
+
+	var imagenes = new Array('img1','img2','img3','img4');
+	imgCnt = imagenes.length-1;
+	function cambiarImagen() {
+		
+		//document.getElementById('imagen').setAttribute('src', 'img/'+imagenes[index]+'.jpeg');
+		document.getElementById('imagen').src = 'img/'+imagenes[index]+'.jpeg';
+		//console.log(index);
+		if(index==imgCnt) {
+			index=0;
+		} else {
+			index ++;
+		}
+	} 
+
+	function startInterval(){
+		parar=setInterval(cambiarImagen, 1000);
+		document.getElementById("iniciar").disabled=true;
+		document.getElementById("parar").disabled=false;
+	}
+
+	function stopInterval(){
+		clearInterval(parar);
+		parar=0;
+		document.getElementById("iniciar").disabled=false;
+		document.getElementById("parar").disabled=true;
+	}
+
+</script>
+
+</body>
+</html>
