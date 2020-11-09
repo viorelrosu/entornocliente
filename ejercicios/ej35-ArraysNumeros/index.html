@@ -9,19 +9,35 @@
 <body>
 
 	<div class="container mt-5">
+
+		<div class="row mt-5 mb-5">
+			<div class="col-6"><h2>C.R.U.D. Arrays números</h2></div>
+		</div>
+
 		<div class="row">
 			<div class="col-6">
-				<form>
+				<div class="alert alert-danger" id="idAlertError"></div>
+				<div class="alert alert-success" id="idAlertSuccess"></div>
+				<div class="alert alert-warning" id="idAlertWarning">
+						<span id="mensajeConfirm">¿Estás seguro?</span>
+						<hr>
+						<button class="btn btn-primary btn-sm" onclick="confirm();">Cofirmar</button>
+						<button class="btn btn-danger btn-sm" onclick="confirmCancel();">Cancelar</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
 					<div class="form-row">
-						<div class="form-group col-4">
-							<input type="text" id="inputNum" class="form-control" name="numero" value="" />
+						<div class="form-group col-2">
+							<input type="text" id="inputNum" class="form-control" name="numero" value="" readonly="readonly" />
 						</div>
-						<div class="form-group col-4">
-							<button class="btn btn-primary" id="btnAceptar" onClick="aceptar()">Aceptar</button>
+						<div class="form-group col-10">
+							<button class="btn btn-primary" id="btnAceptar" onClick="aceptar();">Aceptar</button>
 							<button class="btn btn-danger" id="btnCancel" onClick="cancel()">Cancelar</button>
 						</div>
 					</div>
-				</form>
 			</div>
 		</div>
 
@@ -39,7 +55,23 @@
 				<button class="btn btn-success" id="btnNew" onclick="setAccion('new');" > Alta </button>
 				<button class="btn btn-info" id="btnEdit" onclick="setAccion('edit');"> Modificar </button>
 				<button class="btn btn-danger" id="btnDel" onclick="setAccion('del');"> Baja </button>
-				<button class="btn btn-secondary" id="btnList" onclick="list();"> Listado </button>
+				<button class="btn btn-secondary" id="btnList" onclick="toggleList();"> Listado </button>
+			</div>
+		</div>
+
+		<div id="divList">
+			<div class="row mt-5">
+				<div class="col-6" id="">
+					<h4>Números ordenados asc</h4>
+					<h2 id="divListaOrdenadaAsc"></h2>
+				</div>
+			</div>
+
+			<div class="row mt-5">
+				<div class="col-6" id="">
+					<h4>Números ordenados des</h4>
+					<h2 id="divListaOrdenadaDesc"></h2>
+				</div>
 			</div>
 		</div>
 	</div>

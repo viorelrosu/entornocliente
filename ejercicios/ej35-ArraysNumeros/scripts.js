@@ -1,17 +1,17 @@
-var numeros = new Array(1,3,5,7,9);
+var numeros = new Array(9,5,3,7,1);
 var index = 0;
+
 var inputNum = document.getElementById('inputNum');
-var btnFirst = document.getElementById('btnFirst');
-var btnPrev = document.getElementById('btnPrev');
-var btnNext = document.getElementById('btnNext');
-var btnLast = document.getElementById('btnLast');
-var btnNew = document.getElementById('btnNew');
-var btnDel = document.getElementById('btnDel');
-var btnEdit = document.getElementById('btnEdit');
-var btnList = document.getElementById('btnList');
 var btnAceptar = document.getElementById('btnAceptar');
 var btnCancel = document.getElementById('btnCancel');
+var alertError = document.getElementById('idAlertError');
+var alertSuccess = document.getElementById('idAlertSuccess');
+var alertWarning = document.getElementById('idAlertWarning');
+var divListaOrdenadaAsc = document.getElementById('divListaOrdenadaAsc');
+var divListaOrdenadaDesc = document.getElementById('divListaOrdenadaDesc');
+var divList = document.getElementById('divList');
 var accion = '';
+
 var elements = new Array(
 	'inputNum',
 	'btnFirst',
@@ -32,10 +32,11 @@ disableElements['del'] = new Array('btnNew','btnEdit', 'btnDel', 'btnList');
 function inicializar(){
 	btnAceptar.style.display = 'none';
 	btnCancel.style.display = 'none';
+	alertError.style.display = 'none';
+	alertSuccess.style.display = 'none';
+	alertWarning.style.display = 'none';
 	inputNum.value = numeros[index];
 }
-
-inicializar();
 
 function recorrerArray(tipo) {
 	switch(tipo) {
@@ -43,10 +44,18 @@ function recorrerArray(tipo) {
 			index = 0;
 		break;
 		case 'prev':
-			index--;
+			if(index == 0) {
+				index = numeros.length-1;
+			} else {
+				index--;
+			}
 		break;
 		case 'next':
-			index++;
+			if(index == numeros.length-1) {
+				index = 0;
+			} else {
+				index++;
+			}
 		break;
 		case 'last':
 			index = numeros.length-1;
@@ -60,8 +69,7 @@ function showAll() {
 	elements.forEach((value)=>{
 		document.getElementById(value).disabled = false;
 	});
-	btnCancel.style.display = 'none';
-	btnAceptar.style.display = 'none';
+	inicializar();
 }
 
 function hideElements(tipo) {
@@ -72,16 +80,24 @@ function hideElements(tipo) {
 }
 
 function setEscenario(tipo){
-	console.log(tipo);
 	showAll();
 	hideElements(tipo);
 	btnCancel.style.display = 'inline';
 	btnAceptar.style.display = 'inline';
-	//console.log(disableElements[tipo]);
+
+	if(tipo == 'new') {
+		inputNum.value = '';
+		inputNum.removeAttribute('readonly');
+	}
+
+	if(tipo == 'edit') {
+		inputNum.removeAttribute('readonly');
+	}
 }
 
 function setAccion(tipo){
 	accion = tipo;
+	//console.log(tipo);
 	setEscenario(tipo);
 }
 
@@ -89,18 +105,143 @@ function cancel(){
 	showAll();
 }
 
-function doAccion(){
+function comprobarNumero(){
+	var res = false;
+	var prohibido = 'abcdefghijklmnopqrstuvxwçáéíóú ';
+	//console.log(inputNum.value);
+	if( prohibido.indexOf(inputNum.value) == -1 )  {
+		res = true;
+	}
+
+	return res;
+}
+
+function setAlertError(mensaje){
+	alertError.innerHTML = mensaje;
+	alertError.style.display = 'block';
+	alertSuccess.style.display = 'none';
+	alertWarning.style.display = 'none';
+}
+
+function setAlertSuccess(mensaje){
+	alertSuccess.innerHTML = mensaje;
+	alertSuccess.style.display = 'block';
+	alertError.style.display = 'none';
+	alertWarning.style.display = 'none';
+}
+
+function setAlertWarning(){
+	document.getElementById('mensajeConfirm').innerHTML = '¿Estás seguro de eliminar el número '+ numeros[index]+' ?'
+	alertWarning.style.display = 'block';
+}
+
+function confirmCancel(){
+	alertWarning.style.display = 'none';
+}
+
+function confirm(){
 	switch(accion){
-		case 'new':
-			numeros.push(inputNum.value);
-		break;
-		case 'edit':
-		break;
 		case 'del':
-		break;
+			var numLength = numeros.length;
+			numeros.splice(index, 1);
+			setAlertSuccess('Muy bien, número eliminado correctamente');
+			if(index == numLength-1) {
+				index = 0;
+			}
+			if(index == 0) {
+				index = numeros.length-1;
+			}
+			inputNum.value = numeros[index];
+			list();
+			break;
 	}
 }
 
-function list(){
-	
+
+function aceptar(){
+	//console.log(accion);
+	switch(accion){
+		case 'new':
+			if(!isNaN(inputNum.value)) {
+				numeros.push(parseInt(inputNum.value));
+				setAlertSuccess('Muy bien, número insertado correctamente');
+				inputNum.value='';
+				list();
+			} else {
+				// alert no es numero
+				setAlertError('Hay que introducir un número');
+			}
+			break;
+		case 'edit':
+			if(!isNaN(inputNum.value)) {
+				numeros[index] = parseInt(inputNum.value);
+				setAlertSuccess('Muy bien, número modificado correctamente');
+				list();
+			} else {
+				// alert no es numero
+				setAlertError('Hay que introducir un número');
+			}
+			break;
+		case 'del':
+			//pedir confirmación
+			setAlertWarning();
+			break;
+	}
 }
+
+function compareAsc(first, second) {
+ if (first == second)
+ 	return 0;
+ if (first < second)
+ 	return -1;
+ else
+ 	return 1;
+}
+
+function compareDesc(first, second) {
+ if (first == second)
+ 	return 0;
+ if (first < second)
+ 	return +1;
+ else
+ 	return -1;
+}
+
+function list(){
+	var cadena = '';
+	var numOrdAsc = numeros;
+	numOrdAsc.sort(compareAsc);
+	numOrdAsc.forEach((value,index,ar)=>{
+		if(index == ar.length-1) {
+			cadena += value;
+		} else {
+			cadena += value + ', ';
+		}
+	});
+
+	divListaOrdenadaAsc.innerHTML = cadena;
+
+	numOrdAsc.sort(compareDesc);
+	cadena = '';
+	numOrdAsc.forEach((value,index,ar)=>{
+		if(index == ar.length-1) {
+			cadena += value;
+		} else {
+			cadena += value + ', ';
+		}
+	});
+	divListaOrdenadaDesc.innerHTML = cadena;
+}
+
+function toggleList(){
+	if(divList.style.display == 'block') {
+		divList.style.display = 'none';
+	} else {
+		divList.style.display = 'block';
+	}
+}
+
+//al iniciar la página
+inicializar();
+list();
+divList.style.display = 'block';
