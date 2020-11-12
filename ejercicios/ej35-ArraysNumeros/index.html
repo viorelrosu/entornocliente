@@ -16,6 +16,7 @@
 
 		<div class="row">
 			<div class="col-6">
+				<div class="alert alert-info" id="idAlertInfo"></div>
 				<div class="alert alert-danger" id="idAlertError"></div>
 				<div class="alert alert-success" id="idAlertSuccess"></div>
 				<div class="alert alert-warning" id="idAlertWarning">
@@ -55,11 +56,18 @@
 				<button class="btn btn-success" id="btnNew" onclick="setAccion('new');" > Alta </button>
 				<button class="btn btn-info" id="btnEdit" onclick="setAccion('edit');"> Modificar </button>
 				<button class="btn btn-danger" id="btnDel" onclick="setAccion('del');"> Baja </button>
-				<button class="btn btn-secondary" id="btnList" onclick="toggleList();"> Listado </button>
+				<button class="btn btn-secondary" id="btnList" onclick="verList();"> Listado </button>
 			</div>
 		</div>
 
 		<div id="divList">
+			<div class="row mt-5">
+				<div class="col-6" id="">
+					<h4>Array de números</h4>
+					<h2 id="divListaNumeros"></h2>
+				</div>
+			</div>
+
 			<div class="row mt-5">
 				<div class="col-6" id="">
 					<h4>Números ordenados asc</h4>
