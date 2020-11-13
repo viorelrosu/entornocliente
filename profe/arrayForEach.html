@@ -1,0 +1,45 @@
+<html>
+<body>
+<script>
+var miMatriz = new Array('rojo','verde','azul', 'amarillo');
+function mostrar(valor,indice,matriz){
+document.write('<br>' + 'El valor del elemento[' + indice + '] de ' + matriz + ' es ' + valor);
+}
+miMatriz.forEach(mostrar);
+
+var colores01 = new Array('rojo','verde','azul');
+var numeros = new Array(1,2,3);
+document.write('<br>' +colores01.concat(numeros));
+
+var colores = new Array('rojo','verde','azul');
+document.write('<br>' +colores.join('+'));
+
+var colores2 = new Array('rojo','verde','azul');
+colores2.reverse();
+document.write('<br>' +colores2);
+
+var colores3 = new Array('rojo','verde','naranja');
+document.write('<br>' +colores3.shift());
+
+var colores4 = new Array('rojo','verde','naranja');
+/*var colores04 = new Array();
+colores04=colores4.slice(1,2)
+alert(colores04);
+*/
+document.write('<br>' +colores4.slice(1,2));
+
+var colores5 = new Array('rojo','verde','Rojo',5);
+document.write('<br>' +colores5.sort());
+
+var colores6 = new Array('rojo','verde','azul');
+colores6.splice(1,2,'naranja','rosa','violeta');
+document.write('<br>' +colores6);
+colores6.splice(2,0,'amarillo');
+document.write('<br>' +colores6);
+
+var colores7 = new Array('rojo','verde','naranja');
+document.write('<br>' +colores7.unshift('amarillo'));
+document.write('<br>' +colores7);
+</script>
+</body>
+</html>

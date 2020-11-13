@@ -50,23 +50,24 @@ function recorrerArray(tipo) {
 			index = 0;
 		break;
 		case 'prev':
-			if(index == 0) {
-				index = numeros.length-1;
-			} else {
-				index--;
-			}
+			index--;
 		break;
 		case 'next':
-			if(index == numeros.length-1) {
-				index = 0;
-			} else {
-				index++;
-			}
+			index++;
 		break;
 		case 'last':
 			index = numeros.length-1;
 		break;
 	}
+
+	if(index < 0) {
+		index = numeros.length-1;
+	}
+
+	if(index > numeros.length-1) {
+		index = 0;
+	}
+
 	inputNum.value = numeros[index];
 }
 

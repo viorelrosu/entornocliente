@@ -1,0 +1,235 @@
+<!DOCTYPE>
+<head>
+  <title>Array de numeros</title>
+    <meta charset=”UTF-8" />
+  	
+  <script>
+   
+        miArr = new Array(1,45,3,46);
+		auxArr = [];
+        indiceArr=0;
+        tamanioArr=miArr.length-1;
+		accionAceptar=0;
+        function chgSlide(direccion){
+		       if (direccion==2){indiceArr=0}
+                else if (direccion==3){indiceArr=tamanioArr}
+                  else{				
+                indiceArr=indiceArr + direccion
+                if (indiceArr > tamanioArr){
+                    indiceArr=0;
+                }
+                if (indiceArr < 0){
+                    indiceArr=tamanioArr;
+                }}
+                document.getElementById("miTexto").value=miArr[indiceArr];
+				mostrarListados(); 
+				document.getElementById("btnAcep").style.visibility  = 'hidden';
+				document.getElementById("btnCancel").style.visibility  = 'hidden';
+        }
+	    function mostrarListados(){
+		    pasarArray();
+			document.getElementById("miDiv").innerHTML=miArr + "   indice: " + indiceArr;
+		    document.getElementById("miDivAsc").innerHTML=auxArr.sort(CompareForSort);
+			document.getElementById("miDivDes").innerHTML=auxArr.sort(CompareForSortDes);
+		}		
+		function listadoVentana(){
+		    c=[];
+			d=[];
+		    for (a in miArr){
+			    c[a]=miArr[a];
+				d[a]=miArr[a];
+			}			
+			var salida="";
+			salida="<table border=2><tr><th>Array</th><th>Ascendente</th><th>Descendente</th></tr>";
+            c=c.sort(CompareForSort);
+            d=d.sort(CompareForSortDes);
+			for (i=0; i<c.length;i++){			    
+				salida+="<tr><td>"+miArr[i]+"</td><td>"+c[i]+"</td><td>"+d[i]+"</td></tr>";
+			}
+			salida+="</table>"
+			miWindow=window.open("","ventana","width=400, height=400, top=200, left=200");
+			miWindow.document.open();
+			miWindow.document.write("<html>");
+			miWindow.document.write("<head>");
+			miWindow.document.write("<title>Listado en Ventana</title>");
+			miWindow.document.write("</head>");
+			miWindow.document.write("<body>");
+			miWindow.document.write("<center>");
+			miWindow.document.write("Listado Array de numeros");
+			miWindow.document.write("<br><br>");
+			miWindow.document.write(salida);
+			miWindow.document.write("<br><input type='button' value='Cerrar ventana' onclick='window.close();'");
+			miWindow.document.write("</center>");		
+			miWindow.document.write("</body>");
+			miWindow.document.write("</html>");
+			miWindow.document.close();		
+		}			
+		function pasarArray(){
+		    auxArr.length=0;
+		    for (a in miArr){
+			    auxArr[a]=miArr[a];
+			} 
+		}
+	    function CompareForSort(first, second)
+			{
+				return (first - second);    
+			}
+	    function CompareForSortDes(first, second)
+			{
+			   return (second - first);    
+			}
+        function alta(){
+		    /*document.getElementById("uno").disabled=true;
+			document.getElementById("dos").disabled=true;
+		    document.getElementById("tres").disabled=true;
+			document.getElementById("cuatro").disabled=true;
+			*/
+			navegador(true);
+			/*document.getElementById("btnBaja").disabled=true;
+			document.getElementById("btnMod").disabled=true;
+			document.getElementById("btnAlta").disabled=true;
+			document.getElementById("btnAcep").style.visibility  = 'visible';
+			document.getElementById("btnCancel").style.visibility  = 'visible';
+			document.getElementById("miDivErr").innerHTML="";
+			*/
+			botones(true, 'visible');
+			document.getElementById("miTexto").value="";
+			accionAceptar=1;  /// alta;		
+		}	
+		function baja(){
+		    navegador(true);
+			/*document.getElementById("btnBaja").disabled=true;
+			document.getElementById("btnMod").disabled=true;
+			document.getElementById("btnAlta").disabled=true;
+			document.getElementById("btnAcep").style.visibility  = 'visible';
+			document.getElementById("btnCancel").style.visibility  = 'visible';
+			document.getElementById("miDivErr").innerHTML="";
+            */
+			botones(true, 'visible');			
+			accionAceptar=2;	/// baja	
+		}
+		function modificacion(){
+		    navegador(true);
+			botones(true, 'visible');			
+			accionAceptar=3;   /// modificar 		
+		}
+		function mostrarBotones(){
+		    navegador(false);
+			botones(false, 'hidden');				
+		}
+		function botones(valor1, valor2){
+		    document.getElementById("btnBaja").disabled=valor1;
+			document.getElementById("btnMod").disabled=valor1;
+			document.getElementById("btnAlta").disabled=valor1;	
+            document.getElementById("btnAcep").style.visibility  = valor2;
+			document.getElementById("btnCancel").style.visibility  = valor2;
+			document.getElementById("miDivErr").innerHTML="";			
+		}
+		function navegador(valor){
+		    document.getElementById("uno").disabled=valor;
+			document.getElementById("dos").disabled=valor;
+		    document.getElementById("tres").disabled=valor;
+			document.getElementById("cuatro").disabled=valor;
+		}
+        function aceptar(){
+		    var numeros="0123456789";
+			var miNumero=document.getElementById("miTexto").value;
+			document.getElementById("miDivErr").innerHTML="" 
+			if (accionAceptar==1){	              			
+			  if (miNumero.trim().length>0){	
+				var esNumero = false;
+				var esLetra = false;
+				for(i=0; i<miNumero.length; i++){
+					  /* si es un número es correcto*/
+					  if (numeros.indexOf(miNumero.charAt(i))!=-1){
+					  	 esNumero=true;
+					  }
+					  else{						 
+						 esLetra=true
+					  }	  
+				   } 
+				if (esLetra==true){
+						 document.getElementById("miDivErr").innerHTML="<font color='red'>La cadena de caracteres contiene caracteres no numericos<font>"
+						 }
+						 else{
+						 var confirma=confirm("El número es correcto?")
+                         if (confirma){
+							 miArr[miArr.length]= miNumero;
+							 tamanioArr=miArr.length-1;
+							 chgSlide(2);
+						 } 						 
+						 mostrarBotones();
+						 }
+				   }
+				   else 
+			       document.getElementById("miDivErr").innerHTML="<font color='red'>La cadena de caracteres no puede estar vac&iacute;a<font>"
+			  }
+			  
+            if (accionAceptar==2){
+				var confirma=confirm("Realmente quiere eliminar el número?")
+                if (confirma){
+				    miArr.splice(indiceArr,1);					
+					tamanioArr=miArr.length-1;
+					chgSlide(2);
+					 } 						 
+				 mostrarBotones();		
+			}	
+			if (accionAceptar==3){
+			   if (miNumero.trim().length>0){ 
+				var esNumero = false;
+				var esLetra = false;
+				for(i=0; i<miNumero.length; i++){
+					  /* si es un número es correcto*/
+					  if (numeros.indexOf(miNumero.charAt(i))!=-1){
+					  	 esNumero=true;
+					  }
+					  else{						 
+						 esLetra=true
+					  }	  
+				   } 
+				if (esLetra==true){
+						 document.getElementById("miDivErr").innerHTML="<font color='red'>La cadena de caracteres contiene caracteres no numericos<font>"
+						 }
+						 else{
+						 var confirma=confirm("Realmente quiere modificar el número?")
+						if (confirma){
+							miArr[indiceArr]=miNumero;					
+							chgSlide(2);
+						 } 						 
+						 mostrarBotones()
+						   }
+               }
+				   else 
+			       document.getElementById("miDivErr").innerHTML="<font color='red'>La cadena de caracteres no puede estar vac&iacute;a<font>"						   
+			}					 
+			}				
+   
+  </script>
+  <noscript>
+   	 <p><em>Si lees este mensaje es que el navegador no ejecuta guiones JavaScript</em></p>
+  </noscript>
+ </head>
+ <body bgcolor="white" onload="chgSlide(2)">
+     <h1 align="center"> Numero: <input type="text" id="miTexto"/>
+         <p></p>
+         <p><p><div id="divBtn">
+     		 <input type="button" onclick="chgSlide(2)" value="Primera" id="uno"/>
+		     <input type="button" onclick="chgSlide(-1)" value="&lt;&lt; Anterior" id="dos"/>
+             <input type="button" onclick="chgSlide(1)" value="&gt;&gt; Siguiente" id="tres"/> 
+			 <input type="button" onclick="chgSlide(3)" value="Última" id="cuatro"/>
+			 <div>
+		<p>
+			 <input type="button" onclick="alta()" value="Alta" id="btnAlta"/>
+		     <input type="button" onclick="baja()" value="Baja" id="btnBaja"/>
+             <input type="button" onclick="modificacion()" value="Modificacion" id="btnMod"/> 
+			 <input type="button" onclick="listadoVentana()" value="Listado"/>	
+             <input type="button" onclick="aceptar()" value="Aceptar" id="btnAcep" />
+             <input type="button" onclick="mostrarBotones()" value="Cancelar" id="btnCancel" />			 
+		<p>	<div id="miDiv"></div>
+		<p>	<div id="miDivAsc"></div>
+        <p>	<div id="miDivDes"></div>
+        <p> <div id="miDivErr"></div> 		
+</body>
+</html>
+
+

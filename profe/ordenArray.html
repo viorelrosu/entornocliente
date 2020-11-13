@@ -1,0 +1,149 @@
+<script>
+var a = new Array(4, 11, 2, 10, 3, 1);
+document.write("Contenido del Array: ".bold() + a + '<br>');
+var b = a.sort();
+document.write("Ordenado con sort()".bold()+"<br>");
+document.write(b);
+document.write("<br/>");
+
+// Este es el orden de los caracteres ASCII.
+// Output: 1,10,11,2,3,4)
+
+// Ordenación de los elementos del array mediante el uso de una función.
+document.write("Ordenado con sort(funcionOdenacionNumerica)".bold()+"<br>");
+b = a.sort(CompareForSort);
+document.write(b);
+document.write("<br/>");
+// Output: 1,2,3,4,10,11.
+
+// Ordenación de los elementos del array mediante el uso de una función descendente.
+document.write("Ordenado con sort(funcionOdenacionNumericaDescendente)".bold()+"<br>");
+b = a.sort(CompareForSortDes);
+document.write(b);
+document.write("<br/>");
+// Output: 11,10,4,3,2,1.
+
+var letters0 = ['ab', 'dd', 'pj', 'ac', 'ef', 'zc', 'gf', 'cg', 'rf'];
+
+
+
+// Ordena los elementos del array en orden numérico ascendente.
+function CompareForSort(first, second)
+{
+    if (first == second)
+        return 0;
+    if (first < second)
+        return -1;
+    else
+        return 1; 
+}
+/*function CompareForSort(first, second)
+{
+    return first - second;    
+}*/
+// Ordena los elementos del array en orden numérico descendente.
+function CompareForSortDes(first, second)
+{
+    if (first == second)
+        return 0;
+    if (first < second)
+        return 1;
+    else
+        return -1; 
+}
+/*function CompareForSortDes(first, second)
+{
+   return second - first;    
+}*/
+// Define the callback function.
+function ShowResults(value, index, ar) {
+    document.write("valor: ".bold() + value);
+    document.write(" indice: ".bold() + index);
+    document.write("<br />");
+}
+
+// Crear el array.
+var letters = ['ab', 'cd', 'ef'];
+document.write("Contenido del Array: ".bold() +letters + '<br>');
+// Llama a la función ShowResults para cada
+// elemento del array.
+document.write("Muestra el contenido el valor y el índice del elemento, para cada elemento del array".bold()+"<br>");
+letters.forEach(ShowResults);
+
+// Output:
+//  valor: ab indice: 0 
+//  valor: cd indice: 1 
+//  valor: ef indice: 2 
+// Crea el array.
+var numbers = [10, 11, 12];
+document.write("Contenido del Array: ".bold() +numbers + '<br>');
+var sum = 0;
+function addNumber(value) { sum += value; }
+// Llama a la función addNumber para cada elemento del array.
+document.write("Muestra la suma de todos los elementos del array".bold()+"<br>");
+numbers.forEach(addNumber);
+
+document.write(sum+'<br>');
+// Output: 33
+/*
+// Create an array.
+var numbers = [10, 11, 12];
+
+// Call the addNumber callback function for each array element.
+var sum = 0;
+numbers.forEach(
+    function addNumber(value) { sum += value; }
+);
+
+document.write(sum);
+// Output: 33
+
+*/
+
+var nombres = ["victor","pedro","carmen","irene","luis"];
+document.write("Contenido del Array: ".bold() +nombres + '<br>');
+//La estructura Javascript for in tiene la siguiente sintaxis:
+document.write("Muestra el contenido del array elemento a elemento usando la estructura for in y of".bold()+"<br>");
+	/*for (name in nombres) {
+		document.write(nombres[name]+"</br>");
+	}*/
+	for (name of nombres) {
+		document.write(name+"</br>");
+	}
+	
+// Ordena los elementos del array en orden alfabético ascendente.
+function CompareForSortLetras(first, second)
+{
+    primero=first.toLowerCase();
+	segundo=second.toLowerCase()
+    if (primero == segundo)
+        return 0;
+    if (primero < segundo)
+        return -1;
+    else
+        return 1; 
+}	
+	
+// Ordena los elementos del array en orden alfabético descendente.
+function CompareForSortLetrasDes(first, second)
+{
+    primero=second.toLowerCase();
+	segundo=first.toLowerCase()
+    if (primero == segundo)
+        return 0;
+    if (primero < segundo)
+        return -1;
+    else
+        return 1; 
+}		
+	
+var letters0 = ['ab', 'Dd', 'pj', 'Ac', 'ef', 'zc', 'gf', 'cg', 'rf'];
+document.write("Ordenado con sort(funcionOdenacionAlfabéticaAscendente)".bold()+"<br>");
+letrasOrdenado = letters0.sort(CompareForSortLetras);
+document.write("Muestra el valor y el índice del elemento, para cada elemento del array".bold()+"<br>");
+letrasOrdenado.forEach(ShowResults);
+document.write("Ordenado con sort(funcionOdenacionAlfabéticaDescendente)".bold()+"<br>");
+letrasOrdenado = letters0.sort(CompareForSortLetrasDes);
+document.write("Muestra el valor y el índice del elemento, para cada elemento del array".bold()+"<br>");
+letrasOrdenado.forEach(ShowResults);
+</script>
