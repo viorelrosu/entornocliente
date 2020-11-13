@@ -1,0 +1,41 @@
+<html>
+<head>
+<script>
+var imagenes = new Array('img1','img2','img3','img4');
+var index = 0;
+
+//document.getElementsByTagName("H1")[0].setAttribute("class", "democlass");
+//document.getElementsByTagName("H1")[0].getAttribute("class");
+//document.getElementById('idImagen').getAttribute("src");
+
+function anterior() {
+	index = (index==0) ? 3 : index-1;
+	document.getElementById('idImagen').setAttribute('src','img/'+imagenes[index]+'.jpeg');
+}
+
+function siguiente() {
+	index = (index==3) ? 0 : index+1;
+	document.getElementById('idImagen').setAttribute('src','img/'+imagenes[index]+'.jpeg');
+}
+
+function ultima() {
+	document.getElementById('idImagen').setAttribute('src','img/'+imagenes[3]+'.jpeg');
+	index=3;
+}
+
+function primera() {
+	document.getElementById('idImagen').setAttribute('src','img/'+imagenes[0]+'.jpeg');
+	index=0;
+}
+
+</script>
+</head>
+<body style="text-align:center;">
+<img src="img/img1.jpeg" width="200" id="idImagen"/><br />
+<button onClick="primera()" style="font-size: 20px; margin: 30px;">primera</button>
+<button onClick="anterior()" style="font-size: 20px; margin: 30px;">anterior</button>
+<button onClick="siguiente()" style="font-size: 20px; margin: 30px;">siguiente</button>
+<button onClick="ultima()" style="font-size: 20px; margin: 30px;">última</button>
+
+</body>
+</html>
