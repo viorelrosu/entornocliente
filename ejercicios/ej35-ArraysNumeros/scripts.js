@@ -94,6 +94,7 @@ function setEscenario(tipo){
 	if(tipo == 'new') {
 		inputNum.value = '';
 		inputNum.removeAttribute('readonly');
+		inputNum.focus();
 	}
 
 	if(tipo == 'edit') {
@@ -147,7 +148,7 @@ function setAlertInfo(){
 	alertError.style.display = 'none';
 	alertSuccess.style.display = 'none';
 	alertWarning.style.display = 'none';
-	console.log(alertInfo);
+	//console.log(alertInfo);
 }
 
 function setAlertError(mensaje){
@@ -176,23 +177,22 @@ function confirmCancel(){
 }
 
 function checkIndex(){
-	if(index == numLength-1) {
-		index = 0;
-	}
-	if(index == 0) {
-		index = numeros.length-1;
+	var numLength = numeros.length;
+
+	if(index == numLength) {
+		index = numLength-1;
 	}
 }
 
 function confirm(){
 	switch(accion){
 		case 'del':
-			var numLength = numeros.length;
 			numeros.splice(index, 1);
 			setAlertSuccess('Muy bien, número eliminado correctamente');
 			checkIndex();
-			inputNum.value = numeros[index];
+			inputNum.value = numeros[numeros.length];
 			list();
+			cancel();
 			break;
 
 		case 'edit':
@@ -235,27 +235,37 @@ function aceptar(){
 }
 
 function compareAsc(first, second) {
+//solamente cuando es numerico
+	return first-second;
+/*
  if (first == second)
  	return 0;
  if (first < second)
  	return -1;
  else
  	return 1;
+*/
 }
 
 function compareDesc(first, second) {
+//solamente cuando es numerico
+	return second-first;
+/*
  if (first == second)
  	return 0;
  if (first < second)
  	return +1;
  else
  	return -1;
+ */
 }
 
 function list(){
 	var cadena = '';
+	numOrdAsc = [];
+	numOrdDesc = [];
 
-	numeros.forEach((value,index,ar)=>{
+	numeros.forEach((value, index, ar)=>{
 		numOrdAsc.push(value);
 		numOrdDesc.push(value);
 		if(index == ar.length-1) {
@@ -269,7 +279,7 @@ function list(){
 
 	cadena = '';
 
-	numOrdAsc.sort(compareAsc);
+	numOrdAsc.sort( (first,second) => first-second );
 	numOrdAsc.forEach((value,index,ar)=>{
 		if(index == ar.length-1) {
 			cadena += value;
@@ -280,7 +290,7 @@ function list(){
 
 	divListaOrdenadaAsc.innerHTML = cadena;
 
-	numOrdDesc.sort(compareDesc);
+	numOrdDesc.sort( (first,second) => second-first );
 	cadena = '';
 	numOrdDesc.forEach((value,index,ar)=>{
 		if(index == ar.length-1) {
