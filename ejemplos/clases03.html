@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clases en Javascript</title>
+</head>
+<body>
+
+	<div id="miDiv"></div>
+	<script>
+		class Car {
+			constructor(marca, modelo){
+				this._marca = marca;
+				this._modelo = modelo;
+			}
+
+			present(x){
+				return x + ' un coche ' + this._marca + '.';
+			}
+
+			static hello() {
+				return "Hello!! ";
+			}
+
+			// @param un objeto de tipo Car
+			// se invoca con Car.hola();
+			static hola(x) {
+				return "Hola!! " + x._marca;
+			}
+
+			get marca(){
+				return this._marca;
+			}
+
+			set marca(marca){
+				this._marca = marca;
+			}
+
+			get modelo(){
+				return this._modelo;
+			}
+
+			set modelo(modelo){
+				this._modelo = modelo;
+			}
+
+		}
+
+		var mycar = new Car("Ford", 'asd');
+		var yourcar = new Car("Mercedes", 'asd');
+
+		var html = '';
+		html += Car.hello() + mycar.present('Yo tengo') + '<br />';
+		html += Car.hello() + yourcar.present('Tu tienes') + '<br />';
+		html += Car.hola(mycar) + '<br />';
+		html += Car.hola(yourcar) + '<br />';
+
+		yourcar.marca='Ferrari';
+		html += Car.hello() + yourcar.present('Tu tienes') + '<br />';
+		document.getElementById('miDiv').innerHTML = html;
+	</script>
+</body>
+</html>

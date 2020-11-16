@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clases en Javascript</title>
+</head>
+<body>
+
+	<div id="miDiv"></div>
+	<script>
+		class Car {
+			constructor(marca, modelo){
+				this.marca = marca;
+				this.modelo = modelo;
+			}
+
+			present(){
+				return 'Tengo un coche ' + this.marca;
+			}
+
+		}
+
+		var mycar = new Car("Ford", 'asd');
+		var yourcar = new Car("Mercedes", 'asd');
+		var html = 'Mi Coche: ' + mycar.marca + '<br />';
+		html += 'Tu Coche: ' + yourcar.marca +'<br />';
+		html += mycar.present() + '<br />';
+		document.getElementById('miDiv').innerHTML = html;
+	</script>
+</body>
+</html>
