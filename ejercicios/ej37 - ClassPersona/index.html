@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Class Humano</title>
+</head>
+<body>
+	<h3>Class Humano</h3>
+	<fieldset>
+		<legend>Dar de alta Humano</legend>
+		<label>Introduce Edad</label><br/>
+		<input type="text" name="edad" id="edad" value="" /><br/><br/>
+		<label>Introduce Peso</label><br/>
+		<input type="text" name="peso" id="peso" value="" /><br/><br />
+		<button onclick="addHumano()">Añadir Humano</button>
+	</fieldset>
+	<fieldset>
+		<legend>Acciones</legend>
+		<button onclick="list();">Listado</button>
+	</fieldset>
+	<div id="divDatos" style="margin: 20px 0px; padding: 10px;"></div>
+	<div id="divDatosHumano" style="margin: 20px 0px; padding: 10px;"></div>
+
+	<!--
+	class humano con atributos:
+		edad
+		peso
+
+		metodos:
+			correr() -> disminuye el peso en una unidad
+			comer() -> augmenta el peso en una unidad
+			muestraUnDato()
+			estatico mostrarDatos() -> muestra un numero indefinido de atributos de objetos
+	-->
+
+	<script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>
