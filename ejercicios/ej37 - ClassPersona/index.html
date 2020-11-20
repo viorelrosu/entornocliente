@@ -3,24 +3,189 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Class Humano</title>
+	<title>Class Persona</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		.error {
+			color: red;
+		}
+	</style>
 </head>
 <body>
-	<h3>Class Humano</h3>
-	<fieldset>
-		<legend>Dar de alta Humano</legend>
-		<label>Introduce Edad</label><br/>
-		<input type="text" name="edad" id="edad" value="" /><br/><br/>
-		<label>Introduce Peso</label><br/>
-		<input type="text" name="peso" id="peso" value="" /><br/><br />
-		<button onclick="addHumano()">Añadir Humano</button>
-	</fieldset>
-	<fieldset>
-		<legend>Acciones</legend>
-		<button onclick="list();">Listado</button>
-	</fieldset>
-	<div id="divDatos" style="margin: 20px 0px; padding: 10px;"></div>
-	<div id="divDatosHumano" style="margin: 20px 0px; padding: 10px;"></div>
+	<div class="container mt-5">
+
+		<div class="row mt-5 mb-5">
+			<div class="col-6"><h2>C.R.U.D. Persona</h2></div>
+		</div>
+
+		<div class="row mt-5 mb-3">
+			<div class="col-6">
+				<button class="btn btn-success" id="btnNew" onclick="setAccion('new');" > Alta </button>
+				<button class="btn btn-info" id="btnEdit" onclick="setAccion('edit');"> Modificar </button>
+				<button class="btn btn-danger" id="btnDel" onclick="setAccion('del');"> Baja </button>
+				<button class="btn btn-secondary" id="btnList" onclick="list();"> Listado </button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-6">
+				<div class="alert alert-info" id="idAlertInfo"></div>
+				<div class="alert alert-danger" id="idAlertError"></div>
+				<div class="alert alert-success" id="idAlertSuccess"></div>
+				<div class="alert alert-warning" id="idAlertWarning">
+						<span id="mensajeConfirm">¿Estás seguro?</span>
+						<hr>
+						<button class="btn btn-primary btn-sm" onclick="confirm();">Cofirmar</button>
+						<button class="btn btn-danger btn-sm" onclick="confirmCancel();">Cancelar</button>
+				</div>
+				<div id="idVolver">
+					<button class="btn btn-secondary" onclick="cancel();">Volver</button>
+					<hr />
+				</div>
+			</div>
+		</div>
+
+		<div class="row" id="divNew" style="display: block;">
+			<div class="col-6">
+				<div class="form-row">
+					<div class="form-group col-4">Nombre</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="newNombre" name="nombre" value="" onblur="validarNombre('new');" />
+						<div class="error" id="error-new-nombre"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Apellidos</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="newApellidos" name="apellidos" value="" onblur="validarApellidos('new');" />
+						<div class="error" id="error-new-apellidos"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Dirección</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="newDireccion" name="direccion" value="" onblur="validarDireccion('new');" />
+						<div class="error" id="error-new-direccion"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Fecha Nacimiento</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="newFechaNacimiento" name="fecha_nacimiento" value="" onblur="validarFechaNacimiento('new');" />
+						<div class="error" id="error-new-fecha_nacimiento"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Género</div>
+					<div class="form-group col-8">
+						<input type="radio" id="generoMasculino" name="new-genero" value="Masculino"  checked="checked" /> <label for="generoMasculino">Masculino</label>
+						<input type="radio" id="generoFemenino" name="new-genero" value="Femenino"  /> <label for="generoFemenino">Femenino</label>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Código Postal</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="newCodigoPostal" name="codigo_postal" value="" onblur="validarCodigoPostal('new');" />
+						<div class="error" id="error-new-codigo_postal"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">&nbsp;</div>
+					<div class="form-group col-8">
+						<button class="btn btn-primary" onClick="aceptar();">Aceptar</button>
+						<button class="btn btn-danger" onClick="cancel()">Cancelar</button>
+					</div>
+				</div>
+				<hr />
+			</div>
+		</div>
+
+		<div class="row" id="divEdit" style="display: block;">
+			<div class="col-6">
+				<div class="form-row">
+					<div class="form-group col-4">Nombre</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="editNombre" name="nombre" value="" />
+						<div class="error" id="error-edit-nombre"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Apellidos</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="editApellidos" name="apellidos" value="" />
+						<div class="error" id="error-edit-apellidos"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Dirección</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="editDireccion" name="direccion" value="" />
+						<div class="error" id="error-edit-direccion"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Fecha Nacimiento</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="editFechaNacimiento" name="fecha_nacimiento" value="" />
+						<div class="error" id="error-edit-fecha_nacimiento"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Género</div>
+					<div class="form-group col-8">
+						<input type="radio" id="generoMasculino" name="edit-genero" value="Masculino"  checked="checked" /> <label for="generoMasculino">Masculino</label>
+						<input type="radio" id="generoFemenino" name="edit-genero" value="Femenino"  /> <label for="generoFemenino">Femenino</label>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">Código Postal</div>
+					<div class="form-group col-8">
+						<input type="text" class="form-control" id="editCodigoPostal" name="codigo_postal" value="" />
+						<div class="error" id="error-edit-codigo_postal"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-4">&nbsp;</div>
+					<div class="form-group col-8">
+						<button class="btn btn-primary" onClick="aceptar();">Aceptar</button>
+						<button class="btn btn-danger" onClick="cancel()">Cancelar</button>
+					</div>
+				</div>
+				<hr />
+			</div>
+		</div>
+
+		<div class="row" id="divDel" style="display: block;">
+			<div class="col-6" id="divDatosPersonaDel"></div>
+			<div class="col-6">
+				<div class="form-row">
+					<div class="form-group col-5">&nbsp;</div>
+					<div class="form-group col-7">
+						<button class="btn btn-primary" onClick="aceptar();">Aceptar</button>
+						<button class="btn btn-danger" onClick="cancel()">Cancelar</button>
+					</div>
+				</div>
+				<hr />
+			</div>
+		</div>
+
+		<div id="divNavegador">
+			<div class="row">
+				<div class="col-6" id="divDatosPersona"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-6">
+					<button class="btn btn-secondary" id="btnFirst" onclick="recorrerArray('first')"> << </button>
+					<button class="btn btn-secondary" id="btnPrev" onclick="recorrerArray('prev')" > < </button>
+					<button class="btn btn-secondary" id="btnNext" onclick="recorrerArray('next')"> > </button>
+					<button class="btn btn-secondary" id="btnLast" onclick="recorrerArray('last')"> >> </button>
+					<hr />
+				</div>
+			</div>
+		</div>
+
+	</div>
 
 	<!--
 	class humano con atributos:
@@ -34,6 +199,9 @@
 			estatico mostrarDatos() -> muestra un numero indefinido de atributos de objetos
 	-->
 
+	<script type="text/javascript" src="Persona.js"></script>
+	<script type="text/javascript" src="personas.js"></script>
+	<script type="text/javascript" src="validar.js"></script>
 	<script type="text/javascript" src="scripts.js"></script>
 </body>
 </html>

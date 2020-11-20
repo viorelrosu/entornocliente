@@ -1,7 +1,11 @@
 class Persona {
 		constructor(nombre,apellidos,direccion,fecha_nacimiento,genero,codigo_postal){
-			this._edad = edad;
-			this._peso = peso;
+			this._nombre = nombre;
+			this._apellidos = apellidos;
+			this._direccion = direccion;
+			this._fecha_nacimiento = fecha_nacimiento;
+			this._genero = genero;
+			this._codigo_postal = codigo_postal;
 		}
 
 		/* getters */
@@ -60,12 +64,26 @@ class Persona {
 
 		edad(){
 			var now = new Date();
+			var mesActual = now.getMonth()+1;
+			var diaActual = now.getDate();
 			var anioActual = now.getFullYear();
-			var fechaNacArray = this._fecha_nacimiento.split('/'); 
-			var fechaNac = new Date(fechaNacArray[2], fechaNacArray[1], fechaNacArray[0]);
-			var anioNac = fechaNac.getFullYear();
 
-			return anioActual - anioNac;
+			var fechaNacArray = this._fecha_nacimiento.split('/');
+			var anioN 	= parseInt(fechaNacArray[2]);
+			var mesN 	= parseInt(fechaNacArray[1]);
+			var diaN 	= parseInt(fechaNacArray[0]);
+			var edad = anioActual - anioN;
+
+			if(mesN <= mesActual){
+				edad--;
+			}
+			if(mesN == mesActual) {
+				if(diaN <= diaActual){
+					edad--;
+				}
+			}
+
+			return edad;
 		}
 
 		titulo(){
@@ -76,38 +94,60 @@ class Persona {
 			}
 		}
 
+		getTituloNombreApellidos(){
+			return this.titulo() + ' ' + this._nombre + ' ' + this._apellidos;
+		}
+
 		mostrarDatos(divDatos){
-			var html = '<table><tr><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Fecha de Nacimiento</th><th>Género</th><th>Código Postal</th></tr>';
+			var html = '<table class="table table-striped"><tr class="bg-primary text-light"><th colspan="2">Datos Persona</th></tr>';
 
 			html += '<tr>';
-			html += 	'<td>'+ this.titulo() + this._nombre +'</td>';
-			html += 	'<td>'+ this._apellidos +'</td>';
-			html += 	'<td>'+ this._direccion +'</td>';
-			html += 	'<td>'+ this._fecha_nacimiento +'</td>';
-			html += 	'<td>'+ this._genero +'</td>';
-			html += 	'<td>'+ this._codigo_postal +'</td>';
+			html += 	'<th>Nombre y Apellidos</th><td>'+ this.getTituloNombreApellidos() +'</td>';
+			html += '</tr>';
+			html += '<tr>';
+			html += 	'<th>Dirección</th><td>'+ this._direccion +'</td>';
+			html += '</tr>';
+			html += '<tr>';
+			html += 	'<th>Fecha nacimiento</th><td>'+ this._fecha_nacimiento +'</td>';
+			html += '</tr>';
+			html += '<tr>';
+			html += 	'<th>Edad</th><td>'+ this.edad() +'</td>';
+			html += '</tr>';
+			html += '<tr>';
+			html += 	'<th>Género</th><td>'+ this._genero +'</td>';
+			html += '</tr>';
+			html += '<tr>';
+			html += 	'<th>Código postal</th><td>'+ this._codigo_postal +'</td>';
 			html += '</tr>';
 
 			html += '</table>';
 			document.getElementById(divDatos).innerHTML = html;
 		}
 
-		static mostrarPersonas(divDatos, personas){
-
-			var html = '<table><tr><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Fecha de Nacimiento</th><th>Género</th><th>Código Postal</th></tr>';
+		static mostrarPersonas(personas){
+			//console.log(personas);
+			var html = '<table class="table" border="1" style="margin: 0 auto;">';
+			html += '<tr>';
+			html += '<th>Nombre y Apellidos</th>';
+			html += '<th>Dirección</th>';
+			html += '<th>Fecha Nac.</th>';
+			html += '<th>Edad.</th>';
+			html += '<th>Género</th>';
+			html += '<th>Código postal</th>';
+			html += '</tr>';
 
 			for(var persona of personas) {
 				html += '<tr>';
-				html += 	'<td>'+ this.titulo() + this._nombre +'</td>';
-				html += 	'<td>'+ this._apellidos +'</td>';
-				html += 	'<td>'+ this._direccion +'</td>';
-				html += 	'<td>'+ this._fecha_nacimiento +'</td>';
-				html += 	'<td>'+ this._genero +'</td>';
-				html += 	'<td>'+ this._codigo_postal +'</td>';
+				html += 	'<td>'+ persona.getTituloNombreApellidos() +'</td>';
+				html += 	'<td>'+ persona.direccion +'</td>';
+				html += 	'<td>'+ persona.fecha_nacimiento +'</td>';
+				html += 	'<td>'+ persona.edad() +'</td>';
+				html += 	'<td>'+ persona.genero +'</td>';
+				html += 	'<td>'+ persona.codigo_postal +'</td>';
 				html += '</tr>';
 			}
-			
+
 			html += '</table>';
-			document.getElementById(divDatos).innerHTML = html;
+			return html;
 		}
-	}
+}
