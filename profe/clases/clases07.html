@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+    </head>
+    <body>
+	  <div id="div1"></div> 
+	  <div id="div2"></div> 
+    </body>
+	    <script>
+			class Car {
+				constructor(nombreCoche) {
+					this._carname = nombreCoche;
+				}
+				get carname() {
+					return this._carname;
+				}
+				set carname(x) {
+					this._carname = x;
+				}
+				//// método de objeto
+				muestraUnDato(){
+					document.getElementById("div1").innerHTML += "<br> Dato devuelto por el método de objeto<br>"+this._carname;
+				}
+				
+				//// método de clase
+				static hello(x) {
+				    return "Hello " + x.carname;
+				}
+				/// método estático o de clase	
+				////    ...tabla indica que hay un número indeterminado de parámetro
+				static muestraDatos(...tabla){
+					document.getElementById("div1").innerHTML+="<br>muestraDatos<br>";
+					for(var miCoche of tabla){
+						document.getElementById("div1").innerHTML+="<br> Dato devuelto por el método de Clase<br>"+miCoche.carname;
+						}
+				}
+			}
+			function mostrarDatos(){
+			     for(var i in misCoches){
+					document.getElementById("div1").innerHTML += "<br> Dato devuelto por el método de objeto<br>"+misCoches[i].carname;
+				 }
+			}
+			mycar = new Car("Ford");
+			document.getElementById("div1").innerHTML = mycar.carname;
+			// modificamos el nombre del coche asignándole un valor a la propiedad  
+			mycar.carname = "Volvo";
+			document.getElementById("div1").innerHTML += "<br> Despu&eacute;s de cambiar el nombre del coche<br>"+mycar.carname;
+			///  llamada a un método de objeto
+			mycar.muestraUnDato();
+			///  llamada a un método de clase
+			document.getElementById("div1").innerHTML += "<br>"+Car.hello(mycar);
+			////////////////////////////////////////////
+			///// creación de un array de objetos    ///
+			////////////////////////////////////////////			
+			var misCoches = [];
+			misCoches[0]= new Car("Seat");
+			misCoches[1]= new Car("Audi");
+			misCoches[2]= new Car("Kia");
+			misCoches[3]= new Car("Toyota");
+			
+			misCoches[0].muestraUnDato();
+			document.getElementById("div1").innerHTML += "<br>"+Car.hello(misCoches[3]);
+			Car.muestraDatos(misCoches[2], misCoches[0], mycar);	
+            mostrarDatos();			
+        </script>
+</html>

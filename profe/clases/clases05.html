@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+	<head>
+	  <title></title> 
+	</head>  
+	<body>
+		 <div id="miDiv"></div>
+	</body> 	 
+	  <script>
+		class Car {
+			constructor(parametro){
+			 this.carname = parametro;
+			}
+			get cnam() {
+			 return this.carname;
+			}
+			set cnam(x) {
+			 this.carname = x;
+			}
+			present(x) {
+			 return "Hola, " + x +" un " + this.carname;
+			}
+			static hello(x) {
+			 return "Hola! " + x.carname;
+			}
+		}
+		mycar = new Car("Ford");
+		youcar = new Car("Toyota");
+		document.getElementById("miDiv").innerHTML=Car.hello(mycar);
+		document.getElementById("miDiv").innerHTML+="<br>"+youcar.present("tu tienes");
+		youcar.cnam="Ferrari";
+		document.getElementById("miDiv").innerHTML+="<br>"+Car.hello(youcar);
+		document.getElementById("miDiv").innerHTML+="<br>"+youcar.cnam;
+		
+	  </script>
+</html> 

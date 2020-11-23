@@ -1,3 +1,6 @@
+	var permitidoNumeros = '0123456789';
+	var permitidosCaracteres = 'abcdefghijklmnñopqrstuvxyzwçáéíóú ';
+
 	function comprobarDatosCampos(tipo){
 		var error=false;
 
@@ -128,7 +131,7 @@
 			if( textArray[0].length != 2 ) {
 				error = true;
 				mensaje = 'Día incorrecto. Formato dd.';
-			} else if( (dia==0) || (dia==00) || (dia>diasAnios[mes]) ) {
+			} else if( (dia<1) || (dia>diasAnios[mes]) ) {
 				error = true;
 				mensaje = 'Día incorrecto.';
 			}
@@ -141,7 +144,7 @@
 			if( textArray[1].length != 2) {
 				error = true;
 				mensaje = 'Mes incorrecto. Formato mm.';
-			} else if( (mes==0) || (mes==00) || (mes>12) ) {
+			} else if( (mes<1) || (mes>12) ) {
 				error = true;
 				mensaje = 'Mes incorrecto.';
 			}
@@ -153,7 +156,7 @@
 			if( textArray[2].length != 4) {
 				error = true;
 				mensaje = 'Año incorrecto. Formato yyyy.';
-			} else if((anio==0) || (anio==0000) || ( anio>fechaHoy.getFullYear() ) ){
+			} else if((anio<1) || ( anio>fechaHoy.getFullYear() ) ){
 				error = true;
 				mensaje = 'Año incorrecto.';
 			}
@@ -227,11 +230,10 @@
 
 	function checkIsNumero(text){
 		var error = false;
-		var permitido = '0123456789';
 		var prohibidas = '';
 
 		for (var i = 0; i < text.length; i++) {
-			if( permitido.indexOf(text.charAt(i)) == -1 )  {
+			if( permitidoNumeros.indexOf(text.charAt(i)) == -1 )  {
 				error = true;
 				prohibidas += text.charAt(i)+' ';
 			}
@@ -246,11 +248,11 @@
 
 	function checkIsCharacherDate(text){
 		var error = false;
-		var permitido = '0123456789/';
+		var inPermitidos = permitidoNumeros+'/';
 		var prohibidas = '';
 
 		for (var i = 0; i < text.length; i++) {
-			if( permitido.indexOf(text.charAt(i)) == -1 )  {
+			if( inPermitidos.indexOf(text.charAt(i)) == -1 )  {
 				error = true;
 				prohibidas += text.charAt(i)+' ';
 			}
@@ -265,11 +267,11 @@
 
 	function checkIsCharacterNumber(text){
 		var error = false;
-		var permitido = 'abcdefghijklmnopqrstuvxyzwçABCDEFGHIJKLMOPQRSTUVXYZWÇ-0123456789/, ';
+		var inPermitido = permitidoNumeros+permitidosCaracteres+'-/, ';
 		var prohibidas = '';
 
 		for (var i = 0; i < text.length; i++) {
-			if( permitido.indexOf(text.charAt(i)) == -1 )  {
+			if( inPermitido.indexOf(text.toLowerCase().charAt(i)) == -1 )  {
 				error = true;
 				prohibidas += text.charAt(i)+' ';
 			}
@@ -284,11 +286,11 @@
 
 	function checkIsCharacter(text){
 		var error = false;
-		var permitido = 'abcdefghijklmnopqrstuvxyzwçABCDEFGHIJKLMOPQRSTUVXYZWÇ- ';
+		var inPermitido = permitidosCaracteres+'-';
 		var prohibidas = '';
 
 		for (var i = 0; i < text.length; i++) {
-			if( permitido.indexOf(text.charAt(i)) == -1 )  {
+			if( inPermitido.indexOf(text.toLowerCase().charAt(i)) == -1 )  {
 				error = true;
 				prohibidas += text.charAt(i)+' ';
 			}

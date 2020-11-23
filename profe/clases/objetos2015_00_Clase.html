@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script>   
+    class Humano{
+       constructor (edad=0,peso=0)
+	   //constructor (edad, peso)
+	   {
+		   this._edad = edad;
+		   this._peso = peso; 
+	   }   
+	   ////////////////////
+       ///// getters  /////
+       ////////////////////	   
+	   get peso(){
+	       return this._peso;
+	   }
+	   get edad(){
+	       return this._edad;
+	   }
+	   ////////////////////
+       ///// setters  /////
+       ////////////////////	
+       
+	   set peso(valor){
+		   this._peso=valor;
+	   }
+	   set edad(valor){
+		   this._edad=valor;
+	   }
+	   /////////////////////////
+	   ////// metodos //////////
+	   /////////////////////////
+	   comer() {this._peso++;}
+       correr() {this._peso--;}
+	   //// método de objeto
+	   muestraUnDato(){
+		    document.getElementById("miDiv1").innerHTML+="Peso = "+this._peso+" ---- edad = " + this._edad+ "<br>";
+	   }
+	   static mostrarDatos(midiv, ...tabla){
+	    //console.log(midiv); 
+		document.getElementById(midiv).innerHTML+="<br>mostrarDatos (método estático)<br>";
+		 for(var miPersona of tabla){
+		    document.getElementById(midiv).innerHTML+="Peso = "+miPersona.peso+" ---- edad = " + miPersona._edad+ "<br>";
+			}
+		}
+		static mostrarDatos2(midiv, tabla){
+	    //console.log(midiv); 
+		document.getElementById(midiv).innerHTML+="<br>mostrarDatos (método estático)<br>";
+		 for(var miPersona of tabla){
+		    document.getElementById(midiv).innerHTML+="Peso = "+miPersona.peso+" ---- edad = " + miPersona._edad+ "<br>";
+			}
+		}
+	}    
+    </script>
+</head>
+<body>
+<div id="miDiv1"></div>
+<div id="miDiv2"></div>
+<div id="miDiv3"></div>
+</body>
+<script>
+    // Creamos una variable con el constructor con parámetros
+    var pepe = new Humano(38,79);
+    // llamamos al método comer
+    pepe.comer();
+    pepe.muestraUnDato();
+	pepe.correr();
+	pepe.muestraUnDato();
+	var juan = new Humano();
+	juan.muestraUnDato();
+	juan.peso=68;
+	juan.edad=21;
+	juan.muestraUnDato();
+	Humano.mostrarDatos("miDiv2", juan, pepe);
+	var misHumanos = new Array(4);
+    misHumanos[0]= new Humano(30,67);
+    misHumanos[1]= new Humano();
+    misHumanos[1].peso=59;
+    misHumanos[1].edad=23;
+    misHumanos[2]= new Humano();
+    misHumanos[2]._edad=40;
+    misHumanos[2]._peso=73;
+    misHumanos[3]= new Humano(40,90);
+    Humano.mostrarDatos('miDiv3', misHumanos[1],misHumanos[3], pepe, juan, misHumanos[0]) ;
+	misHumanos[2].muestraUnDato();
+	Humano.mostrarDatos2("miDiv1", misHumanos);
+</script>
+</html>

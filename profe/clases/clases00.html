@@ -1,0 +1,20 @@
+<!DOCTYPE>
+<html>
+	<head>
+	  <title></title> 
+	</head>  
+	<body>
+		 <div id="miDiv"></div>
+	</body> 	 
+	  <script>
+		class Car {
+			constructor(parametro) {
+			 this.carname = parametro;
+			}
+		}
+		mycar = new Car("Ford");
+		youcar = new Car("Toyota");
+		document.getElementById("miDiv").innerHTML="Mi coche: "+mycar.carname;
+		document.getElementById("miDiv").innerHTML+="<br>Tu coche: "+youcar.carname;
+	  </script>
+</html>  

@@ -216,6 +216,7 @@
 			setAlertSuccess('Muy bien, persona: '+ persona.getTituloNombreApellidos() +' insertada correctamente');
 
 			showVolver();
+			resetCamposAlta('new');
 
 		} else {
 			setAlertError('Comprueba los errores del formulario.');
@@ -270,6 +271,16 @@
 		datos['genero'] = genero;
 		datos['codigo_postal'] = codigo_postal;
 		return datos;
+	}
+
+	function resetCamposAlta(tipo){
+		document.getElementById(tipo+'Nombre').value = '';
+		document.getElementById(tipo+'Apellidos').value = '';
+		document.getElementById(tipo+'Direccion').value = '';
+		document.getElementById(tipo+'FechaNacimiento').value = '';
+		document.getElementById(tipo+'GeneroMasculino').removeAttribute('checked');
+		document.getElementById(tipo+'GeneroFemenino').removeAttribute('checked');
+		document.getElementById(tipo+'CodigoPostal').value = '';
 	}
 
 
