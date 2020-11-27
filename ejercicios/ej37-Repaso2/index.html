@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Repaso 2</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div class="container">
+		<h2>Repaso II</h2>
+		<fieldset>
+			<legend>Persona</legend>
+			<div class="row">
+				<div class="left"><label for="nombre">Nombre <span class="required">*</span></label></div>
+				<div class="right">
+					<input type="text" name="nombre" id="nombre" value="" onblur="validarNombre();" />
+					<div class="error" id="error-nombre"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="left"><label for="apellidos">Apellidos <span class="required">*</span></label></div>
+				<div class="right">
+					<input type="text" name="apellidos" id="apellidos" value="" onblur="validarApellidos();" />
+					<div class="error" id="error-apellidos"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="left"><label for="direccion">Dirección <span class="required">*</span></label></div>
+				<div class="right">
+					<input type="text" name="direccion" id="direccion" value="" onblur="validarDireccion();" />
+					<div class="error" id="error-direccion"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="left"><label for="telefono">Teléfono <span class="required">*</span></label></div>
+				<div class="right">
+					<input type="text" name="telefono" id="telefono" value="" onblur="validarTelefono();" />
+					<div class="error" id="error-telefono"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="left"><label for="sueldo">Sueldo <span class="required">*</span></label></div>
+				<div class="right">
+					<input type="text" name="sueldo" id="sueldo" value="" onblur="validarSueldo();" />
+					<div class="error" id="error-sueldo"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="left">&nbsp;</div>
+				<div class="right">
+					<button class="validar" onclick="validar();">Validar</button>
+					<button class="limpiar" onclick="limpiar();">Limpiar</button>
+					<button class="listar" onclick="listar();">Listar</button>
+				</div>
+			</div>
+			<div class="row" id="divAlertMensaje">
+				<div class="left">&nbsp;</div>
+				<div class="right"><div id="alertMensaje" style=":none;">alert</div></div>
+			</div>
+		</fieldset>
+	</div>
+	<script type="text/javascript" src="js/Persona.js"></script>
+	<script type="text/javascript" src="js/validar.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+.container {
+	padding: 20px;
+	font-family: Arial, sans-serif;
+}
+
+fieldset {
+	padding: 20px;
+}
+
+.form {
+	width: 70%;
+}
+
+.field {
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.field label {
+	width: 30%;
+	display: inline-block;
+	font-weight: bold;
+}
+
+.field .divInput {
+	width: 70%;
+	float:right;
+}
+
+.field .divInput input {
+	padding: 4px;
+	width: 90%;
+}
+
+.field .divInput .error {
+	color:red;
+	display: none;
+}
+
+.field .botones {
+	width: 70%;
+	margin-left: 30%;
+	padding-top: 10px;
+}
+
+.field .botones button {
+	padding: 4px;
+}

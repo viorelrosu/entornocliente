@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Repaso</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+	<div class="container">
+		<h2>Repaso</h2>
+		<div class="form">
+			<fieldset>
+				<legend>Persona</legend>
+				<div class="field">
+					<label for="nombre">Nombre</label>
+					<div class="divInput">
+						<input type="text" id="nombre" name="nombre" value="" onblur="" />
+						<div class="error" id="error-nombre"></div>
+					</div>
+				</div>
+				<div class="field">
+					<label for="apellidos">Apellidos</label>
+					<div class="divInput">
+						<input type="text" id="apellidos" name="apellidos" value="" onblur="" /> 
+						<div class="error" id="error-apellidos"></div>
+					</div>
+				</div>
+				<div class="field">
+					<label for="direccion">Dirección</label>
+					<div class="divInput">
+						<input type="text" id="direccion" name="direccion" value="" onblur="" /> 
+						<div class="error" id="error-direccion"></div>
+					</div>
+				</div>
+				<div class="field">
+					<label for="fecha_nacimiento">Fecha de nacimiento</label>
+					<div class="divInput">
+						<input type="text" id="fecha_nacimiento" name="fecha_nacimiento" value="" onblur="" /> 
+						<div class="error" id="error-fecha_nacimiento"></div>
+					</div>
+				</div>
+				<div class="field">
+					<label for="genero">Genero</label>
+					<div class="divInput">
+						<input type="text" id="genero" name="genero" value="" onblur="" /> 
+						<div class="error" id="error-genero"></div>
+					</div>
+				</div>
+				<div class="field">
+					<label for="codigo_postal">Código Postal</label>
+					<div class="divInput">
+						<input type="text" id="codigo_postal" name="codigo_postal" value="" onblur="" /> 
+						<div class="error" id="error-codigo_postal"></div>
+					</div>
+				</div>
+				<div class="field">
+					<div class="botones">
+						<button onclick="limpiar();" >Limpiar</button>
+						<button onclick="validar();" >Validar</button>
+						<button onclick="listar();" >Listar</button>
+					</div>
+				</div>
+			</fieldset>
+		</div>	
+	</div>
+
+	<script type="text/javascript" src="Persona.js"></script>
+	<script type="text/javascript" src="validar.js"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>
