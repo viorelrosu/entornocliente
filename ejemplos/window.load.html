@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = ()=>{
+			getElementById('contenidos').onmouseover = () => {
+				this.style.borderColor = 'black';
+			} 
+			getElementById('contenidos').onmouseout = () => {
+				this.style.borderColor = 'silver';
+			} 
+		}
+
+		function resalta(elemento) {
+			elemento.style.borderColor = 'black';
+		}
+	</script>
+</head>
+<body>
+	<div class="contenidos">asdads</div>
+	<div class="" onmouseover="resalta(this);">asdads</div>
+</body>
+</html>

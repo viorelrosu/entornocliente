@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Window Open </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript">
+		window.onload = ()=>{
+
+			document.getElementById('btn').onmouseover = () => {
+				document.getElementById('mensaje').innerHTML += 'Evento onmouseover<br />';
+				this.style.color = 'red';
+			}
+			document.getElementById('btn').onmouseout = () => {
+				document.getElementById('mensaje').innerHTML += 'Evento onmouseout<br />';
+			}
+			document.getElementById('btn').onmousemove = () => {
+				document.getElementById('mensaje').innerHTML += 'Evento onmousemove<br />';
+			}
+			document.getElementById('btn').onmousedown = () => {
+				document.getElementById('mensaje').innerHTML += 'Evento onmousedown<br />';
+			}
+			document.getElementById('btn').onmouseup = () => {
+				document.getElementById('mensaje').innerHTML += 'Evento onmouseup<br />';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="container mt-5">
+
+		<button class="btn btn-secondary" id="btn">Pulsa</button>
+		<div id="mensaje"></div>
+
+	</div>
+
+</body>
+</html>
