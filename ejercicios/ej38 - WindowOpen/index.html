@@ -8,20 +8,21 @@
 	<script type="text/javascript">
 		window.onload = ()=>{
 
-			document.getElementById('btn').onmouseover = () => {
+			document.getElementById('btn').onmouseover = function() {
 				document.getElementById('mensaje').innerHTML += 'Evento onmouseover<br />';
-				this.style.color = 'red';
+				this.style.color = 'white';
+				this.style.backgroundColor = 'red';
 			}
-			document.getElementById('btn').onmouseout = () => {
+			document.getElementById('btn').onmouseout = function() {
 				document.getElementById('mensaje').innerHTML += 'Evento onmouseout<br />';
 			}
-			document.getElementById('btn').onmousemove = () => {
+			document.getElementById('btn').onmousemove = function() {
 				document.getElementById('mensaje').innerHTML += 'Evento onmousemove<br />';
 			}
-			document.getElementById('btn').onmousedown = () => {
+			document.getElementById('btn').onmousedown = function() {
 				document.getElementById('mensaje').innerHTML += 'Evento onmousedown<br />';
 			}
-			document.getElementById('btn').onmouseup = () => {
+			document.getElementById('btn').onmouseup = function() {
 				document.getElementById('mensaje').innerHTML += 'Evento onmouseup<br />';
 			}
 		}

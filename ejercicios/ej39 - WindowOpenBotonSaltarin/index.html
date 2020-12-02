@@ -8,11 +8,13 @@
 	<script type="text/javascript">
 		window.onload = ()=>{
 
-			document.getElementById('btnSaltarin').onmouseover = () => {
-				var top = Math.floor(Math.random()*500+1)+1;
-				var left = Math.floor(Math.random()*500+1)+1;
-				this.style.top = top;
-				this.style.left = left;
+			document.getElementById('btnSaltarin').onmouseover = function() {
+				var topValue = Math.floor(Math.random()*500+1)+1;
+				var leftValue = Math.floor(Math.random()*500+1)+1;
+
+				this.style.position = 'absolute';
+				this.style.top = topValue + 'px';
+				this.style.left = leftValue + 'px';
 			}
 
 
@@ -21,9 +23,7 @@
 </head>
 <body>
 	<div class="container mt-5">
-
 		<button class="btn btn-secondary" id="btnSaltarin">Pulsa</button>
-
 	</div>
 
 </body>
