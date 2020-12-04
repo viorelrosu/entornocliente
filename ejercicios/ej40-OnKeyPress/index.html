@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej40 - OnKeyPress</title>
+	<script>
+		window.onload = ()=>{
+			document.getElementById('nombre').onkeypress = function(elEvento){
+
+
+				if(this.value.length >= 10) {
+					return false;
+				} else {
+					var evento = elEvento || window.event;
+  					var codigo = evento.charCode || evento.keyCode;
+  					var caracter = String.fromCharCode(codigo);
+  					document.getElementById('elDiv').innerHTML += 'carácter: ' + caracter +  ' - código: '+codigo + '<br />';
+					return true;
+				}
+			};
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="nombre" id="nombre" value="" />
+	<div id="elDiv"></div>
+</body>
+</html>

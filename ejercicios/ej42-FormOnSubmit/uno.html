@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej42. Formulario OnSubmit</title>
+	<script type="text/javascript">
+		function validar(form){
+			var isValid = false;
+
+			isValid = validarNombre();
+			isValid = validarEdad();
+			//console.log(isValid);
+			return isValid;
+		}
+
+		function validarNombre(){
+			var isValid = true;
+			var inputValue = document.getElementById('nombre').value.trim().toLowerCase();
+			var divError = document.getElementById('error-nombre');
+			var mensaje = '';
+
+			if( inputValue.length < 1) {
+				isValid = false;
+				mensaje = 'El campo es obligatorio';
+			}
+
+			if (isValid && (inputValue.length < 3) ) {
+				isValid = false;
+				mensaje = 'El campo necesita minímo 3 carácteres.';
+			}
+
+			if( isValid ) {
+				var caracteres = 'abcdefghijklmnñopqrstuvxywç- ';
+				var noPermitidos = '';
+				for (var i = 0; i <= inputValue.length-1; i++) {
+					if(caracteres.indexOf(inputValue.charAt(i)) == -1) {
+						isValid = false;
+						noPermitidos += inputValue.charAt(i);
+					}
+				}
+
+				if(!isValid) {
+					mensaje = 'Tienes carácteres no permitidos: ' + noPermitidos;
+				}
+			}
+
+			showError(isValid, divError, mensaje);
+			//console.log(isValid);
+			return isValid;
+
+		}
+
+		function validarEdad(){
+			var isValid = true;
+			var inputValue = document.getElementById('edad').value.trim();
+			var divError = document.getElementById('error-edad');
+			var mensaje = '';
+
+			if( inputValue.length < 1) {
+				isValid = false;
+				mensaje = 'El campo es obligatorio';
+			}
+
+			if (isValid && ((parseInt(inputValue) < 1) || (parseInt(inputValue) > 100)) ) {
+				isValid = false;
+				mensaje = 'La edad tiene que ser comprendida entre 1 y 100.';
+			}
+
+			if( isValid ) {
+				var caracteres = '0123456789';
+				var noPermitidos = '';
+				for (var i = 0; i <= inputValue.length-1; i++) {
+					if(caracteres.indexOf(inputValue.charAt(i)) == -1) {
+						isValid = false;
+						noPermitidos += inputValue.charAt(i);
+					}
+				}
+
+				if(!isValid) {
+					mensaje = 'Tienes carácteres no permitidos: ' + noPermitidos;
+				}
+			}
+
+			showError(isValid, divError, mensaje);
+			console.log(isValid);
+			return isValid;
+
+		}
+
+		function showError(isValid, divError, mensaje){
+			if(!isValid) {
+				divError.innerHTML = mensaje;
+				divError.style.display = 'block';
+			} else {
+				divError.innerHTML = '';
+				divError.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+
+<form action="dos.html" onsubmit="return validar(this);">
+		<label>Nombre</label><br/>
+		<input type="text" name="nombre" id="nombre" />
+		<span id="error-nombre"></span>
+		<br /><br />
+		<label>Edad</label><br />
+		<input type="text" name="edad" id="edad" />
+		<span id="error-edad"></span>
+		<br /><br />
+		<input type="submit" value="Enviar">
+</form>
+
+</body>
+</html>
