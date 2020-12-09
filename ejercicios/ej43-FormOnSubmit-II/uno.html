@@ -3,31 +3,52 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ej42. Formulario OnSubmit</title>
+	<title>Ej42. Formulario OnSubmit - II</title>
+	<style>
+		input {
+			padding: 2px;
+			width: 200px;
+			transition: all .5s;
+		}
+		input:hover {
+			width: 250px;
+			background: rgba(0,255,255,.5);
+		}
+		input[type="button"] {
+			width: 150px;
+		}
+		.error {
+			color:red;
+		}
+	</style>
 	<script type="text/javascript">
-		function validar(form){
-			var isValid = false;
 
-			isValid = validarNombre();
-			isValid = validarEdad();
+		function validar(form){
+			var isValid = true;
+
+			isValid = validarNombre(form);
+			isValid = validarEdad(form);
+
 			//console.log(isValid);
 			return isValid;
 		}
 
-		function validarNombre(){
+		function validarNombre(form){
 			var isValid = true;
-			var inputValue = document.getElementById('nombre').value.trim().toLowerCase();
+			var inputValue = form.nombre.value.trim().toLowerCase();
 			var divError = document.getElementById('error-nombre');
 			var mensaje = '';
 
 			if( inputValue.length < 1) {
 				isValid = false;
 				mensaje = 'El campo es obligatorio';
+				//form.nombre.focus();
 			}
 
 			if (isValid && (inputValue.length < 3) ) {
 				isValid = false;
 				mensaje = 'El campo necesita minímo 3 carácteres.';
+				//form.nombre.focus();
 			}
 
 			if( isValid ) {
@@ -42,6 +63,7 @@
 
 				if(!isValid) {
 					mensaje = 'Tienes carácteres no permitidos: ' + noPermitidos;
+					//form.nombre.focus();
 				}
 			}
 
@@ -51,20 +73,24 @@
 
 		}
 
-		function validarEdad(){
+		function validarEdad(form){
 			var isValid = true;
-			var inputValue = document.getElementById('edad').value.trim();
+			var inputValue = form.edad.value.trim();
 			var divError = document.getElementById('error-edad');
 			var mensaje = '';
+
+			//console.log(form.edad.value);
 
 			if( inputValue.length < 1) {
 				isValid = false;
 				mensaje = 'El campo es obligatorio';
+				form.edad.focus();
 			}
 
 			if (isValid && ((parseInt(inputValue) < 1) || (parseInt(inputValue) > 100)) ) {
 				isValid = false;
 				mensaje = 'La edad tiene que ser comprendida entre 1 y 100.';
+				form.edad.focus();
 			}
 
 			if( isValid ) {
@@ -79,16 +105,18 @@
 
 				if(!isValid) {
 					mensaje = 'Tienes carácteres no permitidos: ' + noPermitidos;
+					form.edad.focus();
 				}
 			}
 
 			showError(isValid, divError, mensaje);
-			console.log(isValid);
+			//console.log(isValid);
 			return isValid;
 
 		}
 
 		function showError(isValid, divError, mensaje){
+			//console.log(divError.style.display);
 			if(!isValid) {
 				divError.innerHTML = mensaje;
 				divError.style.display = 'block';
@@ -97,21 +125,50 @@
 				divError.style.display = 'none';
 			}
 		}
+
+		function validar1(form){
+			if(validar(form)) {
+				form.action = 'dos.html';
+				form.method = 'post';
+				form.target = '_blank';
+				form.submit();
+			} else {
+				return false;
+			}
+		}
+
+		function validar2(form){
+			if(validar(form)) {
+				form.action = 'tres.html';
+				form.method = 'get';
+				form.target = '_blank';
+				form.submit();
+			} else {
+				return false;
+			}
+		}
 	</script>
 </head>
 <body>
 
-<form action="dos.html" onsubmit="return validar(this);">
+<form>
 		<label>Nombre</label><br/>
 		<input type="text" name="nombre" id="nombre" />
-		<span id="error-nombre"></span>
+		<span id="error-nombre" class="error"></span>
 		<br /><br />
 		<label>Edad</label><br />
 		<input type="text" name="edad" id="edad" />
-		<span id="error-edad"></span>
+		<span id="error-edad" class="error"></span>
 		<br /><br />
-		<input type="submit" value="Enviar">
+		<input type="button" onclick="validar1(this.form);" value="Enviar vía POST">
+		<input type="button" onclick="validar2(this.form);" value="Enviar vía GET">
 </form>
-
+<!--
+<form name="formDos">
+<input type="checkbox" name="prueba" value="uno" > Uno
+<input type="checkbox" name="prueba" value="dos" checked="checked"> Dos
+<input type="checkbox" name="prueba" value="tres"> Tres
+</form>
+-->
 </body>
 </html>
