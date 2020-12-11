@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ej44 - Form On Submit III</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.formulario.onsubmit = function() { return validar(this) };
+		}
+
+		function validar(form){
+			var isValid = true;
+
+			if (isValid && form.nombre.value == '') {
+				alert('Por favor, debe introducir un nombre.');
+				form.nombre.focus();
+
+				isValid = false;
+			} 
+
+			if ( isValid && (form.alta.checked == false) && (form.baja.checked == false) ) {
+				alert('Por favor, debe marcar una casilla.');
+				isValid = false;
+			}
+
+			if ( isValid && (form.alta.checked == true) && (form.baja.checked == true) ) {
+				alert('Por favor, marque solamente una casilla.');
+				isValid = false;
+			} else {
+				if( isValid ) {
+					if(form.alta.checked == true) {
+						form.action = 'alta.html';
+					}
+
+					if (form.baja.checked == true) {
+						form.action = 'baja.html';
+					}	
+				}
+			}
+
+			return isValid;
+		}
+	</script>
+	<style type="text/css">
+		.main {
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+	<h2>Dar de alta / baja</h2>
+	<form name="formulario" method="get" target="_blank">
+		<label>Nombre</label>
+		<input type="text" name="nombre" value="" /><br /><br />
+		<input type="checkbox" name="alta" id="alta" value="alta"> <label for="alta">Dar de Alta</label> |
+		<input type="checkbox" name="baja" id="baja" value="baja"> <label for="baja">Dar de Baja</label><br /><br />
+		<input type="submit" name="Enviar">
+	</form>
+	</div>
+</body>
+</html>
