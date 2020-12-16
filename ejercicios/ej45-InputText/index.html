@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej44 - Cajas de texto</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.form.texto1.onkeyup = () => pasarValue();
+			document.form.texto2.onkeyup = () => pasarValue();
+			document.form.boton.disabled = true;
+			document.form.texto2.disabled = true;
+		}
+
+		function pasarValue () {
+			console.log('asd');
+			var texto1 = document.form.texto1;
+			var texto2 = document.form.texto2;
+			var boton = document.form.boton;
+
+			if(texto1.value.trim() != ' ' && texto1.value.trim() != '') {
+				texto2.disabled = false;
+			} else {
+				texto2.value = '';
+				texto2.disabled = true;
+				boton.disabled = true;
+			}
+
+			if(texto2.value.trim() != ' ' && texto2.value.trim() != '') {
+				boton.disabled = false;
+			} else {
+				boton.disabled = true;
+			}
+
+
+		}
+
+	</script>
+	<style type="text/css">
+		label {
+			width: 10%;
+		}
+
+		input {
+			width: 200px;
+		}
+
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		button {
+			margin-left: 52px;
+		}
+	</style>
+</head>
+<body>
+	<form name="form">
+		<div class="form-group">
+			<label>Texto 1</label>
+			<input type="text" name="texto1" value="" />
+		</div>
+		<div class="form-group">
+			<label>Texto 2</label>
+			<input type="text" name="texto2" value="" />
+		</div>
+		<div class="form-group">
+			<button name="boton">Enviar</button>
+		<div class="form-group">
+	</form>
+	<!--
+		dos cajas de texto y un boton
+		cuando se presenta el documento al usuario:
+			- solamente esta activa la primera caja de texto
+			- la segunda caja de texto y el boton están desactivados
+		cuando se escribe algun caracter distinto de espacio en la primera caja
+			- se activa la segunda caja de texto
+			- el boton se mantiene desactivado
+		cuando se escribe algun caracter distinto de blanco en la segunda caja
+			- se activa el boton
+		aun teniendo activo la caja de textos segunda y el boton, si se deja sin texto la caja:
+			- se deben desactivar tanto la caja de texto segunda como el boton.
+	-->
+</body>
+</html>

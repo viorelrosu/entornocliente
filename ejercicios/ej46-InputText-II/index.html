@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej44 - Cajas de texto</title>
+	<script type="text/javascript">
+		function bloqDesbloq() {
+			var nombre = document.form.nombre;
+			var apellidos = document.form.apellidos;
+			var direccion = document.form.direccion;
+			var boton = document.form.boton;
+
+			if(direccion.value.trim() != '') {
+				boton.disabled = false;
+			} else {
+				boton.disabled = true;
+			}
+
+			if(apellidos.value.trim() != '') {
+				direccion.disabled = false;
+			} else {
+				direccion.disabled = true;
+				boton.disabled = true;
+			}
+
+			if(nombre.value.trim() != '') {
+				apellidos.disabled = false;
+			} else {
+				apellidos.disabled = true;
+				direccion.disabled = true;
+				boton.disabled = true;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name="form">
+		<label>Nombre</label>
+		<input type="text" name="nombre" value="" onkeyup="bloqDesbloq();" /><br /><br />
+		<label>Apellidos</label>
+		<input type="text" name="apellidos" value="" disabled onkeyup="bloqDesbloq();"/><br /><br />
+		<label>Dirección</label>
+		<input type="text" name="direccion" value="" disabled onkeyup="bloqDesbloq();"/><br /><br />
+		<button name="boton" disabled >Enviar</button><br />
+	</form>
+	<!--
+		dos cajas de texto y un boton
+		cuando se presenta el documento al usuario:
+			- solamente esta activa la primera caja de texto
+			- la segunda caja de texto y el boton están desactivados
+		cuando se escribe algun caracter distinto de espacio en la primera caja
+			- se activa la segunda caja de texto
+			- el boton se mantiene desactivado
+		cuando se escribe algun caracter distinto de blanco en la segunda caja
+			- se activa el boton
+		aun teniendo activo la caja de textos segunda y el boton, si se deja sin texto la caja:
+			- se deben desactivar tanto la caja de texto segunda como el boton.
+	-->
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej47 - Login</title>
+	<script type="text/javascript">
+		var intentos = 3;
+		function validar() {
+			var usuario = document.form.usuario.value.trim();
+			var contrasena = document.form.contrasena.value.trim();
+			var isValid = false;
+
+			if(usuario == 'usuario' && contrasena == 'usuario') {
+				isValid = true;
+			}
+
+			if(isValid) {
+				document.form.action='success.html';
+				document.form.method='get';
+				document.form.target='_blank';
+				document.form.submit();
+			} else {
+				document.form.onsubmit = () => false;
+				intentos --;
+			}
+
+			if( !isValid && intentos > 0 ) {
+				alert('Te quedan ' + intentos + ' intentos.');
+			}
+
+			if( !isValid && intentos == 0 ) {
+				document.form.action='error.html';
+				document.form.method='post';
+				document.form.target='_blank';
+				document.form.submit();
+			}
+
+		}
+
+		function showPass(){
+			var pass = document.form.contrasena.value;
+
+			document.form.contrasena.type = 'text';
+			document.form.contrasena.value = pass;
+		}
+
+		function hidePass(){
+			var pass = document.form.contrasena.value;
+
+			document.form.contrasena.type = 'password';
+			document.form.contrasena.value = pass;
+		}
+	</script>
+	<style type="text/css">
+		label {
+			width: 10%;
+		}
+
+		input {
+			width: 200px;
+		}
+
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		span {
+			padding: 0px 4px;
+			background-color: red;
+			color: white;
+		}
+
+	</style>
+</head>
+<body>
+	<form name="form">
+		<div class="form-group">
+			<label>Usuario</label>
+			<input type="text" name="usuario" value="" />
+		</div>
+		<div class="form-group">
+			<label>Contraseña</label>
+			<input type="password" name="contrasena" value="" />
+			<span onmouseover="showPass();" onmouseout="hidePass();">Ver</span>
+		</div>
+
+		<button name="boton" onclick="validar();" >Enviar</button><br />
+	</form>
+	<!--
+		dos cajas de texto y un boton
+		usuario y contraseña
+		se validan tres intentos
+		si al tercer intento no se introduce los datos correctos
+			- se envia a una página de error via post
+			- pestaña en blanco
+		si los datos son correctos
+			- se envia a una página de success via get
+			- página en blanco
+	-->
+</body>
+</html>
