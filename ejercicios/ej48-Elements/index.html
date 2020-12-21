@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej48 - Elements</title>
+</head>
+<script type="text/javascript">
+	function changeColor(miColor) {
+		var elements = form.elements;
+		for ( var elem of elements) {
+			if(elem.type == 'text') {
+				elem.style.color = miColor;
+			}
+		}
+	}
+
+	function changeBackground(miColor) {
+		var elements = form.elements;
+		for ( var elem of elements) {
+			if(elem.type == 'text') {
+				elem.style.backgroundColor = miColor;
+			}
+		}
+	}
+
+	function changeDisable(valor) {
+		var elements = form.elements;
+		for ( var elem of elements) {
+			if(elem.type == 'text') {
+				elem.disabled = valor;
+			}
+		}
+	}
+
+	function change(tipo, valor) {
+		var elements = form.elements;
+		for ( var elem of elements) {
+			if(elem.type == 'text') {
+				switch(tipo){
+					case 'text':
+						elem.style.color = valor;
+					break;
+					case 'background':
+						elem.style.backgroundColor = valor;
+					break;
+					case 'disabled':
+						elem.disabled = valor;
+					break;
+				}
+				
+			}
+		}
+	}
+</script>
+<body>
+	<div style="width: 600px; margin: 0 auto; text-align:center;">
+	<form name="form" onsubmit="return false;">
+		Nombre <input type="text" name="nombre"><br />
+		Apellidos <input type="text" name="apellidos"><br />
+		Dirección <input type="text" name="direccion"><br />
+		Teléfono <input type="text" name="telefono"><br />
+		Edad <input type="text" name="edad"><br />
+		Código postal <input type="text" name="codigo_postal"><br /><br />
+		<input type="submit" value="Cambiar a negro" onclick="change('text','black');">
+		<input type="submit" value="Cambiar a rojo" onclick="change('text','red');" >
+		<input type="submit" value="Cambiar a azul" onclick="change('text','blue');" ><br /><br />
+		<input type="submit" value="Cambiar fondo a salmon" onclick="change('background','salmon');" >
+		<input type="submit" value="Cambiar fondo a verde" onclick="change('background','green');" >
+		<input type="submit" value="Cambiar fondo a blanco" onclick="change('background','white');" ><br /><br />
+		<input type="submit" value="Habilitar" onclick="change('disabled',false);">
+		<input type="submit" value="Deshabilitar" onclick="change('disabled',true);" >
+	</form>
+</body>
+</html>

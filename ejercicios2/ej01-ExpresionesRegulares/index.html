@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej01 - Expresiones Regulares</title>
+	<script type="text/javascript">
+		function validar(){
+			var telefono = document.form.telefono.value.trim();
+			var pattern = /^[6789]\d{8}$/;
+			if(pattern.test(telefono)) {
+				//enviar formulario
+				alert('El número de teléfono es correcto.');
+			} else {
+				alert('El número de teléfono es incorrecto.');
+			}
+		};
+
+		function validarRegex(){
+			var telefono = document.form.telefono.value.trim();
+			//console.log(telefono);
+			var reg = new RegExp('^[6789]\\d{8}$');
+			
+			if(reg.test(telefono)) {
+				//enviar formulario
+				alert('El número de teléfono es correcto.');
+			} else {
+				alert('El número de teléfono es incorrecto.');
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name="form" action="success.html" method="get" onsubmit="return false;">
+		Teléfono<br />
+		<input type="text" name="telefono" value=""><br /><br />
+		<button onclick="validar();">Enviar</button>
+	</form>
+</body>
+</html>
