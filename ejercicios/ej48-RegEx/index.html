@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ej49-RegEx</title>
+	<script type="text/javascript">
+		window.onload = ()=>{
+			document.form.onsubmit = () => false;
+		}
+
+		function validarHoraL(){
+			var hora = document.form.hora.value.trim();
+			var divMensaje = document.getElementById('divMensajeHora');
+			var isValid = false;
+
+			// var expreg = /^[A-ZÁÉÍÓÚÑa-zñáéíóú ]{3,15}$/; //para nombre
+			var expreg = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/;
+			var expreg = /^(0[0-9]|1\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
+			if(expreg.test(hora)) {
+				isValid = true;
+			}
+
+			if(isValid) {
+				divMensajeHora.innerHTML = 'Literal - La hora es válida.';
+			} else {
+				divMensajeHora.innerHTML = 'Literal - La hora NO es válida.';
+			}
+		}
+
+		function validarHoraO(){
+			var hora = document.form.hora.value.trim();
+			var divMensaje = document.getElementById('divMensajeHora');
+			var isValid = false;
+
+			var expreg = new RegExp("^(0[0-9]|1\\d|2[0-3])|(\\d):([0-5]\\d):([0-5]\\d)$");
+			if(expreg.test(hora)) {
+				isValid = true;
+			}
+
+			if(isValid) {
+				divMensajeHora.innerHTML = 'Object - La hora es válida.';
+			} else {
+				divMensajeHora.innerHTML = 'Object - La hora NO es válida.';
+			}
+		}
+
+		function validarFechaL(){
+			var fecha = document.form.fecha.value.trim();
+			var divMensaje = document.getElementById('divMensaje');
+			var isValid = false;
+			//console.log(fecha);
+			var expreg = /^((0?[1-9]|1\d|2\d|3[01])\/([1-9]|0[1-9]|1[0-2])\/(9[0-9]|2[0-1]|19\d\d|20\d\d))|((0?[1-9]|1\d|2\d|3[0-1])-([1-9]|0[0-9]|1[0-2])-(9[0-9]|2[0-1]|19\d\d|20\d\d))$/;
+			//var expreg = /^(0?[1-9]|[12]\d|3[01])(\/|-)(0?[1-9]|1[0-2])\2(\d{2}|\d{4})$/;
+			if(expreg.test(fecha)) {
+				isValid = true;
+			}
+			
+			if(isValid) {
+				divMensajeFecha.innerHTML = 'Literal - La fecha es válida.';
+			} else {
+				divMensajeFecha.innerHTML = 'Literal - La fecha NO es válida.';
+			}
+
+		}
+
+		function validarFechaO(){
+			var fecha = document.form.fecha.value.trim();
+			var divMensaje = document.getElementById('divMensaje');
+			var isValid = false;
+
+			var expreg = new RegExp("^(([1-9]|0[0-9]|1\\d|2\\d|3[0-1])\/([1-9]|0[0-9]|1[0-2])\/(9[0-9]|2[0-1]|19\\d\\d|20\\d\\d))|(([1-9]|0[0-9]|1\\d|2\\d|3[0-1])-([1-9]|0[0-9]|1[0-2])-(9[0-9]|2[0-1]|19\\d\\d|20\\d\\d))$");
+			if(expreg.test(fecha)) {
+				isValid = true;
+			}
+
+			if(isValid) {
+				divMensajeFecha.innerHTML = 'Object - La fecha es válida.';
+			} else {
+				divMensajeFecha.innerHTML = 'Object - La fecha NO es válida.';
+			}
+		}
+
+		function validarMatriculaL(){
+			var matricula = document.form.matricula.value.trim().toUpperCase();
+			var divMensaje = document.getElementById('divMensajeMatricula');
+			var isValid = false;
+			//console.log(matricula);
+			var expreg = /^(\d{4})(\s)([BCDEFGHIJKLMNPRSTVXYZW]{3})$/;
+			if(expreg.test(matricula)) {
+				isValid = true;
+			}
+
+			if(isValid) {
+				divMensajeMatricula.innerHTML = 'Literal - La matrícula es válida.';
+			} else {
+				divMensajeMatricula.innerHTML = 'Literal - La matrícula NO es válida.';
+			}
+		}
+
+		function validarMatriculaO(){
+			var matricula = document.form.matricula.value.trim().toUpperCase();
+			var divMensaje = document.getElementById('divMensajeMatricula');
+			var isValid = false;
+			//console.log(matricula);
+			var expreg = new RegExp("^(\\d{4})(\\s)([BCDEFGHIJKLMNPRSTVXYZW]{3})$");
+			if(expreg.test(matricula)) {
+				isValid = true;
+			}
+
+			if(isValid) {
+				divMensajeMatricula.innerHTML = 'Object - La matrícula es válida.';
+			} else {
+				divMensajeMatricula.innerHTML = 'Object - La matrícula NO es válida.';
+			}
+		}
+	</script>
+	<style type="text/css">
+		label {
+			width: 10%;
+		}
+
+		input {
+			width: 200px;
+		}
+
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		span {
+			padding: 0px 4px;
+			background-color: red;
+			color: white;
+		}
+
+		div {
+			font-size: 20px;
+		}
+
+	</style>
+</head>
+<body>
+	<form name="form">
+		<div class="form-group">
+			<label>Hora</label>
+			<input type="text" name="hora" value="" />
+			<div id="divMensajeHora"></div>
+		</div>
+
+		<div class="form-group">
+			<label>Fecha</label>
+			<input type="text" name="fecha" value="" />
+			<div id="divMensajeFecha"></div>
+		</div>
+
+		<div class="form-group">
+			<label>Matrícula</label>
+			<input type="text" name="matricula" value="" />
+			<div id="divMensajeMatricula"></div>
+		</div>
+
+		<button name="boton" onclick="validarFechaO();" >Fecha Obj.</button>
+		<button name="boton" onclick="validarFechaL();" >Fecha Lit.</button><br /><br />
+		<button name="boton" onclick="validarMatriculaO();" >Matrícula Obj.</button>
+		<button name="boton" onclick="validarMatriculaL();" >Matrícula Lit.</button>
+	</form>
+
+	<!--
+		comprobar fechas
+			dia: 1-31
+			mes: 1-12
+			año: dos o cuatro digitos 12-12-2020 o 12/12/2020 pero no 12/12-2020
+
+		comprobar matricula:
+			cuatro numeros, espacio en blanco y tres letras que no pueden contener vocales la Q y la Ñ
+	-->
+</body>
+</html>

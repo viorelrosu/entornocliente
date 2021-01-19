@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ej51 - Select</title>
+	<script type="text/javascript">
+		window.onload = ()=>{
+			document.form.onsubmit = () => false;
+			document.form.button.onclick = () => anadir();
+			document.form.productos.onchange = () => habilitarCantidad();
+		}
+
+		function anadir(){
+			var select = document.form.select;
+			var option = new Option('Option 5', 'Option5');
+			select.options[select.options.length] = option;
+		}
+
+		function habilitarCantidad(argument) {
+			if(document.form.productos.options[0].selected == true) {
+				document.form.cantidad.disabled = true;
+			} else {
+				document.form.cantidad.disabled = false;
+			}
+		}
+
+	</script>
+	<style type="text/css">
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		span {
+			padding: 0px 4px;
+			background-color: red;
+			color: white;
+		}
+
+		div {
+			font-size: 20px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<form name="form">
+
+		<div class="form-group">
+			<label>Seleccione:</label><br />
+			<select name="select" multiple>
+				<option value="Option1">Option 1</option>
+				<option value="Option2">Option 2</option>
+				<option value="Option3">Option 3</option>
+				<option value="Option4">Option 4</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<select name="productos">
+				<option value="">Seleccione un producto</option>
+				<option value="COD 001">COD 001: Producto 1</option>
+				<option value="COD 002">COD 002: Producto 2</option>
+				<option value="COD 003">COD 003: Producto 3</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<select name="cantidad" disabled>
+				<option value="">Seleccione una cantidad</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<input type="button" name="button" onclick="" value="Añadir" />
+		</div>
+
+	</form>
+
+</body>
+</html>

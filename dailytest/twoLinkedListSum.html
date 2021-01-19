@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<p>
+		Hi, here's your problem today. This problem was recently asked by Microsoft:
+	</p>
+	<p>
+		You are given two linked-lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+	</p>
+	<p>
+		Example:<br>
+		Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)<br>
+		Output: 7 -> 0 -> 8<br>
+		Explanation: 342 + 465 = 807.<br >
+	</p>
+
+	<div id="solutionDiv" style="font-weight: bold;"></div>
+	<script type="text/javascript">
+
+		var num1 = [2,4,3];
+		var num2 = [5,6,4];
+		var num3 = [];
+		var num3Number = 0;
+		var num1String = num2String = '';
+
+		function solution(){
+			num1.reverse();
+			num2.reverse();
+			num1.forEach( x => num1String += x);
+			num2.forEach( x => num2String += x);
+			num3Number = parseInt(num1String) + parseInt(num2String);
+			num3 = num3Number.toString().split('').reverse();
+
+			solution = '';
+			num3.forEach( (x,index) => {
+				if(index+1 == num3.length) {
+					return solution += x;
+				} else {
+					return solution += x + ' -> ';
+				}
+			});
+			document.getElementById('solutionDiv').innerHTML = 'solution: ' + solution;
+		}
+
+		solution();
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ej49-Radios Div Color</title>
+	<script type="text/javascript">
+		window.onload = ()=>{
+			document.form.onsubmit = () => false;
+
+			for (var i = 0; i <= document.form.color.length; i++) {
+				document.form.color[i].onchange = function () {changeColor()};
+			}
+		}
+
+		function changeColor(){
+			var color = '';
+			for (var i = 0; i <= document.form.color.length-1; i++) {
+				if(document.form.color[i].checked){
+					color = document.form.color[i].value;
+				}
+			}
+			document.getElementById('divColor').style.backgroundColor = color;
+		}
+
+		function cambiarColor(color){
+			var div = document.getElementById('divColor');
+			div.style.backgroundColor = color;
+		}
+
+		function cambiarColorBoton() {
+			var div = document.getElementById('divColor');
+			console.log(form.color.length);
+			for (var i = 0; i <= form.color.length-1; i++) {
+				if (form.color[i].checked == true) {
+					div.style.backgroundColor = form.color[i].value;
+				}
+			}
+		}
+	</script>
+	<style type="text/css">
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		span {
+			padding: 0px 4px;
+			background-color: red;
+			color: white;
+		}
+
+		div {
+			font-size: 20px;
+		}
+
+	</style>
+</head>
+<body>
+	<form name="form">
+		<div class="form-group">
+			<label>Selecciona Color</label><br />
+			<input type="radio" name="color" value="white" id="white" checked="checked" /><label for="white"> Blanco</label><br />
+			<input type="radio" name="color" value="red" id="red" /><label for="red"> Rojo</label><br />
+			<input type="radio" name="color" value="green" id="green" /><label for="green"> Verde</label><br />
+			<input type="radio" name="color" value="blue" id="blue" /><label for="blue"> Azul</label><br />
+			<input type="radio" name="color" value="yellow" id="yellow" /><label for="yellow"> Amarillo</label><br />
+			<input type="radio" name="color" value="black" id="black" onchange="cambiarColor(this.value);"/><label for="black"> Negro</label><br />
+		</div>
+
+		<button name="boton" onclick="cambiarColorBoton();" >Cambiar color</button>
+	</form>
+
+	<div id="divColor" style="height: 100px; width: 100px; background-color: #ccc; margin-top: 20px; border: 1px solid #ccc;"></div>
+
+</body>
+</html>

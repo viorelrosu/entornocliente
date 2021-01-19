@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ej50 - Checkboxes Newsletter</title>
+	<script type="text/javascript">
+		window.onload = ()=>{
+			document.form.onsubmit = () => false;
+
+			document.form.boletin.onchange = () => boletin();
+		}
+
+		function boletin(){
+			var isChecked = document.form.boletin.checked;
+
+			for (var i = 0; i <= document.form.temas.length-1; i++) {
+				if(isChecked) {
+					document.form.temas[i].disabled = false;
+				} else {
+					document.form.temas[i].disabled = true;
+				}
+			}
+
+			for( var elem in document.form.temas) {
+				elem.disabled = !isChecked;
+			}
+		}
+
+	</script>
+	<style type="text/css">
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		span {
+			padding: 0px 4px;
+			background-color: red;
+			color: white;
+		}
+
+		div {
+			font-size: 20px;
+		}
+
+	</style>
+</head>
+<body>
+	<h2>¿Desea subscribirse a nuestro boletin de novedades?</h2>
+
+	<form name="form">
+		<div class="form-group">
+			<input type="checkbox" name="boletin" id="boletin" checked="checked" /><label for="boletin"> SI, quiero subscribirme</label><br />
+		</div>
+
+		<div class="form-group">
+			<label>Seleccione los temas de su interés:</label><br />
+			<input type="checkbox" name="temas" id="arte" value="arte" /><label for="arte"> Arte y Cultura</label><br />
+			<input type="checkbox" name="temas" id="ciencia" value="ciencia" /><label for="ciencia"> Ciencia</label><br />
+			<input type="checkbox" name="temas" id="musica" value="musica" /><label for="musica"> Música</label><br />
+		</div>
+
+	</form>
+
+</body>
+</html>
