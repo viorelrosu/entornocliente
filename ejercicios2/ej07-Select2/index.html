@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ej07 - Select 2</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript">
+		window.onload = function(){
+			document.form.onsubmit = () => false;
+			document.form.btnAdd.onclick = () => textToLeft();
+			document.form.textAdd.onkeyup = () => toggleBtnAdd();
+			document.form.btnDelLeft.onclick = () => deleteSelect('l');
+			document.form.btnDelRight.onclick = () => deleteSelect('r');
+			document.form.btnToLeft.onclick = () => doMoveSelection('r');
+			document.form.btnToRight.onclick = () => doMoveSelection('l');
+			document.form.btnAllToLeft.onclick = () => doMoveAllSelection('r');
+			document.form.btnAllToRight.onclick = () => doMoveAllSelection('l');
+			document.form.btnCopyToRight.onclick = () => doCopySelection('l');
+			document.form.btnCopyToLeft.onclick = () => doCopySelection('r');
+			document.form.btnDelFromLeft.onclick = () => doDelFromSelection('l');
+			document.form.btnDelFromRight.onclick = () => doDelFromSelection('r');
+
+			var btnAdd = document.form.btnAdd;
+			var textAdd = document.form.textAdd;
+			var sLeft = document.getElementById("sLeft");
+			var sRight = document.getElementById("sRight");
+
+			function toggleBtnAdd(){
+				if(textAdd.value != '') {
+					btnAdd.disabled = false;
+				} else {
+					btnAdd.disabled = true;
+				}
+			}
+
+			function textToLeft(){
+
+				//insertamos en select left
+				var text = textAdd.value.trim();
+				var option = new Option(text,text);
+				sLeft.options[sLeft.options.length] = option;
+
+				btnAdd.disabled = true;
+				textAdd.value = '';
+			}
+
+			function deleteSelect(side){
+				if(side == 'l') {
+					sLeft.options.length = 0;
+				} else {
+					sRight.options.length = 0;
+				}
+			}
+
+			function doMoveSelection(side) {
+				var optionsNoSelect = [];
+				var select = (side == 'l') ? sLeft : sRight;
+				for (var i=0; i <= select.options.length-1; i++) {
+					var opt = select.options[i];
+					if(opt.selected == true) {
+						addOption( ((side == 'l') ? 'r': 'l'), opt);
+					} else {
+						optionsNoSelect.push(opt);
+					}
+				}
+				select.options.length = 0;
+				if(optionsNoSelect.length > 0) {
+					populate(side, optionsNoSelect);
+				}
+			}
+
+			function populate(side, options){
+				// console.log(options);
+				for(var opt of options) {
+					addOption(side, opt);
+				}
+			}
+
+			function doMoveAllSelection(side) {
+				var select = (side == 'l') ? sLeft : sRight;
+				for (var i=0; i <= select.options.length-1; i++) {
+					var opt = select.options[i];
+					addOption( ((side == 'l') ? 'r': 'l'), opt);
+				}
+				select.options.length = 0;
+			}
+
+			function addOption(side, opt) {
+				var text = opt.text;
+				var valor = opt.value.trim();
+				var option = new Option(text,text);
+				var select = (side == 'l') ? sLeft : sRight;
+				select.options[select.options.length] = option;
+			}
+
+			function doCopySelection(side){
+				var select = (side == 'l') ? sLeft : sRight;
+				for (var i=0; i <= select.options.length-1; i++) {
+					var opt = select.options[i];
+					if(opt.selected == true) {
+						addOption( ((side == 'l') ? 'r': 'l'), opt);
+					}
+					opt.selected = false;
+				}
+			}
+
+			function doDelFromSelection(side) {
+				var optionsNoSelect = [];
+				var select = (side == 'l') ? sLeft : sRight;
+				for (var i=0; i <= select.options.length-1; i++) {
+					var opt = select.options[i];
+					if(opt.selected == false) {
+						optionsNoSelect.push(opt);
+					}
+				}
+				select.options.length = 0;
+				if(optionsNoSelect.length > 0) {
+					populate(side, optionsNoSelect);
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+
+	<div class="container py-5">
+
+		<form name="form" class="form">
+
+			<div class="row mb-3">
+				<div class="col-7 text-center">
+					<div class="form-group">
+						<label>Introduzca texto:</label>
+						<input type="text" name="textAdd" value="" style="width: 200px;"/>
+						<input type="button" name="btnAdd" disabled value="Añadir">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-2">
+					<div class="form-group">
+						<select name="sLeft[]" id="sLeft" class="form-control" multiple="multiple">
+							<option value="Option 1">Option 1</option>
+							<option value="Option 2">Option 2</option>
+						</select>
+						<label>Select Izquierda</label>
+					</div>
+				</div>
+
+				<div class="col-3 text-center">
+					<input type="button" name="btnToRight" class="btn btn-info" value=">>" />
+					<input type="button" name="btnAllToRight" class="btn btn-primary" value=">>|" />
+					<input type="button" name="btnAllToLeft" class="btn btn-primary" value="|<<" />
+					<input type="button" name="btnToLeft" class="btn btn-info" value="<<" />
+					<br /><br />
+					<input type="button" name="btnDelLeft" class="btn btn-danger" value="X1" />
+					<input type="button" name="btnDelRight" class="btn btn-danger" value="X2" />
+				</div>
+
+				<div class="col-2">
+					<div class="form-group">
+						<select name="sRight[]" id="sRight" class="form-control" multiple="multiple">
+							<option value="Option 1">Option 1</option>
+							<option value="Option 2">Option 2</option>
+						</select>
+						<label>Select Derecha</label>
+					</div>
+				</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-7 text-center">
+				<input type="button" name="btnCopyToRight" class="btn btn-info" value="Copiar a Derecha >> " />
+				<input type="button" name="btnCopyToLeft" class="btn btn-info" value="<< Copiar a Izquierda" /><br /><br />
+				<input type="button" name="btnDelFromLeft" class="btn btn-danger" value="Borrar de Izquierda" />
+				<input type="button" name="btnDelFromRight" class="btn btn-danger" value="Borrar de Derecha" />
+			</div>
+		</div>
+
+	</form>
+
+</body>
+</html>
