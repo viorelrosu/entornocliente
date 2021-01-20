@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ej08 - RegExForm</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript">
+		window.onload = function(){
+			document.form.onsubmit = () => false;
+			document.form.matricula.onkeyup = () => valid();
+			document.form.telefono.onkeyup = () => valid();
+			document.form.codigo_postal.onkeyup = () => valid();
+			document.form.nombre.onkeyup = () => valid();
+			document.form.url.onkeyup = () => valid();
+			document.form.btnAdd.onclick = () => getDatos();
+
+			var btnAdd = document.form.btnAdd;
+
+			document.form.matricula.style.color = 'red';
+			document.form.telefono.style.color = 'red';
+			document.form.codigo_postal.style.color = 'red';
+			document.form.nombre.style.color = 'red';
+			document.form.url.style.color = 'red';
+
+			function valid(){
+				btnAdd.disabled = true;
+				var isValid = false;
+
+				isValid = validMatricula();
+				isValid = validTelefono();
+				isValid = validCodigoPostal();
+				isValid = validNombre();
+				isValid = validUrl();
+
+				if(isValid) {
+					btnAdd.disabled = false;
+				}
+			}
+
+			function validMatricula(){
+				var isValid = false;
+				var matricula = document.form.matricula.value.trim().toUpperCase();
+
+				var patron = /^(\d{4})-([BCDEFGHIJKLMNPRSTVXYZW]{3})$/;
+				if(patron.test(matricula)) {
+					isValid = true;
+					document.form.matricula.style.color = 'blue';
+				} else {
+					document.form.matricula.style.color = 'red';
+				}
+
+				return isValid;
+			}
+
+			function validTelefono(){
+				var isValid = false;
+				var telefono = document.form.telefono.value.trim();
+
+				if(telefono != '' && telefono != ' ') {
+					var patron = /^(([6789]{1})(\d{1}))-(\d{3})-(\d{2})-(\d{2})$/; //
+					if(patron.test(telefono)) {
+						isValid = true;
+						document.form.telefono.style.color = 'blue';
+					} else {
+						document.form.telefono.style.color = 'red';
+					}
+				}
+
+				return isValid;
+			}
+
+			function validCodigoPostal(){
+				var isValid = false;
+				var codigo_postal = document.form.codigo_postal.value.trim();
+
+				if(codigo_postal != '' && codigo_postal != ' ') {
+					var patron = /^(\d{5})$/;
+					if(patron.test(codigo_postal)) {
+						isValid = true;
+						document.form.codigo_postal.style.color = 'blue';
+					} else {
+						document.form.codigo_postal.style.color = 'red';
+					}
+				}
+
+				return isValid;
+			}
+
+			function validNombre(){
+				var isValid = false;
+				var nombre = document.form.nombre.value.trim().toLowerCase();
+
+				if(nombre != '' && nombre != ' ') {
+					var patron = /^(([^-\s][a-zñçáéíóú-]|[\s]){2,20})$/;
+					if(patron.test(nombre)) {
+						isValid = true;
+						document.form.nombre.style.color = 'blue';
+					} else {
+						document.form.nombre.style.color = 'red';
+					}
+				}
+
+				return isValid;
+			}
+
+			function validUrl(){
+				var isValid = false;
+				var url = document.form.url.value.trim();
+
+				if(url != '' && url != ' ') {
+					var patron = /^((http[s]?:\/\/)?[\w]+([\.]+([\w]{2})+)+)$/;
+					if(patron.test(url)) {
+						isValid = true;
+						document.form.url.style.color = 'blue';
+					} else {
+						document.form.url.style.color = 'red';
+					}
+				}
+
+				return isValid;
+			}
+
+			function formatNombre(nombre){
+				var array = nombre.split(' ');
+				var nombreCapitalize = '';
+				for (var i = 0; i < array.length; i++) {
+					nombreCapitalize += array[i].charAt(0).toUpperCase() + array[i].slice(1) + ' ';
+				}
+				return nombreCapitalize.trim();
+			}
+
+			function getDatos(){
+				var html='';
+				var matricula = document.form.matricula.value.trim().toUpperCase();
+				html += 'Matrícula: ' + matricula + '\n';
+
+				var telefono = document.form.telefono.value.trim();
+				html += 'Teléfono: ' + telefono+ '\n';
+
+				var codigo_postal = document.form.codigo_postal.value.trim();
+				html += 'Código postal: ' + codigo_postal+ '\n';
+
+				var nombre = document.form.nombre.value.trim();
+				html += 'Nombre: ' + formatNombre(nombre)+ '\n';
+
+				var url = document.form.url.value.trim();
+				html += 'Url: ' + url+ '\n';
+
+				document.form.data.value= html;
+			}
+
+
+
+		}
+	</script>
+</head>
+<body>
+
+	<div class="container py-5">
+
+			<div class="row mb-3">
+				<div class="col-6">
+					<form name="form" class="form">
+						<div class="form-group row">
+							<div class="col-sm-5">
+								<label for="matricula" class="col-form-label">Matrícula:</label>
+							</div>
+							<div class="col-sm-7">
+								<input type="text" name="matricula" value="" class="form-control" placeholder="dddd-lll" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-5">
+								<label for="telefono" class="col-form-label">Teléfono:</label>
+							</div>
+							<div class="col-sm-7">
+								<input type="text" name="telefono" value="" class="form-control" placeholder="dd-ddd-dd-dd"/>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-5">
+								<label for="codigo_postal" class="col-form-label">Código postal:</label>
+							</div>
+							<div class="col-sm-7">
+								<input type="text" name="codigo_postal" value="" class="form-control" placeholder="ddddd"/>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-5">
+								<label for="nombre" class="col-form-label">Nombre:</label>
+							</div>
+							<div class="col-sm-7">
+								<input type="text" name="nombre" value="" class="form-control" placeholder="l+ l+ l+"/>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-5">
+								<label for="url" class="col-form-label">URL:</label>
+							</div>
+							<div class="col-sm-7">
+								<input type="text" name="url" value="" class="form-control" placeholder="ll.ll+"/>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-5">&nbsp;</div>
+							<div class="col-sm-7">
+								<input type="button" name="btnAdd" value="Añadir" disabled class="btn btn-primary form-control"/>
+							</div>
+						</div>
+
+						<div class="form-group row mt-5">
+							<div class="col-sm-5">Datos añadidos</div>
+							<div class="col-sm-7">
+								<textarea class="form-control" name="data" rows="5"></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+	</div>
+
+</body>
+</html>
