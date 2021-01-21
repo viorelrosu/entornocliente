@@ -21,10 +21,14 @@
 			document.form.btnDelFromLeft.onclick = () => doDelFromSelection('l');
 			document.form.btnDelFromRight.onclick = () => doDelFromSelection('r');
 
+			console.log( document.form["sLeft[]"].options );
+
 			var btnAdd = document.form.btnAdd;
 			var textAdd = document.form.textAdd;
-			var sLeft = document.getElementById("sLeft");
-			var sRight = document.getElementById("sRight");
+			//var sLeft = document.getElementById("sLeft");
+			var sLeft = document.form["sLeft[]"]
+			//var sRight = document.getElementById("sRight");
+			var sRight = document.form["sRight[]"]
 
 			function toggleBtnAdd(){
 				if(textAdd.value != '') {
