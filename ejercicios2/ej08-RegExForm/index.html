@@ -110,7 +110,8 @@
 
 				if(url != '' && url != ' ') {
 					//var patron = /^((http[s]?:\/\/)?[\w]+([\.]+([\w]{2})+)+)$/;
-					var patron = /^((http[s]?:\/\/)?[\w]+([\.]{1}([\w]{2}))+)$/;
+					//var patron = /^((http[s]?:((\/\/)|(\\\\)))?[\w]+([\.]{1}([\w]{2}))+)$/;
+					var patron = /^((http[s]?)?:((\/\/)|(\\\\)))?[\w]+((\.){1}([\w]{2}))+$/;
 					if(patron.test(url)) {
 						isValid = true;
 						document.form.url.style.color = 'blue';

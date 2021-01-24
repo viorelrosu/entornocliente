@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej09 - Dom</title>
+	<script>
+		window.onload = function() {
+
+			var cabsh1 = document.getElementsByTagName("h1");
+			var cabsh2 = document.getElementsByTagName("h2");
+			fillText();
+
+
+
+			function fillText(){
+
+				for (var i=0; i < cabsh1.length; i++) {
+					cabsh1[i].innerHTML = "Cabecera de nivel 1." + (i);
+					cabsh1[i].onclick = function(){ toggleCabH1(i) };
+					console.log(i);
+				}
+
+				for (var j=0; j <= cabsh2.length-1; j++) {
+					cabsh2[j].innerHTML = "Cabecera de nivel 2." + (j);
+					cabsh2[j].onclick = function(){ toggleCabH2(j) };
+				}
+
+				// console.log(cabsh2);
+			}
+
+			function toggleCabH1(indice){
+				console.log(indice);
+				cabsh1[indice].innerHTML = indice  + " Cabecera de nivel 1";
+
+			}
+		};
+	</script>
+</head>
+<body>
+
+	<h1>Cabecera de nivel 1</h1>
+	<h1>Cabecera de nivel 1</h1>
+	<h1>Cabecera de nivel 1</h1>
+
+	<h2>Cabecera de nivel 2</h2>
+	<h2>Cabecera de nivel 2</h2>
+
+	<button name="btnAddCabecera">Añadir cabecera</button>
+	<button name="btnAddCabecera">Añadir cabecera</button>
+	<button name="btnAddCabecera">Añadir cabecera</button>
+</body>
+</html>

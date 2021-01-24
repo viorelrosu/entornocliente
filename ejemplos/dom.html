@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">Este es div 1</div>
+	<div id="div2">Este es div 2</div>
+	<div id="div3">Este es div 3</div>
+	<div id="div4">Este es div 4</div>
+	<div id="div5"></div>
+	<script type="text/javascript">
+		var divs = document.getElementsByTagName("div");
+		console.log(divs);
+		divs[4].innerHTML = divs[2].innerHTML;
+
+		var divs2 = document.getElementsByName("");
+	</script>
+</body>
+</html>
