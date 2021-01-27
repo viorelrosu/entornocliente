@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej10 - DomArbol</title>
+	
+</head>
+<body>
+	<div id="myDiv" style="display: none;">Este es un elemento</div>
+	<div id="myDivInfo">Este es un elemento</div>
+
+	<script>
+		var myDiv = document.getElementById("myDiv");
+		var myDivInfo = document.getElementById("myDivInfo");
+		var x = myDiv.firstChild;
+		var txt = "";
+		txt += "El nombre del nodo: " + x.nodeName + "<br>";
+		txt += "El valor del nodo: " + x.nodeValue + "<br>";
+		txt += "El tipo del nodo: " + x.nodeType;
+
+		myDivInfo.innerHTML = txt;
+		</script>
+
+</body>
+</html>

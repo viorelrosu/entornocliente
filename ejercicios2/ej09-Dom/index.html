@@ -5,49 +5,72 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ej09 - Dom</title>
 	<script>
+		var cabsh1,cabsh2,div1,div2;
+
 		window.onload = function() {
-
-			var cabsh1 = document.getElementsByTagName("h1");
-			var cabsh2 = document.getElementsByTagName("h2");
+			cabsh1 = document.getElementsByTagName("h1");
+			cabsh2 = document.getElementsByTagName("h2");
+			div1 = document.getElementsByTagName("div")[0];
+			div2 = document.getElementsByTagName("div")[1];
+			document.getElementById("btnAddCabeceraNivel1").onclick = () => { addCabH1(); }
+			document.getElementById("btnAddCabeceraNivel2").onclick = () => { addCabH2(); }
 			fillText();
-
-
-
-			function fillText(){
-
-				for (var i=0; i < cabsh1.length; i++) {
-					cabsh1[i].innerHTML = "Cabecera de nivel 1." + (i);
-					cabsh1[i].onclick = function(){ toggleCabH1(i) };
-					console.log(i);
-				}
-
-				for (var j=0; j <= cabsh2.length-1; j++) {
-					cabsh2[j].innerHTML = "Cabecera de nivel 2." + (j);
-					cabsh2[j].onclick = function(){ toggleCabH2(j) };
-				}
-
-				// console.log(cabsh2);
-			}
-
-			function toggleCabH1(indice){
-				console.log(indice);
-				cabsh1[indice].innerHTML = indice  + " Cabecera de nivel 1";
-
-			}
 		};
+
+		function fillText(){
+			for (let i=0; i < cabsh1.length; i++) {
+				cabsh1[i].innerHTML = "Cabecera de nivel 1." + (i+1);
+				cabsh1[i].onclick = function(){ toggleCabH1(i) };
+				cabsh1[i].ondblclick = function(){ resetCabH1(i) };
+			}
+
+			for (let j=0; j < cabsh2.length; j++) {
+				cabsh2[j].innerHTML = "Cabecera de nivel 2." + (j+1);
+				cabsh2[j].onclick = function(){ toggleCabH2(j) };
+				cabsh2[j].ondblclick = function(){ resetCabH2(j) };
+			}
+		}
+
+		function toggleCabH1(indice){
+			cabsh1[indice].innerHTML = (indice+1)  + " Cabecera de nivel 1";
+		}
+
+		function resetCabH1(indice){
+			cabsh1[indice].innerHTML = " Cabecera de nivel 1." + (indice+1);
+		}
+
+		function toggleCabH2(indice){
+			cabsh2[indice].innerHTML = (indice+1)  + " Cabecera de nivel 2";
+		}
+
+		function resetCabH2(indice){
+			cabsh2[indice].innerHTML = " Cabecera de nivel 2." + (indice+1);
+		}
+
+		function addCabH1() {
+			var indice = document.getElementsByTagName("h1").length;
+			div1.innerHTML += "<h1 onclick='toggleCabH1("+(indice)+");' ondblclick='resetCabH1("+(indice)+")'>Cabecera de nivel 1."+(indice+1)+"</h1>";
+		}
+
+		function addCabH2() {
+			var indice = document.getElementsByTagName("h2").length;
+			div2.innerHTML += "<h2 onclick='toggleCabH2("+(indice)+");' ondblclick='resetCabH2("+(indice)+")'>Cabecera de nivel 2."+(indice+1)+"</h2>";
+		}
+
 	</script>
 </head>
 <body>
+	<div>
+		<h1>Cabecera de nivel 1</h1>
+		<h1>Cabecera de nivel 1</h1>
+		<h1>Cabecera de nivel 1</h1>
+	</div>
+	<div>
+		<h2>Cabecera de nivel 2</h2>
+		<h2>Cabecera de nivel 2</h2>
+	</div>
 
-	<h1>Cabecera de nivel 1</h1>
-	<h1>Cabecera de nivel 1</h1>
-	<h1>Cabecera de nivel 1</h1>
-
-	<h2>Cabecera de nivel 2</h2>
-	<h2>Cabecera de nivel 2</h2>
-
-	<button name="btnAddCabecera">Añadir cabecera</button>
-	<button name="btnAddCabecera">Añadir cabecera</button>
-	<button name="btnAddCabecera">Añadir cabecera</button>
+	<button id="btnAddCabeceraNivel1">Añadir cabecera H1</button>
+	<button id="btnAddCabeceraNivel2">Añadir cabecera H2</button>
 </body>
 </html>
