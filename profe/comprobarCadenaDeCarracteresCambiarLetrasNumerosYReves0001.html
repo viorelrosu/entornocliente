@@ -20,6 +20,7 @@ function resolver(){
 	   for(i=0; i<texto.length; i++){
 		  /* si es un número lo guardamos en la variable misNumeros */
 		  if (numeros.indexOf(texto.charAt(i))!=-1){
+		  //if (!isNaN(texto.charAt(i))){
 			 misNumeros=misNumeros.concat(texto.charAt(i)); 
 			 esNumero=true;
 		  }
@@ -31,7 +32,7 @@ function resolver(){
 	   } 
 	   // Si hay letras en la variable hayLetras se imprime con los caracteres correspondiente.
 	   if (esLetra==true){
-			 var hayLetras="La cadean de caracteres contiene letras: " + misLetras
+			 var hayLetras="La cadena de caracteres contiene letras: " + misLetras
 			 }
 			 else{
 			 var hayLetras="";

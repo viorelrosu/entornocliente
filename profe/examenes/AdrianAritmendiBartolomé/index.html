@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+	<title>Ejercicio</title>
+</head>
+<script type="text/javascript">
+	//clase
+	class Piso{
+		constructor(direccion,telefono,mconst,pventa,comision){
+			this._direccion=direccion;
+			this._telefono=telefono;
+			this._mconst=mconst;
+			this._pventa=pventa;
+			this._comision=comision;
+		}
+		//getters
+		get direccion(){
+			this._direccion=direccion;
+		}
+		get telefono(){
+			this._telefono=telefono;
+		}
+		get mconst(){
+			this._mconst=mconst;
+		}
+		get pventa(){
+			this._pventa=pventa;
+		}
+		get comision(){
+			this._comision=comision;
+		}
+		//setters
+		set direccion(f){
+			this._direccion=direccion;
+			return direccion;
+		}
+		set telefono(f){
+			this._telefono=telefono;
+			return telefono;
+		}
+		set mconst(f){
+			this._mconst=mconst;
+			return mconst;
+		}
+		set pventa(f){
+			this._pventa=pventa;
+			return pventa;
+		}
+		set comision(f){
+			this._comision=comision;
+			return comision;
+		}
+	/*let piso[0]= new Piso("El Pez,24",987456321,80.50,222000,3.0);
+	let piso[1]= new Piso("La Presa,34",687125463,90.30,165250,2.5);
+	let piso[2]= new Piso("Albericia,7",851369741,62.00,121000,2.0);*/
+	
+}
+function validar(){
+	document.getElementById('anadir').innerHTML="";
+	var error="";
+	var direc="";
+	document.getElementById('direccion').value=direc;
+	if(direc.length<3&&direc.length>35){
+		error=error+"Dirección incorrecta<br>";
+	}
+	else{
+		
+	}
+	var telef="";
+	document.getElementById('telefono').value=telef;
+	if(telef<999999999&&telef<600000000){
+	}
+	else{
+		error=error+"Telefono incorrecto<br>";
+	}
+	var mcon="";
+	document.getElementById('mconst').value=mcon;
+	console.log(document.getElementById('mconst').value);
+	if(mcon>42){
+		var cont=0;
+	for(var i=0;i<mcon.length;i++){
+		if(mcon.charAt(i)=="."){
+			cont++;
+		}
+		else{
+			if(cont<1){
+				error=error+"Metros construidos erroneos<br>";
+			}
+		}
+	}
+	}
+	else{
+		error=error+"Metros construidos erroneos<br>";
+	}
+	var pven="";
+	document.getElementById('pventa').value=pven;
+	if(pven<6000){
+		error=error+"El precio de venta no es valido<br>";
+	}
+	else{
+
+	}
+	var com="";
+	document.getElementById('comision').value=com;
+	for(var i=0;i<com.length;i++){
+		if(com.charAt(i)=="."){
+			cont++;
+		}
+		else{
+			if(cont<1){
+				error=error+"El valor de comision es erroneo<br>";
+			}
+			else{
+
+			}
+		}
+	}
+	document.getElementById('errores').innerHTML=error;
+	creart();
+}
+
+function creart(){
+	htm="";
+	htm=htm+"<table border='3px'>";
+	htm=htm+"<th>Direccion</th>";
+	htm=htm+"<th>Teléfono</th>";
+	htm=htm+"<th>Metros Construidos</th>";
+	htm=htm+"<th>Precio de venta</th>";
+	htm=htm+"<th>Comison</th>";
+	htm=htm+"</table>";
+}
+
+function anadirPiso(){
+	var ht="<input type='text' name='direccion' id='direccion'>Introduzca su direccion</br>";
+	ht=ht+"<input type='text' name='telefono' id='telefono'>Introduzca su telefono</br>";
+	ht=ht+"<input type='text' name='mconst' id='mconst'>Introduzca los metros construidos</br>";
+	ht=ht+"<input type='text' name='pventa' id='pventa'>Introduzca el precio de venta</br>";
+	ht=ht+"<input type='text' name='comision' id='comision'>Introduzca la comision</br>";
+	ht=ht+"<input type='submit' value='Enviar' onclick='validar()'>";
+	document.getElementById('anadir').innerHTML=ht;
+}
+
+</script>
+<body>
+<button onclick="anadirPiso()">Añadir piso</button>
+<div id="anadir"></div>
+<div id="errores"></div>
+</body>
+</html>

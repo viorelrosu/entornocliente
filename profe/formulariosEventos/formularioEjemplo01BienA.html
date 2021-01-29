@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <style type="text/css">
+		DIV { 
+		color: red; 
+		font-family: Verdana;
+		font-weight:bold; 
+		font-size:14px;
+		}
+     </style>
+
+    <script>
+	  function validar(formulario){
+		    document.getElementById("errEdad").innerHTML=""
+		    document.getElementById("errNom").innerHTML=""
+		    var nombre = formulario.nombre.value.trim().toLowerCase();
+			var edad=formulario.edad.value.trim();
+			var confirmar=true;
+			if (edad==""){			   
+			   document.getElementById("errEdad").innerHTML="La edad no puede quedarse en blanco";
+			   confirmar= false;	
+               formulario.edad.focus();  
+			   }
+			   else if(edad<0 || edad>100){			  
+				  document.getElementById("errEdad").innerHTML="La edad debe ser un número entre 0 y 100";
+				  confirmar= false;	
+				  formulario.edad.focus();  			  
+				}					
+			
+			for (var index = 0; index <= edad.length; index++) {
+			    let caracteresPermitidos = '0123456789'; 
+				if (caracteresPermitidos.indexOf(edad.charAt(index)) == -1) {
+					confirmar = false;     
+					document.getElementById("errEdad").innerHTML="Se han introducido caracteres no numéricos en la edad";   
+					formulario.edad.focus();
+				}
+			}					
+			if (nombre.length >= 3 && nombre.length <= 20) {
+				let caracteresPermitidos = 'abcdefghjiklmnopqrstuvwxyzñç- ';
+				for (var index = 0; index <= nombre.length; index++) {
+				  if (caracteresPermitidos.indexOf(nombre.charAt(index)) == -1) {
+					confirmar = false;     
+					document.getElementById("errNom").innerHTML="Se han introducido caracteres no validos en el nombre";   
+				    formulario.nombre.focus();
+				  }
+				}
+			  } else {
+				confirmar = false;  
+				document.getElementById("errNom").innerHTML="El nombre no puede tener menos de tres caracteres o ha introducido mas de 20 caracteres"; 
+			    formulario.nombre.focus();
+			  }		    
+		    return confirmar;
+	  }
+	  
+    </script>
+  </head>
+  <body>
+ 
+ <form action="onChangeText.html" target="_blank" onSubmit="return validar(this);">
+ Nombre: <input type="text" name="nombre"/><div id="errNom"></div><br>
+ Edad: <input type="text" name="edad"/><div id="errEdad"></div><br>
+ <input type="submit" value="Enviar"/>
+ </form> 
+ </body>
+</html>

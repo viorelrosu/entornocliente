@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+<head>
+<script>
+function bloqDesbloq()
+{   if (document.login.direccion.value.trim() != "") 
+			{ document.login.boton.disabled = false;}
+		else 
+		    { document.login.boton.disabled = true;}
+	if (document.login.apellidos.value.trim() != "") 
+		    { document.login.direccion.disabled = false;}
+		else 
+			{ 
+			document.login.direccion.disabled = true;
+			document.login.boton.disabled = true;}
+	if (document.login.nombre.value.trim() != "") 
+			{document.login.apellidos.disabled = false;}	
+		else { 
+			document.login.apellidos.disabled = true;
+			document.login.direccion.disabled = true;
+			document.login.boton.disabled = true;}	
+}
+</script>
+</head>
+<body> 
+
+<form name="login" method="POST" action="pagina_de_login.asp" target="_blank">
+Nombre: <input type="text" name="nombre" id="nombre" size="10" onKeyUp="bloqDesbloq()"><br>
+Apellidos: <input type="text" name="apellidos" id="apellidos" size="10" disabled onKeyUp="bloqDesbloq()"><br>
+Direccion: <input type="text" name="direccion" id="direccion" size="10" disabled onKeyUp="bloqDesbloq()"><br>
+<input type="button" name="boton" value="Aceptar" disabled id="boton">
+</form>
+ </body>
+ </html>

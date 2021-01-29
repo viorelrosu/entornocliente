@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Examen Recuperacion JS Gabriel Martinez</title>
+	<style type="text/css">
+		body {text-align: center;}
+		p {font-weight: bolder;}
+		input {margin-top: 15px; margin-left: 5px; font-weight: bolder;}
+	</style>
+	<script type="text/javascript">
+		class Pisos {
+		constructor(direccion,telefono,metros_construidos,metros_utiles,precio_venta,comision,ganancias) {
+			this._direccion = direccion;
+			this._telefono = telefono;
+			this._metros_construidos = metros_construidos;
+			this._metros_utiles = metros_utiles;
+			this._precio_venta = precio_venta;
+			this._comision = comision;
+			this._ganancias = ganancias;
+		}
+			get direccion() {
+				return this._direccion;
+			}
+
+			get telefono() {
+				return this._telefono;
+			}
+
+			get metros_construidos() {
+				return this._metros_construidos;
+			}
+
+			get metros_utiles() {
+				return this._metros_utiles;
+			}
+
+			get precio_venta() {
+				return this._precio_venta;
+			}
+
+			get comision() {
+				return this._comision;
+			}
+
+			get ganancias() {
+				return this._ganancias;
+			}
+
+			set direccion(valor) {
+				this._direccion = valor;
+			}
+
+			set telefono(valor) {
+				this.telefono = valor;
+			}
+
+			set metros_construidos(valor) {
+				this._metros_construidos = valor;
+			}
+
+			set metros_utiles(valor) {
+				this.metros_utiles = valor;
+			}
+
+			set precio_venta(valor) {
+				this._precio_venta = valor;
+			}
+
+			set comision(valor) {
+				this._comision = valor;
+			}
+
+			set ganancias(valor) {
+				this._ganancias = valor;
+			}
+		}
+
+		var pisos = new Array();
+		var recorrido = "0";
+		pisos[0] = (new Pisos("El Pez, 24","987456321","80.50","70.84","222000","3.0","6660.00"));
+		pisos[1] = (new Pisos("La Presa, 34","687125463","94.30","82.98","165250","2.5","4131.25"));
+		pisos[2] = (new Pisos("Albericia, 7","852369741","62.00","54.56","121000","2.0","2420.00"));
+
+		function validar_direccion() {
+			var validar = true;
+			var direccion = document.getElementById("direccion").value.trim().toLowerCase();
+			var caracteres = "qwertyuiopasdfghjklñzxcvbnmç- 0123456789";
+			if(direccion.length >= 3 && direccion.length <= 35) {
+				for (var i = 0; i < direccion.length; i++) {
+					if (caracteres.indexOf(direccion.charAt(i))== -1) {
+						document.getElementById("miDiv").innerHTML = "Los caracteres introducidos en direccion no son correctos";
+						valiar = false;
+					}
+				}
+			} else {
+				alert("El campo direccion tiene que tener entre 3 y 35 caracteres");
+				validar = false;
+			}
+				return validar;
+		}
+
+		function validar_telefono() {
+			var validar = true;
+			var telefono = document.getElementById("telefono").value.trim();
+			var caracteres = "0123456789";
+			if(telefono.length == 9) {
+				for (var i = 0; i < telefono.length; i++) {
+					if (caracteres.indexOf(telefono.charAt(i))== -1) {
+						document.getElementById("miDiv").innerHTML = "Los caracteres introducidos en telefono no son correctos";
+						valiar = false;
+					}
+				}
+			} else {
+				alert("El campo telefono tiene que ser de 9 caracteres");
+				validar = false;
+			}
+				return validar;
+		}
+
+		function validar_metros_construidos() {
+			var validar = true;
+			var metros_construidos = document.getElementById("metros_construidos").value.trim();
+			var caracteres = "0123456789.";
+			if(metros_construidos.length == 5) {
+				for (var i = 0; i < metros_construidos.length; i++) {
+					if (caracteres.indexOf(metros_construidos.charAt(i))== -1) {
+						document.getElementById("miDiv").innerHTML = "Los caracteres introducidos en metros construidos no son correctos";
+						valiar = false;
+					}
+				}
+			} else {
+				alert("El campo metros construidos tiene que ser de 5 caracteres");
+				validar = false;
+			}
+				return validar;
+		}
+
+		function validar_precio_venta() {
+			var validar = true;
+			var precio_venta = document.getElementById("precio_venta").value.trim();
+			var caracteres = "0123456789";
+			if(precio_venta.length >= 5) {
+				for (var i = 0; i < precio_venta.length; i++) {
+					if (caracteres.indexOf(precio_venta.charAt(i))== -1) {
+						document.getElementById("miDiv").innerHTML = "Los caracteres introducidos en precio venta no son correctos";
+						valiar = false;
+					}
+				}
+			} else {
+				alert("El campo precio venta tiene que ser de 5 caracteres");
+				validar = false;
+			}
+				return validar;
+		}
+
+		function validar_comision() {
+			var validar = true;
+			var comision = document.getElementById("comision").value.trim();
+			var caracteres = "0123456789.";
+			if(comision.length <= 3) {
+				for (var i = 0; i < comision.length; i++) {
+					if (caracteres.indexOf(comision.charAt(i))== -1) {
+						document.getElementById("miDiv").innerHTML = "Los caracteres introducidos en comision no son correctos";
+						valiar = false;
+					}
+				}
+			} else {
+				alert("El campo comision tiene que ser de 3 caracteres");
+				validar = false;
+			}
+				return validar;
+		}
+
+		function alta() {
+			limpiar();
+			document.getElementById("alta").disabled = true;
+			document.getElementById("limpiar").disabled = true;
+			document.getElementById("aceptar").disabled = false;
+			document.getElementById("cancelar").disabled = false;
+		}
+
+		function cancelar() {
+			limpiar();
+			document.getElementById("aceptar").disabled = true;
+			document.getElementById("alta").disabled = false;
+			document.getElementById("limpiar").disabled = false;
+			document.getElementById("cancelar").disabled = true;
+
+		}
+
+		function listado_estatico() {
+			document.getElementById("td_direccion").innerHTML += pisos[0].direccion;
+			document.getElementById("td_direccion2").innerHTML += pisos[1].direccion;
+			document.getElementById("td_direccion3").innerHTML += pisos[2].direccion;
+			document.getElementById("td_telefono").innerHTML += pisos[0].telefono;
+			document.getElementById("td_telefono2").innerHTML += pisos[1].telefono;
+			document.getElementById("td_telefono3").innerHTML += pisos[2].telefono;
+			document.getElementById("td_metros").innerHTML += pisos[0].metros_construidos;
+			document.getElementById("td_metros2").innerHTML += pisos[1].metros_construidos;
+			document.getElementById("td_metros3").innerHTML += pisos[2].metros_construidos;
+			document.getElementById("td_precio").innerHTML += pisos[0].precio_venta;
+			document.getElementById("td_precio2").innerHTML += pisos[1].precio_venta;
+			document.getElementById("td_precio3").innerHTML += pisos[2].precio_venta
+			document.getElementById("td_comision").innerHTML += pisos[0].comision;
+			document.getElementById("td_comision2").innerHTML += pisos[1].comision;
+			document.getElementById("td_comision3").innerHTML += pisos[2].comision
+			}
+			
+
+		function aceptar() {
+			if (validar_direccion() && validar_telefono() && validar_metros_construidos() && validar_precio_venta() && validar_comision()) {
+				var resultado = confirm("¿Estas seguro que quieres dar de alta este piso?");
+				if (resultado==true) {
+					var direccion = document.getElementById("direccion").value;
+					var telefono = document.getElementById("telefono").value;
+					var metros_construidos = document.getElementById("metros_construidos").value;
+					var precio_venta = document.getElementById("precio_venta").value;
+					var comision = document.getElementById("comision").value;
+					var multiplicacion = metros_construidos * 12;
+					var metros_restar = multiplicacion / 100;
+					var metros_utiles = metros_construidos - metros_restar;
+					var ganancias = precio_venta * comision;
+					pisos.push(new Pisos(direccion,telefono,metros_construidos,metros_utiles,precio_venta,comision,ganancias));
+					alert("Se ha dado de alta correctamente el piso");
+					limpiar();
+				} else {
+					alert("No se ha dado de alta el piso");
+				}	
+			} else {
+				alert("No se ha podido dar de alta el piso");
+			}
+		}
+
+		function limpiar() {
+			document.getElementById("direccion").value = "";
+			document.getElementById("telefono").value = "";
+			document.getElementById("metros_construidos").value = "";
+			document.getElementById("precio_venta").value = "";
+			document.getElementById("comision").value = "";
+		}
+
+		function listar()  {
+			var ventana = "";
+			ventana = window.open('','ventana','width="800",height="500"');
+			ventana.document.write('<table border=2>');
+			ventana.document.write('<tr><td>Direccion</td><td>Telefono</td><td>Metros Construidos</td><td>Metros Utiles</td><td>Precio Venta</td><td>% Comision</td><td>Ganancias</td></tr>');
+			for (var i = 0; i < pisos.length; i++) {
+				ventana.document.write('<tr><td>'+pisos[i].direccion+'</td><td>'+pisos[i].telefono+'</td><td>'+pisos[i].metros_construidos+'</td><td>'+pisos[i].metros_utiles+'</td><td>'+pisos[i].precio_venta+'</td><td>'+pisos[i].comision+'</td><td>'+pisos[i].ganancias+'</td></tr>');
+			}
+			ventana.document.write('</table><br>');
+			ventana.document.write('<input type="button" id="boton_cerrar" value="CERRAR" onclick="window.close()">');
+		}
+
+	</script>
+</head>
+<body onload="listado_estatico()">
+	<div id="miDiv"></div>
+	<p>Direccion: <input type="text" id="direccion"></p>
+	<p>Telefono: <input type="text" id="telefono"></p>
+	<p>Metros Construidos: <input type="text" id="metros_construidos"></p>
+	<p>Precion Venta: <input type="text" id="precio_venta"></p>
+	<p>Comision: <input type="text" id="comision"></p>
+	<input type="button" id="alta" value="ALTA" onclick="alta()">
+	<input type="button" id="limpiar" value="LIMPIAR" onclick="limpiar()">
+	<input type="button" id="listado" value="LISTADO" onclick="listar()">
+	<input type="button" id="aceptar" value="ACEPTAR" onclick="aceptar()" disabled="disabled">
+	<input type="button" id="cancelar" value="CANCELAR" onclick="cancelar()" disabled="disabled"><br><br><br>
+	<table border="2px" align="center">
+		<tr>
+			<td>Direccion</td>
+			<td>Telefono</td>
+			<td>Metros Construidos</td>
+			<td>Precio Venta</td>
+			<td>Comision</td>
+		</tr>
+		<tr>
+			<td id="td_direccion"></td>
+			<td id="td_telefono"></td>
+			<td id="td_metros"></td>
+			<td id="td_precio"></td>
+			<td id="td_comision"></td>
+		</tr>
+		<tr>
+			<td id="td_direccion2"></td>
+			<td id="td_telefono2"></td>
+			<td id="td_metros2"></td>
+			<td id="td_precio2"></td>
+			<td id="td_comision2"></td>
+		</tr>
+		<tr>
+			<td id="td_direccion3"></td>
+			<td id="td_telefono3"></td>
+			<td id="td_metros3"></td>
+			<td id="td_precio3"></td>
+			<td id="td_comision3"></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+<script>
+function cambiar(micolor){
+////////////////////////////////////////
+///// bucle for tradicional
+////////////////////////////////
+/* for (i=0;i<document.ejemplo6.elements.length;i++){
+      if(document.ejemplo6.elements[i].type == "text"){
+         document.ejemplo6.elements[i].style.color=micolor;
+		 }
+		 }*/
+///////////////////////////////////////////////
+/// bucle for in
+//////////////////////////////////////////////		 
+/*  var elem=document.ejemplo6.elements		 
+  for (var c in elem){
+      if (elem[c].type=="text"){
+	     elem[c].style.color=micolor;
+	  }
+  }*/
+///////////////////////////////////////////////
+/// bucle for of
+//////////////////////////////////////////////		 
+  var elem=document.ejemplo6.elements		 
+  for (var c of elem){
+      if (c.type=="text"){
+	     c.style.color=micolor;
+	  }
+  }  
+}
+</script>
+</head>
+<body>
+<form name="ejemplo6" method="POST" action="ejemplos/ej6.asp" target="_blank">
+<br>
+<br>
+<script>
+</script>
+Nombre: <input type="text" name="nom" size="40"><br> 
+Apellidos: <input type="text" name="apel" size="45"><br>
+Direccion: <input type="text" name="dir" size="30" ><br> 
+Telefono: <input type="text" name="tel" size="9" ><br>
+Código Postal: <input type="text" name="cp" size="8"><br>
+<br>
+<input type="button" value="Cambiar a negro" name="btnNegro" onclick="cambiar('black')" />
+<input type="button" value="Cambiar a rojo" name="btnRojo" onclick="cambiar('red')" />
+</form>
+</body>
+</html>

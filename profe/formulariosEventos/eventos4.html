@@ -1,0 +1,49 @@
+<HTML>
+ <HEAD>
+ <TITLE>Ejemplo con funciones</TITLE>
+ <SCRIPT LANGUAGE="JavaScript">
+ <!--
+ function resalta(elemento) {
+  switch(elemento.style.borderColor) {
+    case 'silver':
+    case 'silver silver silver silver':
+    case '#c0c0c0':
+      elemento.style.borderColor = 'black';
+      break;
+    case 'black':
+    case 'black black black black':
+    case '#000000':
+      elemento.style.borderColor = 'silver';
+      break;
+  }
+}
+window.onload= function(){
+document.getElementById("miDiv").onmouseover=function(){
+document.getElementById("resultado").innerHTML+= "Evento mouseOver ejecutado<br>";}; 
+document.getElementById("miDiv").onmousemove=function(){
+document.getElementById("resultado").innerHTML+= "Evento mouseMove ejecutado<br>";}; 
+document.getElementById("miDiv").onmouseout=function(){
+document.getElementById("resultado").innerHTML+= "Evento mouseOut ejecutado<br>";}; 
+document.getElementById("miDiv").onmousedown=function(){
+document.getElementById("resultado").innerHTML+= "Evento mouseDown ejecutado<br>";}; 
+document.getElementById("miDiv").onmouseup=function(){
+document.getElementById("resultado").innerHTML+= "Evento mouseUp ejecutado<br>";}; 
+}
+ //-->
+ </SCRIPT>
+ </HEAD>
+ <BODY>
+<div id="miDiv" style="width:150px; height:60px; border:thin solid silver">
+  Sección de contenidos...
+</div>
+<div id="resultado">
+</div>
+...
+ </BODY>
+ </HTML>
+
+
+
+
+
+ 

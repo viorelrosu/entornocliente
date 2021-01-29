@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>innerHTML, outerHTML y textContent</title>
+<!--	<style>
+	   div, textarea {
+		  display: inline-block;
+		  vertical-align: top;
+		  width: 250px;
+		  height: 150px;
+		  margin-right: 30px;
+		}
+	</style>
+	
+-->	
+    <script>
+        function show1() {
+		    var resul=""
+            var elm = document.getElementById('elm');
+			document.getElementById("resultado1").innerText += elm.innerHTML;
+            //alert(elm.innerHTML);
+        }
+        function show2() {
+            var elm = document.getElementById('elm');
+			document.getElementById("resultado2").innerText += elm.outerHTML;
+            //alert(elm.outerHTML);
+        }
+		/*
+		innerText se confunde fácilmente con Node.textContent, 
+		pero existen importantes diferencias entre los dos. 
+		Básicamente, innerTextes consciente de la apariencia 
+		renderizada del texto, mientras textContent no
+		*/
+        function show3() {
+            var elm = document.getElementById('elm');
+			//// textContent es equivalente a innerText
+			document.getElementById("resultado3").innerText += elm.textContent;
+            //alert(elm.textContent);
+        }
+		function show4() {
+            var elm = document.getElementById('elm');
+			//// textContent es equivalente a innerText
+			document.getElementById("resultado4").innerText += elm.innerText;
+           // alert(elm.textContent);
+        }
+    </script>
+</head>
+<body>
+  <p id="elm">Saludos<br><span style="color:red"> a</span><span style="display:none">HIDDEN TEXT</span><i> todos</i>
+  <br> </p>
+    <hr />
+    <input type="button" onclick="show1()" value="innerHTML" />
+    <input type="button" onclick="show2()" value="outerHTML" />
+    <input type="button" onclick="show3()" value="textContent" />
+	<input type="button" onclick="show4()" value="innerText" />
+	<div id="resultado1"></div>
+	<br>
+	<div id="resultado2"></div>
+	<br>
+	<div id="resultado3"></div>
+	<br>
+	<div id="resultado4"></div>
+</body>
+</html>

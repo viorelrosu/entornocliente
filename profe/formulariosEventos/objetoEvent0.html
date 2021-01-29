@@ -1,0 +1,63 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+<title>Ejemplo</title>
+<meta charset="utf-8">
+<script>
+/*
+JavaScript permite obtener información sobre el ratón y el teclado mediante un objeto especial llamado
+event.
+Desafortunadamente, los diferentes navegadores presentan diferencias muy notables en el
+tratamiento de la información sobre los eventos.
+La principal diferencia reside en la forma en la que se obtiene el objeto event.
+Internet Explorer considera que este objeto forma parte del objeto window
+y el resto de navegadores lo consideran como el único argumento que tienen las funciones manejadoras de eventos.
+Aunque es un comportamiento que resulta muy extraño al principio, todos los navegadores modernos
+excepto Internet Explorer crean mágicamente y de forma automática un argumento que se pasa a la
+función manejadora, por lo que no es necesario incluirlo en la llamada a la función manejadora. De esta
+forma, para utilizar este "argumento mágico", sólo es necesario asignarle un nombre, ya que los navegadores 
+lo crean automáticamente.
+En resumen, en los navegadores tipo Internet Explorer, el objeto event se obtiene directamente mediante
+       var evento = window.event;
+Por otra parte, en el resto de navegadores, el objeto event se obtiene mágicamente a partir del argumento
+que el navegador crea automáticamente:
+		function manejadorEventos(elEvento)
+			{  var evento = elEvento;  }
+Si se quiere programar una aplicación que funcione correctamente en todos los navegadores, es necesario
+obtener el objeto event de forma correcta según cada navegador. El siguiente código muestra la forma
+correcta de obtener el objeto event en cualquier navegador:
+		function manejadorEventos(elEvento)
+			{ var evento = elEvento||window.event;}
+Una vez obtenido el objeto event, ya se puede acceder a toda la información relacionada con el evento, que
+depende del tipo de evento producido 
+PROPIEDAD TYPE
+La propiedad type indica el tipo de evento producido, lo que es útil cuando una misma función se utiliza
+para manejar varios eventos: 
+		var tipo = evento.type;
+La propiedad type devuelve el tipo de evento producido, que es igual al nombre del evento pero sin el prefijo on.
+Mediante esta propiedad, se puede rehacer de forma más sencilla el ejemplo anterior en el que se resaltaba
+una sección de contenidos al pasar el ratón por encima:
+http://librosweb.es/libro/ajax/capitulo_6/el_objeto_event.html
+*/
+function resalta (elEvento)
+{ var evento = elEvento || window.event;
+switch (evento.type)
+{ case 'mouseover' : this.style.borderColor='red';
+  break;
+  case 'mouseout' : this.style.borderColor='silver';
+  break;
+}}
+window.onload=function()
+{document.getElementById("seccion").onmouseover= resalta;
+ document.getElementById("seccion").onmouseout= resalta;
+}
+
+
+</script>
+</head>
+<body>
+<div id="seccion" style="width:150px; height:60px; border:thin solid silver">
+Secci&oacute;n de contenidos...
+</div>
+
+</body></html>

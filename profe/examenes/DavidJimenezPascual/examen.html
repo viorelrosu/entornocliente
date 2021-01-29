@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Pisos{
+            constructor(direccion,telefono,metroConstruido,precioVenta,comision){
+                this._direccion=direccion;
+                this._telefono=telefono;
+                this._metroConstruido=metroConstruido;
+                this._precioVenta=precioVenta;
+                this._comision=comision;
+
+
+            }
+            get direccion(){
+                return this._direccion;
+            }
+            set direccion(valor){
+                this._direccion=valor;
+            }
+            get telefono(){
+                return this._telefono;
+            }
+            set telefono(valor){
+                this._telefono=valor;
+            }
+            get metroConstruido(){
+                return this._metroConstruido;
+            }
+            set metroConstruido(valor){
+                this._metroConstruido=valor;
+            }
+            get precioVenta(){
+                return this._precioVenta;
+            }
+            set precioVenta(valor){
+                this._precioVenta=valor;
+            }
+            get comision(){
+                return this._comision;
+            }
+            set comision(valor){
+                this._comision=valor;
+            }
+
+            metrosUtiles(){
+             
+                var metros= this._metroConstruido%12;
+                return this._metroConstruido-metros;
+            }
+
+            gananciasPorComision(){
+                return this._precioVenta*this._comision;
+            }
+
+            static listarPisos(valor){
+
+                var ventana=window.open("","","width=800px;heigth=500px;");
+                ventana.document.write("<table border=1>"+
+                "<tr>"+
+                "<th>Dirección</th>"+
+                "<th>Teléfono</th>"+
+                "<th>Metros Construidos</th>"+
+                "<th>Metros útiles</th>"+
+                "<th>Precio Venta</th>"+
+                "<th>%Comisión</th>"+
+                "<th>Ganancias</th>"+
+                "</tr>");
+                for(var i of valor){
+                
+                ventana.document.write("<tr>"+
+                "<td>"+i.direccion+"</td>"+
+                "<td>"+i.telefono+"</td>"+
+                "<td>"+i.metroConstruido+"</td>"+
+                "<td>"+i.metrosUtiles()+"</td>"+
+                "<td>"+i.precioVenta+"</td>"+
+                "<td>"+i.comision+"</td>"+
+                "<td>"+i.gananciasPorComision()+"</td>"+
+                "</tr>");
+
+                }
+                ventana.document.write("</table>");
+                ventana.document.write(" <input type='button' value='cerar' onclick='window.close()'>");
+                ventana.document.close();
+                
+            } 
+
+        }
+
+            var pisos=[];
+            pisos[0]=new Pisos("El pez, 24","987456321","80.50","222000","3.0");
+            pisos[1]=(new Pisos("La presa,34","687125463","94.30","165250","2.5"));
+            pisos[2]=(new Pisos("Albaceria, 7","852369741","62.00","121000","2.0"));
+
+            function alta(){
+                comprobarDireccion();
+                comprobarTelefono();
+                comprobarprecioVenta();
+                comprobarmetrosConstruidos();
+                comprobarcomision();
+                 if(comprobarDireccion()==true && comprobarTelefono()==true && comprobarprecioVenta()==true && comprobarmetrosConstruidos()==true && comprobarcomision()){
+                    var aceptar=document.getElementById("aceptar");
+                    var cancelar=document.getElementById("cancelar");
+                    aceptar.style.visibility="visible";
+                    cancelar.style.visibility="visible";
+                 }
+            }
+
+            function aceptar(){
+                var direccion=document.getElementById("direccion").value;
+                var telefono=document.getElementById("telefono").value;
+                var construido=document.getElementById("metroConstruido").value;
+                var venta=document.getElementById("precioVenta").value;
+                var comision=document.getElementById("comision").value;
+                pisos.push(new Pisos(direccion,telefono,construido,venta,comision));
+                Pisos.listarPisos(pisos);
+                limpiarInputs();
+            }
+            function cancelar(){
+                limpiarInputs();
+            }
+            function limpiarInputs(){
+                var direccion=document.getElementById("direccion").value="";
+                var telefono=document.getElementById("telefono").value="";
+                var construido=document.getElementById("metroConstruido").value="";
+                var venta=document.getElementById("precioVenta").value="";
+                var comision=document.getElementById("comision").value="";
+            }
+            function comprobarDireccion(){
+                var direccion=document.getElementById("direccion").value;
+                if(direccion.length<3 || direccion.length>35){
+                    document.getElementById("divi").innerHTML="Debe ser superior a 3 y  35 maximo";
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            function comprobarTelefono(){
+                var telefono=document.getElementById("telefono").value;
+                var comprobacion=new RegExp("^[0-9]{9}$");
+                if(comprobacion.test(telefono)){
+
+                  
+                    return true;
+                }else{
+                    document.getElementById("divi").innerHTML="Debe tener 9 digitos";
+                    return false;
+                }
+            }
+            function comprobarmetrosConstruidos(){
+                var construido=document.getElementById("metroConstruido").value;
+                var comprobar=construido.includes(".");
+                if(construido.length<42){
+                    if(comprobar==true){
+                        return true;
+                    }else{
+                        document.getElementById("divi").innerHTML="Debe ser mayor de 42";
+                        return false;
+                    }
+                }else{
+                    document.getElementById("divi").innerHTML="Debe ser mayor de 42";
+                    return false;
+                }
+                
+            }
+            function comprobarprecioVenta(){
+                var telefono=document.getElementById("precioVenta").value;
+                if(telefono<60000){
+                    document.getElementById("divi").innerHTML="Debe ser superior a 60000";
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            function comprobarcomision(){
+                var comision=document.getElementById("comision").value;
+                var comprobar=comision.includes(".");
+                if(comprobar==true){
+                    return true;
+                }else{
+                    document.getElementById("divi").innerHTML="Debe contener un caracter separador decimal";
+                }
+            }
+    </script>
+</head>
+<body>
+    <label for="dir">Dirección:</label>
+    <input type="text"  id="direccion" name="dir"><br>
+    <label for="telf">Telefono:</label>
+    <input type="text"  id="telefono" name="telf"><br>
+    <label for="construido">Metros Construidos:</label>
+    <input type="text"  id="metroConstruido" name="construido"><br>
+    <label for="venta">Precio de Venta:</label>
+    <input type="text"  id="precioVenta" name="venta"><br>
+    <label for="co">Comisión:</label>
+    <input type="text"  id="comision" name="co"><br>
+    <input type="button" value="Alta" onclick="alta()">
+    <input type="button" value="aceptar" onclick="aceptar()" style="visibility: hidden;" id="aceptar">
+    <input type="button" value="Cancelar" onclick="cancelar()" style="visibility: hidden;" id="cancelar">
+    <div id="divi"></div>
+</body>
+</html>

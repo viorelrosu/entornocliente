@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Examen Recuperacion José Antonio González Mesado</title>
+	<script type="text/javascript">
+		class Piso{
+			constructor(direccion,telefono,mConstruidos,precio,comision){
+				this._direccion=direccion;
+				this._telefono=telefono;
+				this._mConstruidos=mConstruidos;
+				this._precio=precio;
+				this._comision=comision;
+			}
+
+			set direccion(direccion){
+				this._direccion=direccion;
+			}
+
+			get direccion(){
+				return this._direccion;
+			}
+
+			set telefono(telefono){
+				this._telefono=telefono;
+			}
+
+			get telefono(){
+				return this._telefono;
+			}
+
+			set mConstruidos(mConstruidos){
+				this._mConstruidos=mConstruidos;
+			}
+
+			get mConstruidos(){
+				return this._mConstruidos;
+			}
+
+			set precio(precio){
+				this._precio=precio;
+			}
+
+			get precio(){
+				return this._precio;
+			}
+
+			set comision(comision){
+				this._comision=comision;
+			}
+
+			get comision(){
+				return this._comision;
+			}
+
+			metrosUtiles(){
+				var metrosUtiles = this._mConstruidos*0.88;
+				metrosUtiles = Math.round(metrosUtiles*100)/100;
+				return metrosUtiles;
+			}
+
+			ganaciasComision(){
+				var ganancias = this._comision/100*this._precio;
+				ganancias = Math.round(ganancias*100)/100;
+				return ganancias;
+			}
+
+			static listar(pisos){
+				var pintar="<table border=1px><tr><th>Direccion</th><th>Teléfono</th><th>Metros Construidos</th><th>Metros útiles</th><th>Precio Venta</th><th>% Comision</th><th>Ganancias</th></tr>";
+				for(var i = 0; i<pisos.length;i++){
+					pintar+="<tr><td>" + pisos[i].direccion + "</td><td>" + pisos[i].telefono + "</td><td>" + pisos[i].mConstruidos + "</td><td>" + pisos[i].metrosUtiles() + "</td><td>" + pisos[i].precio + "</td><td>" + pisos[i].comision + "</td><td>" + pisos[i].ganaciasComision() + "</td></tr>";
+				}
+				pintar+="</table>";
+				return pintar;
+			}
+
+		}
+
+		var pisos = new Array();
+		pisos[0] = new Piso("El Pez, 24",987456321,80.50,222000,3.0);
+		pisos[1] = new Piso("La Presa, 34",687125463,94.30,165250,2.5);
+		pisos[2] = new Piso("Albericia, 7",852369741,62.00,121000,2.0);
+
+		function listar(){
+			var ventana=window.open("","","width=800px, length=500px");
+			var pintar=Piso.listar(pisos);
+			pintar+="Altura disponible de la pantalla " + ventana.innerHeight + "<br>";
+			pintar+="Anchura disponible de la pantalla " + ventana.innerWidth + "<br>";
+			pintar+="<input type='button' id='cerrar' value='Cerrar' onclick='window.close()'>";
+			ventana.document.write(pintar);
+		}
+
+		function deshabilitar(){
+			document.getElementById('alta').disabled=true;
+		}
+
+		function alta(){
+			var direccion=document.getElementById('direccion').value;
+			var telefono=document.getElementById('telefono').value;
+			var mConstruidos=document.getElementById('mConstruidos').value;
+			var precio=document.getElementById('precio').value;
+			var comision=document.getElementById('comision').value;
+			pisos[pisos.length]=new Piso(direccion,telefono,mConstruidos,precio,comision);
+			cancelar();
+		}
+
+		function cancelar(){
+			document.getElementById('direccion').value=null;
+			document.getElementById('telefono').value=null;
+			document.getElementById('mConstruidos').value=null;
+			document.getElementById('precio').value=null;
+			document.getElementById('comision').value=null;
+			deshabilitar();
+		}
+
+		function validarDireccion(){
+			var direccion=document.getElementById('direccion').value;
+			var patron=/^[a-zñçáéíóú\-0-9\s,.]{3,35}$/i;
+			return patron.test(direccion);
+		}
+
+		function validarTelefono(){
+			var telefono=document.getElementById('telefono').value;
+			var patron=/^[9|8|7|6]{1}[0-9]{8}$/;
+			return patron.test(telefono);
+		}
+
+		function validarMetros(){
+			var metros=document.getElementById('mConstruidos').value;
+			var patron=/^[0-9]{0,}[.]{0,1}[0-9]{0,2}$/;
+			if(patron.test(metros)&&metros>=42){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function validarPrecio(){
+			var precio=document.getElementById('precio').value;
+			var patron=/^[0-9]{0,}$/;
+			if(patron.test(precio)&&precio>=60000){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function validarComision(){
+			var comision=document.getElementById('comision').value;
+			var patron=/^[0-9]{0,}[.]{0,1}[0-9]{0,2}$/;
+			return patron.test(comision);
+		}
+
+		function validar(){
+			if(validarDireccion()&&validarTelefono()&&validarMetros()&&validarPrecio()&&validarComision()){
+				document.getElementById('alta').disabled=false;
+			}
+		}
+
+	</script>
+</head>
+<body>
+	Direccion: <input type="text" id="direccion" onkeyup="deshabilitar()"><br>
+	Teléfono: <input type="text" id="telefono" onkeyup="deshabilitar()"><br>
+	Metros Construidos: <input type="text" id="mConstruidos" onkeyup="deshabilitar()"><br>
+	Precio de Venta: <input type="text" id="precio" onkeyup="deshabilitar()"><br>
+	Comisión: <input type="text" id="comision" onkeyup="deshabilitar()"><br>
+	<input type="button" id="listar" value="Listar" onclick="listar()">
+	<input type="button" id="validar" value="Validar" onclick="validar()">
+	<input type="button" id="alta" value="Alta" onclick="alta();" disabled="disabled">
+	<input type="button" id="cancelar" value="Cancelar" onclick="cancelar()">
+</body>
+</html>

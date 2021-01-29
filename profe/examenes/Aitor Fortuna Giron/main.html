@@ -1,0 +1,285 @@
+<html>
+    <head>
+        <title>ExamenAitorFortuna</title>
+        <script>
+            class Piso{
+                constructor(direccion,telefono,mConstruidos,pVenta,comision){
+                    this.direccion=direccion;
+                    this.telefono=telefono;
+                    this.mConstruidos=mConstruidos;
+                    this.precioVenta=pVenta;
+                    this.comision=comision;
+                }
+
+                get getDireccion(){
+                    return this.direccion;
+                }
+                set setDireccion(x){
+                    this.direccion=x;
+                }
+                get getTelefono(){
+                    return this.telefono;
+                }
+                set setTelefono(x){
+                    this.telefono=x;
+                }
+                get getMConstruidos(){
+                    return this.mConstruidos;
+                }
+                set setMConstruidos(x){
+                    this.mConstruidos=x;
+                }
+                get getPrecioVenta(){
+                    return this.precioVenta;
+                }
+                set setPrecioVenta(x){
+                    this.precioVenta=x;
+                }
+                get getComision(){
+                    return this.comision;
+                }
+                set setComision(x){
+                    this.comision=x;
+                }
+
+                static lista(pisos){
+                    var ventana=window.open();
+                    
+                   ventana.innerHeight=500;
+                   ventana.innerWidth=800;
+                   document.write="<table><tr><th>Dirección</th><th>Teléfono</th><th>Metros construidos</th><th>Metros útiles</th><th>Precio Venta</th><th>% Comisión</th><th>Ganancias</th></tr>";
+
+                    
+                }
+            }
+
+            function metrosUtiles(piso){
+                var resultado=(piso.mConstruidos*12)/100;
+                var resultadoFinal=(piso.mConstruidos-resultado);
+                return resultadoFinal;
+            }
+
+            function gananciasComision(piso){
+                var resultado=(piso.precioVenta*piso.comision)/100;
+                return resultado;
+
+            }
+
+            function darDeAlta(){
+                document.getElementById("darAlta").hidden=false;
+                document.getElementById("interfaz").hidden=true;
+            
+            }
+
+
+            function validarDireccion(){
+                var dir;
+                dir=document.getElementById("idDireccion").value;
+                
+                var caracteres="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZÇç-áéíóúÁÉÍÓÚ0123456789 ";
+                var direccionValida=true;
+
+                for(i=0;i<dir.length;i++){
+                    if(caracteres.indexOf(dir.charAt(i))!=-1){
+                        
+                        direccionValida=true;
+                    }else{
+                        direccionValida=false;
+                    }
+                }
+                if(direccionValida==true){
+                    if(dir.length>=3&&dir.length<=35){
+                    direccionValida=true;
+                    
+                    }else{
+                    direccionValida=false;
+                    }
+                }
+                
+                return direccionValida;
+
+            }
+
+
+            function validarTelefono(){
+                var tel=document.getElementById("idTelefono").value;
+                var caracteres="9876";
+                var telefonoValido=true;
+
+                for (i=0;i<1;i++){
+                    if(caracteres.indexOf(tel.charAt(i))!=-1){
+                        telefonoValido=true;
+                    }else{
+                        telefonoValido=false;
+                    }
+                }
+
+                if(telefonoValido==true){
+                    if(tel.length!=9){
+                        telefonoValido=false;
+                    }else{
+                        telefonoValido=true;
+                    }
+                }
+                
+                return telefonoValido;
+            }
+
+
+            function validarMetrosConstruidos(){
+                var mCons=document.getElementById("idMConstruidos").value;
+                var caracteres="0123456789.";
+                var caracteres2=".";
+                var mConsValidos=true;
+                contPuntos=0;
+                for(i=0;i<mCons.length;i++){
+                    if(caracteres.indexOf(mCons.charAt(i))!=-1){
+                        mConsValidos=true;
+                    }else{
+                        mConsValidos=false;
+                    }
+                }
+
+                if(mConsValidos==true){
+                
+                    for(i=0;i<mCons.length;i++){
+                    if(caracteres2.indexOf(mCons.charAt(i))!=-1){
+                        contPuntos++;
+                        
+                    }
+
+                    if (contPuntos>1||contPuntos==0){
+                            mConsValidos=false;
+                        }else{
+                            mConsValidos=true;
+                        }
+                }
+                }
+
+                if(mConsValidos==true){
+                    if (mCons<42){
+                        mConsValidos=false;
+                    }else{
+                        mConsValidos=true;
+                    }
+                }
+
+               
+                return mConsValidos;
+            }
+
+            function validarPrecioVenta(){
+                var pV=document.getElementById("idPrecioVenta").value;
+                var caracteres="0123456789";
+                var precioVentaValido=true;
+
+                for(i=0;i<pV.length;i++){
+                    if(caracteres.indexOf(pV.charAt(i))!=-1){
+                        precioVentaValido=true;
+                    }else{
+                        precioVentaValido=false;
+                    }
+                }
+
+                if(precioVentaValido==true){
+                    if(pV<6000){
+                        precioVentaValido=false;
+                    }else{
+                        precioVentaValido=true;
+                    }
+                }
+
+                
+                return precioVentaValido;
+            }
+
+            function validarComision(){
+                var com=document.getElementById("idComision").value;
+                var caracteres="0123456789.";
+                var caracteres2="0123456789"
+                var comisionValida=true;
+
+                for(i=0;i<com.length;i++){
+                    if(caracteres.indexOf(com.charAt(i))!=-1){
+                        comisionValida=true;
+                    }else{
+                        comisionValida=false;
+                    }
+                }
+
+                if (comisionValida==true){
+                    if((com.charAt(1)=="." && caracteres2.indexOf(com.charAt(2))!=-1 && caracteres2.indexOf(com.charAt(3))!=-1)||(com.charAt(2)=="." && caracteres2.indexOf(com.charAt(3))!=-1 && caracteres2.indexOf(com.charAt(4))!=-1)){
+                        comisionValida=true;
+                    }else{
+                        comisionValida=false;
+                    }
+                }
+                
+                return comisionValida;
+            }
+
+            function validar(){
+                var esValido;
+                validarDireccion();
+                validarTelefono();
+                validarMetrosConstruidos();
+                validarPrecioVenta();
+                validarComision();
+                if(validarDireccion()==false||validarTelefono()==false||validarMetrosConstruidos()==false||validarPrecioVenta()==false||validarComision()==false){
+                    esValido=false;
+                }else{
+                    esValido=true;
+                }
+                console.log(esValido)
+                
+                if(esValido==true){
+                    pisos.push=new Piso(document.getElementById("idDireccion").value, document.getElementById("idTelefono").value, document.getElementById("idMConstruidos").value,document.getElementById("idPrecioVenta").value, document.getElementById("idComision").value );
+                    console.log(pisos);
+                    document.getElementById("darAlta").hidden=true;
+                    document.getElementById("interfaz").hidden=false;
+                }else{
+                    document.getElementById("error").hidden=false;
+                }
+            }
+
+            function cancelar(){
+                document.getElementById("darAlta").hidden=true;
+                document.getElementById("interfaz").hidden=false;
+            }
+
+
+            var p1=new Piso("El Pez, 24","987456321","80.50","222000","3.0");
+            var p2=new Piso("La Presa, 34", "687125463","94.30","165250","2.5");
+            var p3=new Piso("Albericia, 7", "852369741","62.00","121000","2.0");
+            var pisos=new Array(p1,p2,p3);
+
+            
+            
+            
+
+
+        </script>
+    </head>
+    <body>
+        <div id="darAlta" hidden>
+        Dirección: <input type="text" id="idDireccion" >
+        <br>
+        Teléfono: <input type="text" id="idTelefono" >
+        <br>
+        Metros construidos: <input type="text" id="idMConstruidos" >
+        <br>
+        Precio de Venta: <input type="text" id="idPrecioVenta" >
+        <br>
+        Comisión: <input type="text" id="idComision" >
+        <br>
+        <input type="button" value="Aceptar" onclick="validar()" > <input type="button" value="Cancelar" onclick="cancelar()" >
+        <div id="error" hidden>
+            HAY UN ERROR
+        </div>
+        </div>
+
+        <div id="interfaz">
+            <input type="button" value="Alta" onclick="darDeAlta()"> <input type="button" value="Cancelar alta" onclick=""> <input type="button" value="Listar las viviendas" onclick="Piso.lista(pisos)">
+        </div>
+    </body>
+</html>

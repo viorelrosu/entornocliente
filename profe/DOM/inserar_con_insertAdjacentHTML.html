@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>insertAdjacentHTML</title>
+    <script>
+        function insert() {
+            var elm = document.getElementById('elm');
+			//'beforebegin': Antes que el propio elemento.			
+            elm.insertAdjacentHTML('beforebegin', '<h2> &iquest;C&oacute;mo </h2>');
+			//'afterbegin': Justo dentro del elemento, antes de su primer elemento hijo.
+            elm.insertAdjacentHTML('afterbegin', '<h3>podemos </h3>');
+			//'beforeend': Justo dentro del elemento, después de su último elemento hijo.
+            elm.insertAdjacentHTML('beforeend', '<i> c&oacute;digo </i>');
+			//'afterend': Después del propio elemento.
+            elm.insertAdjacentHTML('afterend', '<h1> HTML?</h1>');
+			elm.insertAdjacentHTML('beforebegin', '<h2> Pepito </h2>');
+        }
+    </script>
+</head>
+<body>
+     <i id="elm">insertar</i>
+    <hr />
+    <input type="button" onclick="insert()" value="insertAdjacentHTML" />
+</body>
+</html>

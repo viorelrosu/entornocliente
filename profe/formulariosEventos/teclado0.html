@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+<head>
+<script>
+function manejador(elEvento) {
+// informacion acerca del control de los eventos en javascript 
+// http://librosweb.es/javascript/capitulo_6/obteniendo_informacion_del_evento_objeto_event.html
+/*
+Evento keypress:
+
+    Internet Explorer:
+        Propiedad keyCode: el código del carácter de la tecla que se ha pulsado
+        Propiedad charCode: no definido
+    Resto de navegadores:
+        Propiedad keyCode: para las teclas normales, no definido. Para las teclas especiales, el código interno de la tecla.
+        Propiedad charCode: para las teclas normales, el código del carácter de la tecla que se ha pulsado. Para las teclas especiales, 0.
+*/
+/*
+En los navegadores tipo Internet Explorer, el objeto event se obtiene directamente mediante:
+var evento = window.event;
+
+Por otra parte, en el resto de navegadores, el objeto event se obtiene mágicamente a partir del argumento que el navegador crea automáticamente:
+
+function manejadorEventos(elEvento) {
+  var evento = elEvento;
+}
+
+Si se quiere programar una aplicación que funcione correctamente en todos los navegadores, es necesario obtener el objeto event de forma correcta según cada navegador. El siguiente código muestra la forma correcta de obtener el objeto event en cualquier navegador:
+
+function manejadorEventos(elEvento) {
+  var evento = elEvento || window.event;
+}
+*/
+// ejemplo que nos muestra el código y el caracter pulsado en un caja de textos
+// funciona en todos los navegadores.
+  evento = elEvento || window.event;
+  codigo = evento.keyCode  || evento.charCode  ;
+  caracter = String.fromCharCode(codigo);
+  document.getElementById("miDiv").innerHTML+=caracter + " codigo="+codigo+"<br>";
+}
+
+window.onload =function(){ 
+     document.getElementById("miTexto").onkeypress = manejador;
+}
+</script>
+</head>
+<body>
+
+<input type="text" id="miTexto">
+<br>
+
+<div id="miDiv" ></div>
+
+
+
+</body>
+</html>

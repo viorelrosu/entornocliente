@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej11 - DomArbol</title>
+	<style type="text/css">
+		h1 {
+			font-weight: normal;
+		}
+	</style>
+</head>
+<body>
+	<div id="miDiv">
+		<h1>En un <strong>lugar</strong> de la Mancha</h1>
+		<h1>de cuyo <b>nombre</b> no quiero acordarme</h1>
+		<h1>no hace mucho que vivia un hidalgo caballero</h1>
+	</div>
+
+	<div></div>
+	<script>
+		var divMostrar = document.getElementsByTagName("div")[1];
+		var html = '';
+		//var divChildren = document.getElementById("miDiv").childNodes;
+		var divChildren = document.getElementById("miDiv").children;
+
+		console.log(divChildren);
+		/*
+		var indiceSegundoHijo = 0;
+		var numero = 2; var orden = 0;
+		divChildren.forEach( (elem, indice) => {
+			if(elem.nodeType != 3) {
+				orden++;
+				if(numero == orden) {
+					indiceSegundoHijo = indice;
+				}
+			}
+		});
+		console.log(indiceSegundoHijo);
+		*/
+		
+
+		var elementsSegundoHijo = divChildren[1].children;
+
+		console.log(elementsSegundoHijo);
+
+		//html += "EL segundo hijo es: " +divChildren[1].nodeName + "<br/>";
+		html += "Nr. de elementos del segundo hijo: " + divChildren[1].childNodes.length + "<br/>";
+		html += "Nombre y Contenido de los Hijos del Hijo del Segundo Hijo <br/>";
+
+		/*
+		for (var i = 0; i < elementsSegundoHijo.length; i++) {
+			
+			if(elementsSegundoHijo[i].nodeType != 3) {
+
+				html += "nombre: [" + elementsSegundoHijo[i].nodeName + "] === contenido:  [";
+				html +=  elementsSegundoHijo[i].firstChild.nodeValue + "]<br />";
+				
+			}
+		}
+		*/
+
+		for (var i = 0; i < elementsSegundoHijo.length; i++) {
+			html += "nombre: [" + elementsSegundoHijo[i].nodeName + "] === contenido:  [";
+				html +=  elementsSegundoHijo[i].firstChild.nodeValue + "]<br />";
+		}
+
+		divMostrar.innerHTML = html;
+	</script>
+
+		<!--
+
+		mostrar el número de elementos del segundo hijo del div
+		mostrar los nombres de los elementos de 
+			- los hijos 
+				- de los hijos 
+					- del segundo hijo del DIV asi como su contenido
+
+		-->
+
+</body>
+</html>

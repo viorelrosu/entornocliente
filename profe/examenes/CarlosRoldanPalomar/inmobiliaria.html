@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inmobiliaria</title>
+</head>
+
+<body>
+  <h1>Registro de pisos</h1>
+  <div id="miDiv">
+    <label>Dirección de la vivienda:
+      <input type="text" name="direccion" id="direccion" value="" />
+    </label>
+    <div id="dir"></div>
+    <br />
+    <label>Teléfono:
+      <input type="text" name="telefono" id="telefono" value="" />
+    </label>
+    <div id="tlf"></div>
+    <br />
+    <label>Metros Construidos:
+      <input type="text" name="metros_construidos" id="metros_construidos" value="" />
+    </label>
+    <div id="metros"></div>
+    <br />
+    <label>Precio de Venta:
+      <input type="text" name="precio" id="precio" value="" />
+    </label>
+    <div id="pre"></div>
+    <br>
+    <label>Comisión:
+      <input type="text" name="comision" id="comision" value="" />
+    </label>
+    <div id="com"></div>
+  </div>
+  <br /><br />
+  <div id="divBtn">
+    <input type="button" value="Alta" onclick="alta()" />
+    <input type="reset" value="Limpiar" />
+    <input type="button" value="Listar" onclick="Pisos.listado()" />
+  </div>
+</body>
+<script src="script_inmobiliaria.js"></script>
+
+</html>

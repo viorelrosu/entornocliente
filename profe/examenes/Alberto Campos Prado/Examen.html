@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="pisos">
+</div>
+<input type="button" value="Dar de alta un piso" onclick="activar()">
+<form id ="formulario" hidden>
+	Direccion<input type="text" name="direccion"id="direccion"><br>
+	Telefono<input type="text" name="telefono" id=telefono><br>
+	MetrosC<input type="text" name="metrosC"id=metrosC><br>
+	Venta<input type="text" name="venta" id="venta"><br>
+	Comision<input type="text" name="comision" id="comision"><br>
+<input type="button" id="Alta" value="Dar de alta" onclick="comprobar(this.form)">
+<input type="button" id="Cancelar" value="Cancelar el alta" onclick="cerrar()">
+
+</form>
+<input type="button" id="Alta" value="Listar viviendas" onclick="ventana()">
+<script>
+var Pisos;
+var dir="";
+var tel="";
+var met="";
+var vender=0
+var com=0
+		class pisos{
+		constructor(direccion,telefono,MetrosC,Venta,Comision){
+			this.direccion=direccion;
+			this.telefono=telefono;
+			this.MetrosC=MetrosC;
+			this.Venta=Venta;
+			this.Comision=Comision;}
+		getdir(){
+			return this.direccion;
+		}
+				gettel(){
+			return this.telefono;
+		}
+				getmet(){
+			return this.MetrosC;
+		}
+				getVen(){
+			return this.Venta;
+		}
+				getCom(){
+			return this.Comision;
+		}
+		metrosU(){
+			var Aux=this.MetrosC-(this.MetrosC*12/100);
+
+			return Aux;
+		}comisionEm(){
+			var aux=this.Venta*this.Comision/100;
+			return aux;
+		}
+	}
+	function activar(){
+		document.getElementById("formulario").hidden=false;
+	}
+	function comprobar(f){
+		dir=f.direccion.value;
+		tel=f.telefono.value;
+		met=f.metrosC.value;
+		vender=parseInt(f.venta.value);
+		com=f.comision.value;
+		var telcom= false;
+		var vencom=false;
+		var regulard=/^([\w-Ççáéíóú-]){3,35}$/;
+		var regularm=/^([4][2-9]|[5-9]\d|\d{3,})\.\d{2}$/;
+		var regularc=/^\d{1,2}\.\d{1,}$/;
+		com=parseInt(com);
+		if(tel.length==9&&(tel.charAt(0)>=6&&tel.charAt(0)<=9)){
+			tel=parseInt(tel);
+			telcom=true;
+			
+	}if(vender>=59999){
+
+		vencom=true;
+	}
+	if(regulard.test(dir)&&telcom==true&&regularm.test(met)&&vencom==true&&regularc.test(com)){
+		document.getElementById("direccion").value="";
+		document.getElementById("telefono").value="";
+		document.getElementById("metrosC").value="";
+		document.getElementById("venta").value="";
+		document.getElementById("comision").value="";
+		poner()
+
+	}
+}
+function poner(){
+	var ap=new pisos(dir,tel,met,vender,com);
+		Pisos.push(ap);
+		console.log(Pisos);
+	}
+	function cerrar(){
+		document.getElementById("direccion").value="";
+		document.getElementById("telefono").value="";
+		document.getElementById("metrosC").value="";
+		document.getElementById("venta").value="";
+		document.getElementById("comision").value="";
+		document.getElementById("formulario").hidden=true;
+	}
+	function ventana(){
+		var ventana=window.open();
+		var ntabla="<table><tr><th>Direccion</th><th>Telefono</th><th>Metros Construidos</th><th>Metros Utiles</th><th>Precio Venta</th><th>% Comision</th><th>Ganancias</th></tr>"
+		for(var a=0;a<Pisos.length;a++){
+			ntabla+="<tr><td>"+Pisos[a].getdir()+"</td><td>"+Pisos[a].gettel()+"</td><td>"+Pisos[a].getmet()+"</td><td>"+Pisos[a].metrosU()+"</td><td>"+Pisos[a].getVen()+"</td><td>"+Pisos[a].getCom()+"</td><td>"+Pisos[a].comisionEm()+"</td></tr>";
+		}
+		ntabla+="</table>"
+		ventana.document.write(ntabla);
+	}
+	var direccion="";
+	var telefono=0;
+	var MetrosC=0;
+	var Venta=0;
+	var Comision=0;
+
+	var piso1=new pisos("El Pez, 24",987654321,80.50,222000,3.0);
+	var piso2=new pisos("La Presa, 34",687125463,94.30,165250,2.5);
+	var piso3=new pisos("El Pez, 24",852369741,62.00,121000,2.0);
+	var Pisos=[piso1,piso2,piso3];
+	var tabla="<table><tr><th>Direccion</th><th>Teléfono</th><th>Metros Construidos</th><th>precio de Venta</th><th>Comisión</th></tr><tr><td>"+Pisos[0].getdir()+"</td><td>"+Pisos[0].gettel()+"</td><td>"+Pisos[0].getmet()+"</td><td>"+Pisos[0].getVen()+"</td><td>"+Pisos[0].getCom()+"</td></tr><tr><td>"+Pisos[1].getdir()+"</td><td>"+Pisos[1].gettel()+"</td><td>"+Pisos[1].getmet()+"</td><td>"+Pisos[1].getVen()+"</td><td>"+Pisos[1].getCom()+"</td></tr><tr><td>"+Pisos[2].getdir()+"</td><td>"+Pisos[2].gettel()+"</td><td>"+Pisos[2].getmet()+"</td><td>"+Pisos[2].getVen()+"</td><td>"+Pisos[2].getCom()+"</td></tr></table>"
+	document.getElementById("pisos").innerHTML=tabla;
+	console.log(piso1.comisionEm());
+	console.log(piso1);
+</script>
+</body>
+</html>

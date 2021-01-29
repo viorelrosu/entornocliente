@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PRUEBA DOM</title>
+<script>
+function pruebaDOM(){
+	// CREAMOS EL div
+	var div1=document.createElement('div');   
+	
+	var txt2=document.createTextNode('Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n');   
+	// AÑADIMOS EL NODO DE TEXTO COMO HIJO DEL div
+	div1.appendChild(txt2);   
+	//AÑADIMOS EL div AL DIV EXISTENTE   
+	document.getElementById('ContDOM').appendChild(div1);   
+    /* var t = document.getElementById('ContDOM');   
+    t.appendChild(div1);*/
+}
+</script>
+</head>
+<body>
+<div id="ContDOM"><a href="javascript:pruebaDOM();">Insertar Elemento del DOM</a></div>
+</body>
+</html>  
