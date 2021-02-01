@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej12 - DomArbolModificar</title>
+	<style type="text/css">
+		h1 {
+			font-weight: normal;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="button" value="Modificar DOM" onclick="insertarDiv()">
+	</div>
+
+	<div id="miDiv"></div>
+	<script>
+		var divMostrar = document.getElementById("miDiv");
+		divMostrar.style.padding = '20px';
+
+		function insertarDiv(){
+			var div = document.createElement('div');
+			div.style.padding = '5px';
+
+			var img = document.createElement('img');
+			img.src = 'image.jpg';
+			img.width = '200';
+
+			var br = document.createElement('br');
+			var txt = document.createTextNode('Lorem ipsum is a placeholder text commonly');
+
+			div.appendChild(img);
+			div.appendChild(br);
+			div.appendChild(txt);
+			divMostrar.appendChild(div);
+		}
+	</script>
+
+		<!--
+
+		mostrar el número de elementos del segundo hijo del div
+		mostrar los nombres de los elementos de 
+			- los hijos 
+				- de los hijos 
+					- del segundo hijo del DIV asi como su contenido
+
+		-->
+
+</body>
+</html>
