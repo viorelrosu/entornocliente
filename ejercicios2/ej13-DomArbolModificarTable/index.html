@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej13 - DomArbolModificarTable</title>
+	<style type="text/css">
+		h1 {
+			font-weight: normal;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" name="" id="inputText">
+		<input type="button" value="Insertar TR en tabla" onclick="insertarTr()">
+	</div>
+
+	<table id="miTable"></table>
+	<script>
+		var miTable = document.getElementById("miTable");
+
+		function insertarTr(){
+			var indice = miTable.children.length;
+			console.log(indice);
+			var tr = document.createElement('tr');
+			tr.style.padding = '5px';
+
+			var td = document.createElement('td');
+			var text = document.getElementById('inputText').value;
+			var nodeText = document.createTextNode(text);
+			td.appendChild(nodeText);
+			tr.appendChild(td);
+
+			var td = document.createElement('td');
+			var botonClonar = document.createElement('button');
+			var nodeText = document.createTextNode('Clonar encima');
+			botonClonar.appendChild(nodeText);
+			botonClonar.onclick = function(){ clonar(botonClonar) };
+			td.appendChild(botonClonar);
+			tr.appendChild(td);
+
+			var td = document.createElement('td');
+			var botonDel = document.createElement('button');
+			var nodeText = document.createTextNode('Eliminar');
+			botonDel.appendChild(nodeText);
+			botonDel.onclick = function (){ eliminar(botonDel) };
+			td.appendChild(botonDel);
+			tr.appendChild(td);
+
+			miTable.appendChild(tr);
+		}
+
+		function eliminar(boton) {
+			var fila = boton.parentNode.parentNode;
+			console.log(fila);
+			miTable.removeChild(fila);
+		}
+
+		function clonar(boton) {
+			console.log(boton);
+			var fila = boton.parentNode.parentNode;
+			var botonClonar = fila.children[1].firstChild;
+			botonClonar.onclick = function(){ clonar(botonClonar) };
+
+			var botonDel = fila.children[2].firstChild;
+			botonDel.onclick = function (){ eliminar(botonDel) };
+			miTable.insertBefore(fila.cloneNode(true), fila);
+		}
+	</script>
+
+
+</body>
+</html>
