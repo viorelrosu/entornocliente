@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej12 - DomArbolModificarTable</title>
+	<style type="text/css">
+		h1 {
+			font-weight: normal;
+		}
+		div.main {
+			width: 600px;
+			margin: 0 auto;
+			padding-top: 40px;
+		}
+		table {
+			margin-top: 30px;
+		    border: 2px solid black;
+		    border-collapse: collapse;
+		}
+		td{
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div>
+			<input type="text" name="inputText" id="inputText" value="" />
+			<button onclick="insertar()">Insertar en Table</button>
+
+		</div>
+		<table id="myTable"></table>
+	</div>
+	<script>
+		var miTable = document.getElementById("myTable");
+		//miTable.style.padding = '20px';
+
+		function insertar(){
+			var tr, td; 
+
+			var inputText = document.getElementById("inputText").value;
+
+			tr = document.createElement('tr');
+			tr.style.padding = '5px';
+
+			td = document.createElement('td');
+			var textNode = document.createTextNode(inputText);
+			td.appendChild(textNode);
+			tr.appendChild(td);
+
+			td = document.createElement('td');
+			var btnClonar = document.createElement('button');
+			btnClonar.appendChild(document.createTextNode('Copiar encima'));
+			btnClonar.onclick = function(){ clonar(this) };
+			td.appendChild(btnClonar);
+			tr.appendChild(td);
+
+
+			td = document.createElement('td');
+			var btnDel = document.createElement('button');
+			btnDel.appendChild(document.createTextNode('Eliminar'));
+			btnDel.onclick = function(){ eliminar(this) };
+			td.appendChild(btnDel);
+			tr.appendChild(td);
+
+			miTable.appendChild(tr);
+		}
+
+		function clonar(boton) {
+			var fila = boton.parentNode.parentNode;
+			var filaClon = fila.cloneNode(true);
+			filaClon.children[1].firstChild.onclick = function(){ clonar(this) };
+			filaClon.children[2].firstChild.onclick = function(){ eliminar(this) };
+			miTable.insertBefore(filaClon,fila);
+		}
+
+		function eliminar(boton) {
+			var fila = boton.parentNode.parentNode;
+			miTable.removeChild(fila);
+		}
+	</script>
+
+</body>
+</html>
