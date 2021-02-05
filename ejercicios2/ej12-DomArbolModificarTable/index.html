@@ -51,16 +51,20 @@
 
 			td = document.createElement('td');
 			var btnClonar = document.createElement('button');
+			btnClonar.type="button";
 			btnClonar.appendChild(document.createTextNode('Copiar encima'));
-			btnClonar.onclick = function(){ clonar(this) };
+			btnClonar.setAttribute("onclick",function(){ clonar(this) });
 			td.appendChild(btnClonar);
 			tr.appendChild(td);
 
 
 			td = document.createElement('td');
 			var btnDel = document.createElement('button');
+			btnDel.type="button";
 			btnDel.appendChild(document.createTextNode('Eliminar'));
-			btnDel.onclick = function(){ eliminar(this) };
+			btnDel.setAttribute("onclick",function(){ eliminar(this) });
+			//btnDel.onclick = function(){ eliminar(this) };
+			//btnDel.addEventListener('click',function(){ eliminar(this) });
 			td.appendChild(btnDel);
 			tr.appendChild(td);
 
