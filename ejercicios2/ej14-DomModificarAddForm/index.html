@@ -5,28 +5,178 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ej14 - DomArbolModificar - Añadir Elementos Formulario</title>
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/all.css" rel="stylesheet">
 	<link href="assets/css/styles.css" rel="stylesheet">
-	<script type="text/javascript" src="assets/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-3.5.1.slim.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/popper.min.js"></script>
 	<script type="text/javascript" src="assets/js/app.js"></script>
 </head>
 <body>
 	<div class="container py-2">
-		<div class="rounded bg-primary text-white p-5">
+		<div class="rounded bg-secondary text-white p-5">
 			<h1 class="">Ejercicio Dom</h1>
 			<p class="lead">Añadir elementos de formulario al Arbol DOM</p>
 		</div>
 		<hr />
 		<div class="row">
-			<div class="col-5 pl-5">
-				<h3>Selecciona un Tipo de Elemento:</h3>
+			<div class="col-5">
+				<h3 class="text-primary">Selecciona</h3>
 			</div>
 			<div class="col-7 text-left">
-				<button class="btn-primary">Caja de Texto</button>
-				<button class="btn-primary">Botones</button>
-				<button class="btn-primary">Radio buttons</button>
+				<button class="btn btn-primary">Caja de Texto</button>
+				<button class="btn btn-primary">Botones</button>
+				<button class="btn btn-primary">Radio botones</button>
 			</div>
 		</div>
 		<hr />
+		<div id="divCajaTexto">
+			<div class="row rounded m-0 bg-light p-3">
+				<div class="col-6">
+					<h4>Has elegido crear - <span class="text-muted">Caja de Texto</span></h4>
+					<hr />
+					<input type="text" class="form-control" name="labelCajaTexto" placeholder="Inserta una etiqueta">
+				</div>
+				<div class="col-6">
+					<h4 class="text-center"><span class="text-muted">Preview</span></h4>
+					<hr />
+					<div class="form-row">
+						<label class="col-5 text-right">Nombre:</label>
+						<input type="text" name="elemCajaTexto" class="form-control col" value="" />
+					</div>
+				</div>
+				<div class="col-12 text-center py-3">
+					<hr>
+					<button type="button" onclick="insertElemCajaText();" class="btn btn-primary btn-lg">Crear Caja de Texto</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="divBoton">
+			<div class="row rounded m-0 bg-light p-3 d-none">
+				<div class="col-6">
+					<h4>Has elegido crear - <span class="text-muted">Boton</span></h4>
+					<hr />
+					<input type="text" class="form-control" name="labelBoton" placeholder="Inserta una etiqueta">
+				</div>
+				<div class="col-6">
+					<h4 class="text-center"><span class="text-muted">Preview</span></h4>
+					<hr />
+					<div class="text-center">
+						<input type="button" name="elemBoton" class="btn btn-dark" value="Enviar" />
+					</div>
+				</div>
+				<div class="col-12 text-center py-3">
+					<hr>
+					<button type="button" onclick="insertElemBoton();" class="btn btn-primary btn-lg">Crear Boton</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="divRadioButton">
+			<div class="row rounded m-0 bg-light p-3 d-none">
+				<div class="col-6">
+					<h4>Has elegido crear - <span class="text-muted">Radio Botones</span></h4>
+					<hr />
+					<div class="form-row mb-3">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoRadio" id="inlineRadio1" value="vertical">
+						  <label class="form-check-label" for="inlineRadio1">Vertical</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoRadio" id="inlineRadio2" value="horizontal">
+						  <label class="form-check-label" for="inlineRadio2">Horizontal</label>
+						</div>
+					</div>
+					<div class="form-row">
+						<input type="text" class="form-control col-6" name="labelRadioButton" placeholder="Inserta una etiqueta">
+						<div class="col">
+							<input type="button" class="btn btn-secondary" value="Añadir Opción" />
+						</div>
+					</div>
+				</div>
+				<div class="col-6">
+					<h4 class="text-center"><span class="text-muted">Preview</span></h4>
+					<hr />
+					<div class="mb-3">
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+						  <label class="form-check-label" for="exampleRadios1">
+						    Default radio
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+						  <label class="form-check-label" for="exampleRadios2">
+						    Second default radio
+						  </label>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 text-center py-3">
+					<hr>
+					<button type="button" onclick="insertElemRadioBoton();" class="btn btn-primary btn-lg">Crear Radio Botones</button>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+		<div class="mt-5">
+			<h3 class="text-primary">Preview Web</h3>
+		</div>
+		<div class="rounded bg-light mt-3" id="divPreview">
+			<div class="row m-0 p-3">
+				<div class="col-3 text-left">
+					<label>Introduzca tu Nombre:</label>
+				</div>
+				<div class="col-5">
+					<input type="text" name="elemCajaTexto" class="form-control" value="" />
+				</div>
+				<div class="col-4 text-left">
+					<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+				</div>
+			</div>
+			<hr />
+			<div class="row m-0 p-3">
+				<div class="col-8 text-left">
+					<button class="btn btn-dark">Enviar</button>
+				</div>
+				<div class="col-4 text-left">
+					<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+				</div>
+			</div>
+			<hr />
+			<div class="row m-0 p-3">
+				<div class="col-8">
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+					  <label class="form-check-label" for="exampleRadios1">
+					    Default radio
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+					  <label class="form-check-label" for="exampleRadios2">
+					    Second default radio
+					  </label>
+					</div>
+				</div>
+				<div class="col-4 text-left">
+					<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="alertModal">
+		  <div class="modal-dialog">
+		      <div class="modal-body alert alert-danger text-center">
+		        No puedes insertar una caja de texto sin etiqueta
+		      </div>
+		  </div>
+		</div>
+
 	</div>
 </body>
 </html>
