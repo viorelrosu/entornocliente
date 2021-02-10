@@ -13,9 +13,9 @@
 	<script type="text/javascript" src="assets/js/app.js"></script>
 </head>
 <body>
-	<div class="container py-2">
-		<div class="rounded bg-secondary text-white p-5">
-			<h1 class="">Ejercicio Dom</h1>
+	<div class="container pt-2 pb-5">
+		<div class="rounded text-white p-5 header">
+			<h1 class="">Ejercicio DOM</h1>
 			<p class="lead">Añadir elementos de formulario al Arbol DOM</p>
 		</div>
 		<hr />
@@ -31,7 +31,7 @@
 		</div>
 		<hr />
 		<div id="divCajaTexto" class="">
-			<div class="row rounded m-0 bg-light p-3">
+			<div class="row rounded m-0 p-3">
 				<div class="col-6">
 					<h4>Has elegido crear - <span class="text-muted">Caja de Texto</span></h4>
 					<hr />
@@ -41,97 +41,118 @@
 					<h4 class="text-center"><span class="text-muted">Preview</span></h4>
 					<hr />
 					<div class="form-row">
-						<label class="col-5 text-right" id="labelPreviewCajaTexto"></label>
+						<label class="col-5 text-right" id="labelPreviewCajaTexto">Etiqueta ejemplo:</label>
 						<input type="text" name="elemCajaTexto" class="form-control col" value="" />
 					</div>
 				</div>
 				<div class="col-12 text-center py-3">
 					<hr>
-					<button type="button" onclick="insertElemCajaText();" class="btn btn-primary btn-lg">Crear Caja de Texto</button>
+					<button type="button" onclick="addCajaTexto();" class="btn btn-primary btn-lg">Crear Caja de Texto</button>
 				</div>
 			</div>
 		</div>
 
 		<div id="divBoton" class="">
-			<div class="row rounded m-0 bg-light p-3">
-				<div class="col-6">
+			<div class="row rounded m-0 p-3">
+				<div class="col-8">
 					<h4>Has elegido crear - <span class="text-muted">Boton</span></h4>
 					<hr />
 					<div class="form-row mb-3">
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="tipoBoton" id="inlineRadio1" value="submit" checked="checked">
-						  <label class="form-check-label" for="inlineRadio1">Submit</label>
+						  <input class="form-check-input" type="radio" name="tipoBoton" id="tipoSubmit" value="submit" onchange="setTypeButton(this);" checked="checked">
+						  <label class="form-check-label" for="tipoSubmit">Submit</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="tipoBoton" id="inlineRadio2" value="button">
-						  <label class="form-check-label" for="inlineRadio2">Button</label>
+						  <input class="form-check-input" type="radio" name="tipoBoton" id="tipoBoton" value="button" onchange="setTypeButton(this);">
+						  <label class="form-check-label" for="tipoBoton">Button</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="tipoBoton" id="inlineRadio2" value="reset">
-						  <label class="form-check-label" for="inlineRadio2">Reset</label>
+						  <input class="form-check-input" type="radio" name="tipoBoton" id="tipoReset" value="reset" onchange="setTypeButton(this);">
+						  <label class="form-check-label" for="tipoReset">Reset</label>
+						</div>
+					</div>
+					<div class="form-row mb-3">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="colorBoton" id="tipoDark" value="btn-dark" onchange="setColorButton(this);" checked="checked">
+						  <label class="form-check-label" for="tipoDark"><span class="badge badge-dark">Dark</span></label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="colorBoton" id="tipoPrimary" value="btn-primary" onchange="setColorButton(this);">
+						  <label class="form-check-label" for="tipoPrimary"><span class="badge badge-primary">Primary</span></label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="colorBoton" id="tipoSecondary" value="btn-secondary" onchange="setColorButton(this);">
+						  <label class="form-check-label" for="tipoSecondary"><span class="badge badge-secondary">Secondary</span></label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="colorBoton" id="tipoSuccess" value="btn-success" onchange="setColorButton(this);">
+						  <label class="form-check-label" for="tipoSuccess"><span class="badge badge-success">Success</span></label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="colorBoton" id="tipoDanger" value="btn-danger" onchange="setColorButton(this);">
+						  <label class="form-check-label" for="tipoDanger"><span class="badge badge-danger">Danger</span></label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="colorBoton" id="tipoWarning" value="btn-warning" onchange="setColorButton(this);">
+						  <label class="form-check-label" for="tipoWarning"><span class="badge badge-warning">Warning</span></label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="colorBoton" id="tipoInfo" value="btn-info" onchange="setColorButton(this);">
+						  <label class="form-check-label" for="tipoInfo"><span class="badge badge-info">Info</span></label>
 						</div>
 					</div>
 					<div class="form-row">
 						<input type="text" class="form-control" name="labelBoton" id="labelBoton" placeholder="Inserta una etiqueta">
 					</div>
 				</div>
-				<div class="col-6">
+				<div class="col-4">
 					<h4 class="text-center"><span class="text-muted">Preview</span></h4>
 					<hr />
-					<div class="text-center">
-						<input type="button" name="elemBoton" id="previewBoton" class="btn btn-dark" value="Enviar" />
+					<div class="text-center" class="divBotonPreview">
+						<input type="button" name="elemBoton" id="previewBoton" class="btn btn-dark" value="Inserta una etiqueta" />
 					</div>
 				</div>
 				<div class="col-12 text-center py-3">
 					<hr>
-					<button type="button" onclick="insertElemBoton();" class="btn btn-primary btn-lg">Crear Boton</button>
+					<button type="button" onclick="addBoton();" class="btn btn-primary btn-lg">Crear Boton</button>
 				</div>
 			</div>
 		</div>
 
 		<div id="divRadioButton" class="">
-			<div class="row rounded m-0 bg-light p-3">
+			<div class="row rounded m-0 p-3">
 				<div class="col-6">
 					<h4>Has elegido crear - <span class="text-muted">Radio Botones</span></h4>
 					<hr />
-					<div class="form-row mb-3">
-						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="tipoRadio" id="inlineRadio1" value="vertical" checked="checked">
-						  <label class="form-check-label" for="inlineRadio1">Vertical</label>
+					<form name="formTipoRadioButton" onsubmit="return false;">
+						<div class="form-row mb-3">
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="tipoRadio" id="tipoHorizontal" value="horizontal" onchange="setTypeRadioButton(this);" checked="checked">
+							  <label class="form-check-label" for="tipoHorizontal">Horizontal</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="tipoRadio" id="tipoVertical" value="vertical" onchange="setTypeRadioButton(this);">
+							  <label class="form-check-label" for="tipoVertical">Vertical</label>
+							</div>
 						</div>
-						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="tipoRadio" id="inlineRadio2" value="horizontal">
-						  <label class="form-check-label" for="inlineRadio2">Horizontal</label>
+						<div class="form-row">
+							<input type="text" class="form-control col-6" name="labelRadioButton" id="labelRadioButton" placeholder="Inserta una etiqueta">
+							<div class="col">
+								<button class="btn btn-secondary" onclick="addRadioPreview();">Añadir Opción</button>
+							</div>
 						</div>
-					</div>
-					<div class="form-row">
-						<input type="text" class="form-control col-6" name="labelRadioButton" id="labelRadioButton" placeholder="Inserta una etiqueta">
-						<div class="col">
-							<input type="button" class="btn btn-secondary" value="Añadir Opción" />
-						</div>
-					</div>
+					</form>
 				</div>
 				<div class="col-6">
 					<h4 class="text-center"><span class="text-muted">Preview</span></h4>
 					<hr />
 					<div class="mb-3">
-						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-						  <label class="form-check-label" for="exampleRadios1">
-						    Default radio
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-						  <label class="form-check-label" for="exampleRadios2">
-						    Second default radio
-						  </label>
-						</div>
+						<div id="divRadioPreview"></div>
 					</div>
 				</div>
 				<div class="col-12 text-center py-3">
 					<hr>
-					<button type="button" onclick="insertElemRadioBoton();" class="btn btn-primary btn-lg">Crear Radio Botones</button>
+					<button type="button" onclick="addRadioButtons();" class="btn btn-primary btn-lg">Crear Radio Botones</button>
 				</div>
 			</div>
 		</div>
@@ -140,7 +161,7 @@
 		<div class="mt-5">
 			<h3 class="text-primary">Preview Web</h3>
 		</div>
-		<div class="rounded bg-light mt-3" id="divPreview">
+		<div class="rounded mt-3 panel" id="divPreview">
 			<div class="row m-0 p-3">
 				<div class="col-3 text-left">
 					<label>Introduzca tu Nombre:</label>
@@ -149,7 +170,7 @@
 					<input type="text" name="elemCajaTexto" class="form-control" value="" />
 				</div>
 				<div class="col-4 text-left">
-					<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+					<button class="btn btn-danger" onclick="mostrarModalConfirm('¿Estás seguro de eliminar esta fila?',this);"><i class="fas fa-trash"></i></button>
 				</div>
 			</div>
 			<hr>
@@ -158,7 +179,7 @@
 					<button class="btn btn-dark">Enviar</button>
 				</div>
 				<div class="col-4 text-left">
-					<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+					<button class="btn btn-danger" onclick="mostrarModalConfirm('¿Estás seguro de eliminar esta fila?',this);"><i class="fas fa-trash"></i></button>
 				</div>
 			</div>
 			<hr>
@@ -178,18 +199,45 @@
 					</div>
 				</div>
 				<div class="col-4 text-left">
-					<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+					<button class="btn btn-danger" onclick="mostrarModalConfirm('¿Estás seguro de eliminar esta fila?',this);"><i class="fas fa-trash"></i></button>
 				</div>
 			</div>
 		</div>
+
+		<footer>
+			<div class="row">
+				<div class="col text-muted">
+					<hr />
+					&copy; DAW2 Entorno Cliente | Prof. José Luis Gallego García | By Viorel Rosu
+				</div>
+			</div>
+		</footer>
 
 
 		<!-- Modal -->
 		<div class="modal fade" id="alertModal">
 		  <div class="modal-dialog">
-		      <div class="modal-body alert alert-danger text-center">
-		        No puedes insertar una caja de texto sin etiqueta
+		      <div class="modal-body alert alert-danger text-center" id="divAlertMensaje">Error</div>
+		  </div>
+		</div>
+
+		<div class="modal fade" id="alertConfirmModal" tabindex="-1">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Por favor, confirma la acción</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
 		      </div>
+		      <div class="modal-body p-0">
+		        <div class="alert alert-danger mb-0" id="divConfirmMensaje">¿Estás seguro?</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+		        <button type="button" class="btn btn-danger btn-ok">Eliminar</button>
+		      </div>
+		    </div>
 		  </div>
 		</div>
 
