@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej14 - DomArbolModificar - Añadir Elementos Formulario</title>
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/all.css" rel="stylesheet">
+	<link href="assets/css/styles.css" rel="stylesheet">
+	<script type="text/javascript" src="assets/js/jquery-3.5.1.slim.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/popper.min.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+</head>
+<body>
+	<div class="container py-2">
+		<div class="rounded bg-secondary text-white p-5">
+			<h1 class="">Ejercicio Validar Form</h1>
+			<p class="lead">Añadir elementos de formulario al Arbol DOM</p>
+		</div>
+		<hr />
+
+		<form class="form">
+			<div class="">
+				<div class="form-group row">
+					<label class="col-3 text-right">Usuario <span>*</span></label>
+					<input type="text" name="usuario" class="form-control col-7" placeholder="Introduzca usuario" value="" />
+					<div id="error-usuario"></div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">Nombre <span>*</span></label>
+					<input type="text" name="nombre" class="form-control col-7" placeholder="Introduzca nombre" value="" />
+					<div id="error-nombre"></div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">Apellido <span>*</span></label>
+					<input type="text" name="apellido" class="form-control col-7" placeholder="Introduzca apellido" value="" />
+					<div id="error-apellido"></div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">Correo electrónico <span>*</span></label>
+					<input type="text" name="email" class="form-control col-7" placeholder="Introduzca correo electrónico" value="" />
+					<div id="error-correo"></div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">Contraseña <span>*</span></label>
+					<input type="password" name="password" class="form-control col-7" placeholder="Introduzca contraseña" value="" />
+					<div id="error-password"></div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">Confirmar Contraseña <span>*</span></label>
+					<input type="password" name="passwordConfirm" class="form-control col-7" placeholder="Repita la contraseña" value="" />
+					<div id="error-passwordConfirm"></div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">&nbsp</label>
+					<div class="col-7">
+						<button class="btn btn-primary">Crear</button>
+						<input type="reset" class="btn btn-secondary" value="Cancelar" />
+					</div>
+				</div>
+			</div>
+		</form>
+		<hr />
+
+		<table class="table table-striped">	
+				<tr>
+					<th>Usuario</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Correo</th>
+					<th>Contraseña</th>
+					<th>Acción</th>
+				</tr>
+				<tr>
+					<td>Usuario</td>
+					<td>Nombre</td>
+					<td>Apellido</td>
+					<td>Correo</td>
+					<td>Contraseña</td>
+					<td>
+						
+						<button class="btn btn-info"><i class="fas fa-pencil-alt"></i></button>
+						<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+
+					</td>
+				</tr>
+		</table>
+	</div>
+</body>
+</html>
