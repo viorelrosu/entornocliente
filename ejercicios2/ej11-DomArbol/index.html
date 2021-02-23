@@ -38,24 +38,24 @@
 		});
 		console.log(indiceSegundoHijo);
 		*/
-		
+
 
 		var elementsSegundoHijo = divChildren[1].children;
 
 		console.log(elementsSegundoHijo);
 
 		//html += "EL segundo hijo es: " +divChildren[1].nodeName + "<br/>";
-		html += "Nr. de elementos del segundo hijo: " + divChildren[1].childNodes.length + "<br/>";
+		html += "Nr. de elementos del segundo hijo: " + divChildren[1].children.length + "<br/>";
 		html += "Nombre y Contenido de los Hijos del Hijo del Segundo Hijo <br/>";
 
 		/*
 		for (var i = 0; i < elementsSegundoHijo.length; i++) {
-			
+
 			if(elementsSegundoHijo[i].nodeType != 3) {
 
 				html += "nombre: [" + elementsSegundoHijo[i].nodeName + "] === contenido:  [";
 				html +=  elementsSegundoHijo[i].firstChild.nodeValue + "]<br />";
-				
+
 			}
 		}
 		*/
@@ -71,9 +71,9 @@
 		<!--
 
 		mostrar el número de elementos del segundo hijo del div
-		mostrar los nombres de los elementos de 
-			- los hijos 
-				- de los hijos 
+		mostrar los nombres de los elementos de
+			- los hijos
+				- de los hijos
 					- del segundo hijo del DIV asi como su contenido
 
 		-->

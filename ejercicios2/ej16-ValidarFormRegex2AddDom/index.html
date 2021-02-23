@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej14 - DomArbolModificar - Añadir Elementos Formulario</title>
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/all.css" rel="stylesheet">
+	<link href="assets/css/styles.css" rel="stylesheet">
+	<script type="text/javascript" src="assets/js/jquery-3.5.1.slim.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/popper.min.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+</head>
+<body>
+	<div class="container py-2">
+		<div class="rounded bg-secondary text-white p-5">
+			<h1 class="">Ejercicio Validar Form</h1>
+			<p class="lead">Añadir elementos de formulario al Arbol DOM</p>
+		</div>
+		<hr />
+
+		<form class="form" name="form" id="myForm">
+			<div class="">
+				<div class="form-group row">
+					<label class="col-3 text-right">Nombre <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="nombre" class="form-control" placeholder="Introduzca tu nombre" value="" />
+						<div id="error-nombre" class="error"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">Apellidos <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="apellidos" class="form-control" placeholder="Introduzca tus apellidos" value="" />
+						<div id="error-apellidos" class="error"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">Teléfono <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="telefono" class="form-control" placeholder="Introduzca teléfono" value="" />
+						<div id="error-telefono" class="error"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-3 text-right">DNI <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="dni" class="form-control" placeholder="Introduzca DNI" value="" />
+						<div id="error-dni" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Género <span>*</span></label>
+					<div class="col-7">
+						<input type="radio" name="genero" value="Masculino" /> Masculino
+						<input type="radio" name="genero" value="Femenino" /> Femenino
+						<input type="radio" name="genero" value="Otros" /> Otros
+						<div id="error-genero" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Calle <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="calle" class="form-control" placeholder="Introduzca Calle" value="" />
+						<div id="error-calle" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Número <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="numero" class="form-control" placeholder="Introduzca Calle" value="" />
+						<div id="error-numero" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Piso <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="piso" class="form-control" placeholder="Introduzca Piso" value="" />
+						<div id="error-piso" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Puerta <span>*</span></label>
+					<div class="col-7">
+						<input type="text" name="puerta" class="form-control" placeholder="Introduzca Puerta" value="" />
+						<div id="error-puerta" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">País <span>*</span></label>
+					<div class="col-7">
+						<select name="pais" class="form-control">
+							<option value="">Selecciona un país</option>
+							<option value="España">España</option>
+							<option value="Francia">Francia</option>
+							<option value="Portugal">Portugal</option>
+						</select>
+						<div id="error-pais" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Ciudad <span>*</span></label>
+					<div class="col-7">
+						<select name="ciudad" class="form-control">
+							<option value="">Selecciona primero un país</option>
+						</select>
+						<div id="error-ciudad" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">&nbsp</label>
+					<div class="col-7">
+						<button name="btnInsert" class="btn btn-primary">Crear</button>
+						<input name="btnReset" type="button" id="btnReset" class="btn btn-secondary" value="Reset" />
+					</div>
+				</div>
+			</div>
+		</form>
+		<hr />
+
+		<table class="table table-striped" id="miTabla">
+				<thead>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Teléfono</th>
+					<th>DNI</th>
+					<th>Género</th>
+					<th>Calle</th>
+					<th>Número</th>
+					<th>Piso</th>
+					<th>Puerta</th>
+					<th>País</th>
+					<th>Ciudad</th>
+					<th>Acción</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Nombre</td>
+						<td>Apellido</td>
+						<td>Teléfono</td>
+						<td>DNI</td>
+						<td>Genero</td>
+						<td>Calle</td>
+						<td>Número</td>
+						<td>Piso</td>
+						<td>Puerta</td>
+						<td>País</td>
+						<td>Ciudad</td>
+						<td>
+							<button class="btn btn-info" onclick="editFila(this);"><i class="fas fa-pencil-alt"></i></button>
+							<button class="btn btn-danger" onclick="delFila(this);"><i class="fas fa-trash"></i></button>
+						</td>
+					</tr>
+				<tbody>
+		</table>
+	</div>
+</body>
+</html>

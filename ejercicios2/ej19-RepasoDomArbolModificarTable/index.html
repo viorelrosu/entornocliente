@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ej12 - DomArbolModificarTable</title>
+	<style type="text/css">
+		h1 {
+			font-weight: normal;
+		}
+		div.main {
+			width: 600px;
+			margin: 0 auto;
+			padding-top: 40px;
+		}
+		table {
+			margin-top: 30px;
+		    border: 2px solid black;
+		    border-collapse: collapse;
+		}
+		td{
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div>
+			<input type="text" name="inputText" id="inputText" value="" />
+			<button onclick="insertar()">Insertar en Table</button>
+
+		</div>
+		<table id="myTable"></table>
+	</div>
+	<script>
+		var miTable = document.getElementById("myTable");
+		var inputText = document.getElementById("inputText");
+		//miTable.style.padding = '20px';
+
+		function insertar(){
+			var tr, td, text;
+
+			tr = document.createElement("tr");
+
+			text = document.createTextNode(inputText.value.trim());
+			td = document.createElement("td");
+			td.appendChild(text);
+			tr.appendChild(td);
+
+			td = document.createElement("td");
+			var btnClonar = document.createElement("button");
+			btnClonar.setAttribute("onclick","clonarFila(this);");
+			btnClonar.appendChild(document.createTextNode("Clonar"));
+
+			var btnDel = document.createElement("button");
+			btnDel.setAttribute("onclick","delFila(this);");
+			btnDel.appendChild(document.createTextNode("Eliminar"));
+
+			td.appendChild(btnClonar);
+			td.appendChild(btnDel);
+			tr.appendChild(td);
+
+			miTable.appendChild(tr);
+		}
+
+		function delFila(btn){
+			var fila = btn.parentNode.parentNode;
+			miTable.removeChild(fila);
+		}
+
+		function clonarFila(btn){
+			var fila = btn.parentNode.parentNode;
+			var filaNueva = fila.cloneNode(true);
+			//console.log(miTable);
+			miTable.insertBefore(filaNueva,fila);
+		}
+	</script>
+
+</body>
+</html>

@@ -20,71 +20,126 @@
 		</div>
 		<hr />
 
-		<form class="form">
+		<form class="form" name="miform">
 			<div class="">
 				<div class="form-group row">
 					<label class="col-3 text-right">Usuario <span>*</span></label>
-					<input type="text" name="usuario" class="form-control col-7" placeholder="Introduzca usuario" value="" />
-					<div id="error-usuario"></div>
+					<div class="col-7">
+						<input type="text" name="usuario" class="form-control" placeholder="Introduzca usuario" value="" />
+						<div id="error-usuario" class="error"></div>
+					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-3 text-right">Nombre <span>*</span></label>
-					<input type="text" name="nombre" class="form-control col-7" placeholder="Introduzca nombre" value="" />
-					<div id="error-nombre"></div>
+					<div class="col-7">
+						<input type="text" name="nombre" class="form-control" placeholder="Introduzca nombre" value="" />
+						<div id="error-nombre" class="error"></div>
+					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-3 text-right">Apellido <span>*</span></label>
-					<input type="text" name="apellido" class="form-control col-7" placeholder="Introduzca apellido" value="" />
-					<div id="error-apellido"></div>
+					<div class="col-7">
+						<input type="text" name="apellido" class="form-control" placeholder="Introduzca apellido" value="" />
+						<div id="error-apellido" class="error"></div>
+					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-3 text-right">Correo electrónico <span>*</span></label>
-					<input type="text" name="email" class="form-control col-7" placeholder="Introduzca correo electrónico" value="" />
-					<div id="error-correo"></div>
+					<div class="col-7">
+						<input type="text" name="email" class="form-control" placeholder="Introduzca correo electrónico" value="" />
+						<div id="error-email" class="error"></div>
+					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-3 text-right">Contraseña <span>*</span></label>
-					<input type="password" name="password" class="form-control col-7" placeholder="Introduzca contraseña" value="" />
-					<div id="error-password"></div>
+					<div class="col-7">
+						<input type="text" name="password" class="form-control" placeholder="Introduzca contraseña" value="" />
+						<div id="error-password" class="error"></div>
+					</div>
 				</div>
+
 				<div class="form-group row">
 					<label class="col-3 text-right">Confirmar Contraseña <span>*</span></label>
-					<input type="password" name="passwordConfirm" class="form-control col-7" placeholder="Repita la contraseña" value="" />
-					<div id="error-passwordConfirm"></div>
+					<div class="col-7">
+						<input type="password" name="passwordConfirm" class="form-control" placeholder="Repita la contraseña" value="" />
+						<div id="error-passwordConfirm" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Selecciona sus hobbies <span>*</span></label>
+					<div class="col-7">
+						<input type="checkbox" name="hobbies[]" value="Programar" /> Programar
+						<input type="checkbox" name="hobbies[]" value="Meditar" /> Meditar
+						<input type="checkbox" name="hobbies[]" value="Leer" /> Leer
+						<input type="checkbox" name="hobbies[]" value="Deportes" /> Deportes
+						<input type="checkbox" name="hobbies[]" value="Cine" /> Cine
+						<input type="checkbox" name="hobbies[]" value="Videojuegos" /> Videojuegos
+						<div id="error-hobbies" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">País <span>*</span></label>
+					<div class="col-7">
+						<select name="pais" class="form-control">
+							<option value="">Selecciona un país</option>
+							<option value="España">España</option>
+							<option value="Francia">Francia</option>
+							<option value="Portugal">Portugal</option>
+							<option value="Alemania">Alemania</option>
+						</select>
+						<div id="error-pais" class="error"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-3 text-right">Sexo <span>*</span></label>
+					<div class="col-7">
+						<input type="radio" name="sexo" value="M" /> Masculino
+						<input type="radio" name="sexo" value="F" /> Femenino
+						<div id="error-sexo" class="error"></div>
+					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-3 text-right">&nbsp</label>
 					<div class="col-7">
-						<button class="btn btn-primary">Crear</button>
-						<input type="reset" class="btn btn-secondary" value="Cancelar" />
+						<button name="btnInsert" class="btn btn-primary">Crear</button>
+						<input name="reset" type="reset" id="reset" class="btn btn-secondary" value="Reset" />
 					</div>
 				</div>
 			</div>
 		</form>
 		<hr />
 
-		<table class="table table-striped">	
-				<tr>
+		<table class="table table-striped" id="miTabla">
+				<thead>
 					<th>Usuario</th>
 					<th>Nombre</th>
 					<th>Apellido</th>
 					<th>Correo</th>
 					<th>Contraseña</th>
+					<th>Hobbies</th>
+					<th>País</th>
+					<th>Sexo</th>
 					<th>Acción</th>
-				</tr>
-				<tr>
-					<td>Usuario</td>
-					<td>Nombre</td>
-					<td>Apellido</td>
-					<td>Correo</td>
-					<td>Contraseña</td>
-					<td>
-						
-						<button class="btn btn-info"><i class="fas fa-pencil-alt"></i></button>
-						<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-
-					</td>
-				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Usuario</td>
+						<td>Nombre</td>
+						<td>Apellido</td>
+						<td>Correo</td>
+						<td>Contraseña</td>
+						<td>Programar</td>
+						<td>España</td>
+						<td>M</td>
+						<td>
+							<button class="btn btn-info" onclick="editFila(this);"><i class="fas fa-pencil-alt"></i></button>
+							<button class="btn btn-danger" onclick="delFila(this);"><i class="fas fa-trash"></i></button>
+						</td>
+					</tr>
+				<tbody>
 		</table>
 	</div>
 </body>

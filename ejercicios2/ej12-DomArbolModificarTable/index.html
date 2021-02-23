@@ -53,7 +53,7 @@
 			var btnClonar = document.createElement('button');
 			btnClonar.type="button";
 			btnClonar.appendChild(document.createTextNode('Copiar encima'));
-			btnClonar.setAttribute("onclick",function(){ clonar(this) });
+			btnClonar.setAttribute("onclick","clonar(this);");
 			td.appendChild(btnClonar);
 			tr.appendChild(td);
 
@@ -62,7 +62,7 @@
 			var btnDel = document.createElement('button');
 			btnDel.type="button";
 			btnDel.appendChild(document.createTextNode('Eliminar'));
-			btnDel.setAttribute("onclick",function(){ eliminar(this) });
+			btnDel.setAttribute("onclick","eliminar(this);");
 			//btnDel.onclick = function(){ eliminar(this) };
 			//btnDel.addEventListener('click',function(){ eliminar(this) });
 			td.appendChild(btnDel);
