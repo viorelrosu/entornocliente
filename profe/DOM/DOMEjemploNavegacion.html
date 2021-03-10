@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="miDiv">
+<h1>En un <strong>lugar</strong> de la mancha</h1>
+<h1>de cuyo <b>nombre</b> no quiero acordarme</h1>
+<h1>no ha mucho que vivia un hidalgo caballero</h1>
+</div>
+<div>
+</div>
+<script>
+/*
+Mostrar el número de elementos del segundo hijo del DIV.
+además mostrar los nombres de los elementos de los hijos 
+del segundo hijo del DIV, así como su contenido.
+*/
+var miDiv=document.getElementsByTagName("div")[1];
+var padre=document.getElementById("miDiv");
+
+var muestra="Codigo asociado al ejercicio<br>&lt;div id=&quot;miDiv&quot;&gt;<br>"
+muestra +="&lt;h1&gt;En un &lt;strong&gt;lugar&lt;/strong&gt; de la mancha&lt;/h1&gt;<br>"
+muestra +="&lt;h1&gt;de cuyo &lt;b&gt;nombre&lt;/b&gt; no quiero acordarme&lt;/h1&gt;<br>"
+muestra +="&lt;h1&gt;no ha mucho que vivia un hidalgo caballero&lt;/h1&gt;<br>"
+muestra +="&lt;/div&gt;<br>"
+
+miDiv.innerHTML=muestra;
+
+
+
+if (padre.hasChildNodes()){
+    if (padre.children[1]!=null){
+	   var nombre=padre.children[1].nodeName; 
+	   var contenido = padre.children[1].nodeValue;
+	   var tipo=padre.children[1].nodeType;
+	   miDiv.innerHTML+=nombre + " ---- " + contenido +"<br>";
+	   var contador=padre.children[1].childNodes.length;
+	   miDiv.innerHTML+="Numero de hijos del segundo hijo del DIV = " +contador+ " ----- tipo de nodo="+tipo+"<br>"; 
+	   /// accedemos al texto primer hijo del segundo hijo del DIV 
+	   
+	   nombre=padre.children[1].firstChild.nodeName;
+	   contenido=padre.children[1].firstChild.nodeValue;
+	   tipo=padre.children[1].firstChild.nodeType;
+	   miDiv.innerHTML+="Primer hijo del segundo hijo del DIV: Nombre="+nombre + " ---- contenido=" + contenido + " ----- tipo de nodo="+tipo+"<br>";
+	   //// accedemos al elemento segundo hijo del segundo hijo del div mediante el 
+	   //// parentesco de hermanos nextSibling.
+	   
+	   nombre=padre.children[1].firstChild.nextSibling.nodeName;
+	   contenido=padre.children[1].firstChild.nextSibling.nodeValue;
+	   tipo=padre.children[1].firstChild.nextSibling.nodeType;
+	   miDiv.innerHTML+="Segundo hijo del segundo hijo del DIV: Nombre="+nombre + " ---- contenido=" + contenido + " ----- tipo de nodo="+tipo+"<br>";
+	   //// accedemos al primer hijo del segundo hijo del segundo hijo del div
+	   
+	   nombre=padre.children[1].firstChild.nextSibling.firstChild.nodeName;
+	   contenido=padre.children[1].firstChild.nextSibling.firstChild.nodeValue;
+	   tipo=padre.children[1].firstChild.nextSibling.firstChild.nodeType;
+	   miDiv.innerHTML+="Primer hijo del Segundo hijo del segundo hijo del DIV: Nombre="+nombre + " ---- contenido=" + contenido + " ----- tipo de nodo="+tipo+"<br>";
+	   //  accedemos al tercer hijo del segundo hijo del div
+	   nombre=padre.children[1].lastChild.nodeName;
+	   contenido=padre.children[1].lastChild.nodeValue;
+	   tipo=padre.children[1].lastChild.nodeType;
+	   /*nombre=padre.children[1].firstChild.nextSibling.nextSibling.nodeName;
+	   contenido=padre.children[1].firstChild.nextSibling.nextSibling.nodeValue;
+	   tipo=padre.children[1].firstChild.nextSibling.nextSibling.nodeType;
+	   */
+	   miDiv.innerHTML+="Tercer hijo del segundo hijo del DIV: Nombre="+nombre + " ---- contenido=" + contenido + " ----- tipo de nodo="+tipo+"<br>";
+	   miDiv.innerHTML+="<br><br><br><br><br><br><br><br><br><br><br><br>"
+	   miDiv.innerHTML+="<br><br><br><br><br><br><br><br><br><br><br><br>"
+	}
+
+
+}
+
+
+
+
+
+</script>
+</body>
+</html>
