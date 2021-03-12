@@ -1,0 +1,2 @@
+Este texto aparecio usando AJAX y sin un refresh a la pagina.<br>Se inluyen algunos contenidos de las noticias.<br>En varias l&iacute;neas.<br>fgdgfdg
+<br>sfsfsfsfsfd<br>affwfwfwe

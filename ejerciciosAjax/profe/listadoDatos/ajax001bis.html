@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><title>Ajax</title><meta charset="utf-8">
+<script>
+var xmlhttp;
+if (window.XMLHttpRequest){
+	xmlhttp = new XMLHttpRequest();
+} else if (window.ActiveXObject) {
+	 xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+}	
+
+function mostrarSugerencia(str){
+               if (str.length==0) { 
+			         document.getElementById("txtSugerencia").innerHTML=""; 
+					 return; }
+				xmlhttp.disabled=true;
+				xmlhttp.onreadystatechange=gestionarRespuesta;
+				xmlhttp.open('GET',"listadoDatos.php?q="+str,true);
+				xmlhttp.send(null);				
+			}
+function gestionarRespuesta() {
+if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+document.getElementById("txtSugerencia").innerHTML=xmlhttp.responseText;
+}
+else{document.getElementById('txtSugerencia').innerHTML = 'Cargando...';}
+}
+
+</script>
+</head>
+<body><h3>Empieza a escribir un nombre en la casilla para obtener una sugerencia:</h3>
+<form action="">
+Nombre: <input type="text" id="txt1" onkeyup="mostrarSugerencia(this.value)" />
+</form>
+<p>Sugerencias: <span id="txtSugerencia"></span></p>
+</body></html>

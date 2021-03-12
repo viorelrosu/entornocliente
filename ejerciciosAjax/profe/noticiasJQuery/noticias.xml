@@ -1,0 +1,13 @@
+<noticias>
+
+  <noticia>
+    <titulo>Prueba</titulo>
+    <texto>Esta es una noticia de prueba</texto>
+  </noticia>
+
+  <noticia>
+    <titulo>Prueba2</titulo>
+    <texto>Esta es otra noticia de prueba</texto>
+  </noticia>
+
+</noticias>

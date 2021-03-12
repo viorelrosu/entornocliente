@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ajax</title><meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+//https://uniwebsidad.com/libros/fundamentos-jquery/capitulo-7/metodos-ajax-de-jquery	
+function mostrarSugerencia(str){
+    $.ajax({
+    url: 'listadoDatos.php',
+	data : "q="+str,
+	type : 'GET',
+    success: function(respuesta) {
+      gestionarRespuesta(respuesta);
+    },
+    error: function() {
+      console.log("No se ha podido obtener la información");
+    }
+  });			
+}
+			
+function gestionarRespuesta(respuesta) {
+document.getElementById("txtSugerencia").innerHTML=respuesta;
+}
+
+</script>
+</head>
+<body><h3>Empieza a escribir un nombre en la casilla para obtener una sugerencia:</h3>
+<form action="">
+Nombre: <input type="text" id="txt1" onkeyup="mostrarSugerencia(this.value)" />
+</form>
+<p>Sugerencias: <span id="txtSugerencia"></span></p>
+</body></html>

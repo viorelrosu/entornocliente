@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta>
+<title>Ejemplo de AJAX</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+//https://uniwebsidad.com/libros/fundamentos-jquery/capitulo-7/metodos-ajax-de-jquery	
+function verNoticiasTexto(){
+    $.ajax({
+    url: 'noticias.xml',
+	type : 'GET',
+	dataType: "text",
+    success: function(respuesta) {
+      atenderPeticionTexto(respuesta);
+    },
+    error: function() {
+      console.log("No se ha podido obtener la información");
+    }
+  });			
+}
+function verNoticiasXML(){
+    $.ajax({
+    url: 'noticias.xml',
+	type : 'GET',
+	//dataType: "text",
+    success: function(respuesta) {
+      atenderPeticionXML(respuesta);
+    },
+    error: function() {
+      console.log("No se ha podido obtener la información");
+    }
+  });			
+}
+
+function atenderPeticionTexto(respuesta) {
+      //mostrar noticia      
+         var nodoTexto = document.getElementById("parrafo1").firstChild;
+         nodoTexto.nodeValue = respuesta;
+      }
+function atenderPeticionXML(respuesta) {
+      var nodoParrafo = document.getElementById("parrafo2");
+	  var listaNoticias = respuesta.getElementsByTagName("noticia");
+	  //vamos a poner cada noticia en el documento HTML como : <h2> titulo de la noticia </h2> texto de la noticia
+	  for(i=0; i<listaNoticias.length; i++) {
+		  //Titulo de la noticia
+		  var tit = document.createElement("h2");
+		  //listaNoticias[i].firstChild "a ojo" deberia ser <titulo>, pero si hay retornos o espacios podría ser
+			  //un nodo de texto, así que tenemos que quedarnos con <titulo> explicitamente
+		  var textoTit = document.createTextNode(listaNoticias[i].getElementsByTagName("titulo")[0].firstChild.nodeValue);
+		  tit.appendChild(textoTit);
+		  nodoParrafo.appendChild(tit);
+			  //Texto de la noticia
+		  //listaNoticias[i].lastChild "a ojo" deberia ser <texto>, pero si hay retornos o espacios podría ser
+			  //un nodo de texto, así que tenemos que quedarnos con <texto> explicitamente
+		  var textoNoticia = document.createTextNode(listaNoticias[i].getElementsByTagName("texto")[0].firstChild.nodeValue);
+		  nodoParrafo.appendChild(textoNoticia);
+ 	  
+	}   
+}
+
+
+
+</script>
+</head>
+<body>
+<h1>Noticias</h1>
+<form name="formu">
+   <input type="button" value="ver noticias" onclick="verNoticiasTexto()"> <br>
+   <input type="button" value="ver noticias XML" onclick="verNoticiasXML()"> <br>
+   <p id="parrafo1"> </p>
+   <p id="parrafo2"> </p>
+</form>
+</body>
+</html>

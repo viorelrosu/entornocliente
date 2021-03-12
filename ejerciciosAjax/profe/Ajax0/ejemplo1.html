@@ -1,0 +1,64 @@
+<html>
+  <head>
+  <title>Ejemplo1</title>
+  <script>
+/*
+Explicación
+En primer lugar creamos el objeto XMLHttpRequestObject para la petición de datos. Este objeto será creado 
+dependiendo del navegador web, la primera parte del if es para la mayoría de navegadores y la parte del 
+if else es para Internet Explorer.
+Despues está la creación de una función pedirDatos que tiene como parametro fuenteDatos. Está función, como 
+su nombre indica, será la encargada de hacer una petición de datos, a través del parámetro fuenteDatos 
+al servidor. Indicamos que cuando se detecte un cambio de estado se ejecute la funcion tratarRespuesta. 
+XMLHttpRequestObject.onreadystatechange = tratarRespuesta, que muestra el resultado.
+Como se aprecia la mayor parte del código interesante se centra en el javascript. 
+Nota: El archivo datos.txt irá en la directorio donde esté ejemplo1.html.
+*/
+  var XMLHttpRequestObject = false;
+  if (window.XMLHttpRequest) {
+	XMLHttpRequestObject = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+	XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  function pedirDatos(fuenteDatos){
+      //var miAleat = parseInt(Math.random()*999999999);
+	  if(XMLHttpRequestObject) {
+	    // Creamos el controlador de eventos 
+	    // Cada vez que se cambia el estado se llama a la función tratarRespuesta.
+        		
+	      XMLHttpRequestObject.onreadystatechange = tratarRespuesta;
+		// Ejecutamos el método open con el primer parámetro "GET" y el segundo parámetro
+        // el fichero y los posibles parámetros de llamada.  
+		XMLHttpRequestObject.open("GET", fuenteDatos)// + "?aleat=" + miAleat);
+		//XMLHttpRequestObject.open("GET", fuenteDatos);
+		// Ejecutamos el método send con el parámetro "null", cuando se realiza un open con "GET", 
+		// los parámetros se envían en el segundo parámeto de open.  
+		  XMLHttpRequestObject.send(null);
+		}
+	} 
+  
+  function tratarRespuesta(){
+              // si la propiedad readyState = 4 indica que la respuesta se ha comnpletado y está lista.
+			  // si la propiedad status = 200 indica que la respuesta está bien.
+			  // si se dan los dos casos se trata la respuesta.
+              console.log(XMLHttpRequestObject.readyState +"  -  " +XMLHttpRequestObject.status );
+			  if (XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.status == 200) {
+			  document.getElementById("targetDiv").innerHTML = XMLHttpRequestObject.responseText;
+   }
+     else{
+	 
+	 
+	 }
+   }
+  </script>
+  </head>
+  <body>
+  <H1>Mostrando datos con AJAX</H1>
+  <form>
+  <input type = "button" value = "Mostrar mensaje" onclick = "pedirDatos('datos.txt')">
+  </form>
+  <div id="targetDiv" style="background-color:#99FF66;">
+  <p>Aqu&iacute; aparecer&aacute; texto</p>
+  </div>
+  </body>
+  </html>

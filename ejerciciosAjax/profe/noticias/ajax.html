@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta>
+<title>Ejemplo de AJAX</title>
+<script>
+
+var GModoXML = false;
+var prticion;
+function verNoticias() {
+
+   //Preparar objeto para lanzar peticion   
+   if (window.XMLHttpRequest) { 			//Firefox,etc
+      peticion = new XMLHttpRequest();     
+   } else if (window.ActiveXObject) {     	//Explorer   
+      peticion = new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   var miAleat = parseInt(Math.random()*999999999);
+   //a quien llamar cuando el servidor responda
+   peticion.onreadystatechange = atenderPeticion; 
+   //lanzar la peticion propiamente dicha
+   peticion.open("GET", "noticias.xml?aleat=" + miAleat, true);
+   peticion.send(null);
+}
+
+
+function atenderPeticion() {
+   if (peticion.readyState == 4) {
+      //analizar respuesta. Al parecer si hay servidor, OK=200 y si no lo hay, OK=0
+      if ((peticion.status!=200)&&(peticion.status!=0)) {
+         alert("ha habido un error: " + peticion.status );
+         return;
+      }
+      //mostrar noticia      
+      if (!GModoXML) {
+         var nodoTexto = document.getElementById("parrafo").firstChild;
+         nodoTexto.nodeValue = peticion.responseText;
+      }
+      else {
+        var nodoParrafo = document.getElementById("parrafo");
+	var listaNoticias = peticion.responseXML.getElementsByTagName("noticia");
+	//vamos a poner cada noticia en el documento HTML como : <h2> titulo de la noticia </h2> texto de la noticia
+	for(i=0; i<listaNoticias.length; i++) {
+	  //Titulo de la noticia
+	  var tit = document.createElement("h2");
+	  //listaNoticias[i].firstChild "a ojo" deberia ser <titulo>, pero si hay retornos o espacios podría ser
+          //un nodo de texto, así que tenemos que quedarnos con <titulo> explicitamente
+	  var textoTit = document.createTextNode(listaNoticias[i].getElementsByTagName("titulo")[0].firstChild.nodeValue);
+	  tit.appendChild(textoTit);
+	  nodoParrafo.appendChild(tit);
+          //Texto de la noticia
+	  //listaNoticias[i].lastChild "a ojo" deberia ser <texto>, pero si hay retornos o espacios podría ser
+          //un nodo de texto, así que tenemos que quedarnos con <texto> explicitamente
+	  var textoNoticia = document.createTextNode(listaNoticias[i].getElementsByTagName("texto")[0].firstChild.nodeValue);
+	  nodoParrafo.appendChild(textoNoticia);
+ 	  
+	}
+      }
+
+    }
+}
+
+
+
+</script>
+</head>
+<body>
+<h1>Noticias</h1>
+<form name="formu">
+   <input type="button" value="ver noticias" onclick="GModoXML=false;verNoticias()"> <br>
+   <input type="button" value="ver noticias XML" onclick="GModoXML=true;verNoticias()"> <br>
+   <p id="parrafo"> </p>
+</form>
+</body>
+</html>

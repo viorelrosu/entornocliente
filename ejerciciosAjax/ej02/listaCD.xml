@@ -1,0 +1,51 @@
+<CATALOGO>
+    <CD>
+        <TITULO>Tinta roja</TITULO>
+        <ARTISTA>Andres Calamaro</ARTISTA>
+        <ORIGEN>AR</ORIGEN>
+        <PRECIO>5.90</PRECIO>
+        <ANO>2006</ANO>
+    </CD>
+    <CD>
+        <TITULO>La Lengua Popular</TITULO>
+        <ARTISTA>Andres Calamaro</ARTISTA>
+        <ORIGEN>AR</ORIGEN>
+        <PRECIO>9.90</PRECIO>
+        <ANO>2007</ANO>
+    </CD>
+	<CD>
+        <TITULO>Los sueños Locos</TITULO>
+        <ARTISTA>Fito y Fitipaldis</ARTISTA>
+        <ORIGEN>ES</ORIGEN>
+        <PRECIO>8.90</PRECIO>
+        <ANO>2001</ANO>
+    </CD>
+	<CD>
+        <TITULO>Hullendo</TITULO>
+        <ARTISTA>Fito y Fitipaldis</ARTISTA>
+        <ORIGEN>ES</ORIGEN>
+        <PRECIO>10.90</PRECIO>
+        <ANO>2014</ANO>
+    </CD>
+	<CD>
+        <TITULO>Lo mas lejos a tu lado</TITULO>
+        <ARTISTA>Fito y Fitipaldis</ARTISTA>
+        <ORIGEN>ES</ORIGEN>
+        <PRECIO>9.90</PRECIO>
+        <ANO>2003</ANO>
+    </CD>
+	<CD>
+        <TITULO>Señales de humo</TITULO>
+        <ARTISTA>Rulo y la contrabanda</ARTISTA>
+        <ORIGEN>ES</ORIGEN>
+        <PRECIO>10.90</PRECIO>
+        <ANO>2010</ANO>
+    </CD>
+	<CD>
+        <TITULO>El doble de tu mitad</TITULO>
+        <ARTISTA>Rulo y la contrabanda</ARTISTA>
+        <ORIGEN>ES</ORIGEN>
+        <PRECIO>11.90</PRECIO>
+        <ANO>2016</ANO>
+    </CD>
+</CATALOGO>
